@@ -1,0 +1,133 @@
+import React from 'react'
+import { BiLogoFacebook, BiLogoTwitter, BiLogoPinterestAlt, BiLogoInstagramAlt } from "react-icons/bi";
+import Link from 'next/link';
+import Image from 'next/image';
+import Phone from '../public/phone-icon.png'
+
+
+const SocialIcons = [
+    {
+        title: 'BiLogoFacebook'
+    },
+    {
+        title: 'BiLogoTwitter'
+    },
+    {
+        title: 'BiLogoInstagramAlt'
+    },
+    {
+        title: 'BiLogoPinterestAlt'
+    },
+];
+const firstCol = [
+    {
+        title: 'About US'
+    },
+    {
+        title: 'Programs'
+    },
+    {
+        title: 'delivery'
+    },
+];
+const secCol = [
+    {
+        title: 'menu'
+    },
+    {
+        title: 'calculator'
+    },
+    {
+        title: 'feedback'
+    },
+];
+const thirdCol = [
+    {
+        title: '099-900-99-00',
+        src: '/phone-icon.png'
+    },
+    {
+        title: 'eatme@food.com',
+        src: '/email-icon.png'
+    },
+    {
+        title: 'Shevchenko Str. 100',
+        src: '/position-icon.png'
+    },
+]
+
+function Foooter() {
+    return (
+        <div className='bg-[#263800D9] h-[338px] mt-[124px] backdrop-blur-md  bg-opacity-85 z-50'>
+            <div className='container mx-auto'>
+                <div className='flex justify-between pt-[40px]'>
+                    <div className='flex flex-col space-y-8'>
+                        <h1 className='text-[#FFFBE5] text-[32px] text-center font-thin'><span className='font-semibold'>eat</span>me</h1>
+                        <div className='flex space-x-6'>
+                            {SocialIcons.map((item, index) => {
+                                const IconComponent = {
+                                    BiLogoFacebook,
+                                    BiLogoTwitter,
+                                    BiLogoInstagramAlt,
+                                    BiLogoPinterestAlt,
+                                }[item.title];
+                                return (
+                                    <Link key={index} href='/'>
+                                        <IconComponent size={32} />
+                                    </Link>
+                                );
+                            })}
+                        </div>
+                    </div>
+                    <div className='flex flex-col space-y-6'>
+                        {firstCol.map((item, index) => {
+                            return (
+                                <Link key={index} href='/'>
+                                    <p className='uppercase'>{item.title}</p>
+                                </Link>
+                            );
+                        })}
+                    </div>
+                    <div className='flex flex-col space-y-6'>
+                        {secCol.map((item, index) => {
+                            return (
+                                <Link key={index} href='/'>
+                                    <p className='uppercase'>{item.title}</p>
+                                </Link>
+                            );
+                        })}
+                    </div>
+                    <div className='flex flex-col space-y-6'>
+                        {thirdCol.map((item, index) => {
+                            return (
+                                <div key={index} href='/' className='flex space-x-3'>
+                                    <Image
+                                        src={item.src}
+                                        alt=""
+                                        width={24}
+                                        height={18} />
+                                    <p>{item.title}</p>
+                                </div>
+                            );
+                        })}
+                    </div>
+                    <div className='flex flex-col'>
+                        <p>NEWSLETTER</p>
+                        <input type="text" name="" id="" placeholder='Enter your email' className='rounded-[8px] px-[13px] pl-[16px] mt-[18px] bg-[#FFFCEC40] placeholder-[#1D1912] h-12' />
+                        <button className='w-full min-w-[100px] max-w-[268px] h-[48px] rounded-[8px] bg-[#ECBD00] text-[#FFFCEC] mt-[8px] cursor-pointer uppercase shadow-md'>subscribe</button>
+
+                    </div>
+                </div>
+                <div className='border-solid border-t-2 border-[#ECBD00] w-full mt-20 flex justify-between'>
+                    <p className='mt-[18px]'>&copy; 2024 Your Company Name. All rights reserved.</p>
+                    <div className='flex mt-[18px] space-x-[34px] text-[14px]'>
+                        <Link href='/'>TERMS & CONDITIONS</Link>
+                        <Link href='/'>PRIVACY POLICY</Link>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default Foooter

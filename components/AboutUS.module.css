@@ -1,0 +1,14 @@
+.bg{
+    background-image: url('../public/AboutUS_bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: -299px;
+    left: -94px;
+    min-height: 986.52px;
+    z-index: 1;
+    width: 675.24px;
+    rotate: -8.4 deg;
+}
+

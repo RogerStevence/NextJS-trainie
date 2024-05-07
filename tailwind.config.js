@@ -6,12 +6,29 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+
+    container: {
+        center: true,
+        screens: {
+          '2xl': '1440px'
+        }
+    },
+
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+          'AboutUS-bg': "url('/public/AboutUS-bg.png')",
+          'Program-bg': "url('/public/1st_program.png')",
+          'Program-bg': "url('/public/2nd_program.png')",
+          'Program-bg': "url('/public/3d_program.png')",
+          'Program-bg': "url('/public/4th_program.png')"
       },
+      colors: {
+        primary: '#46620B',
+        seccondary: '#ECBD00'
+      }
     },
   },
   plugins: [],
