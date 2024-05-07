@@ -27,7 +27,7 @@ function Questions() {
                                     <input key={index} type={item.type} placeholder={item.holder} className='shadow-xl pl-[16px] py-[11px] focus:outline-none'/>
                                 )
                             }
-                            <textarea name="" id="" cols="30" rows="10" className='text-black shadow-xl pl-[16px] pt-[11px] resize-none focus:outline-none' placeholder='Enter your message here'></textarea>
+                            <textarea name="" id="" cols="30" rows="10" className='text-primary shadow-xl pl-[16px] pt-[11px] resize-none focus:outline-none' placeholder='Enter your message here'></textarea>
                         </div>
                         <button className='w-full min-w-[100px] max-w-[216px] h-[56px] rounded-[8px] bg-[#ECBD00] text-[#FFFCEC] cursor-pointer uppercase mt-[32px] shadow-md'>send</button>
                     </form>
