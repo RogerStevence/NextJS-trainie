@@ -56,7 +56,7 @@ function Comments() {
                 </div>
             </div>
             <Slider className='w-full z-30' infinite speed={300} dots={false} centerPadding={0} prevArrow={<CustomArrows direction="prev"/>}
-                nextArrow={<CustomArrows direction="next" />} variableWidth>
+                nextArrow={<CustomArrows direction="next" />}>
                 {CommentsItems.map((item, index) => (
                     <div key={index} className='text-[#263800] bg-[#FFFCEC] max-w-[414px] shadow-xl mr-6 p-6 rounded-[15px] mb-12'>
                         <BiSolidQuoteRight className='w-[40px] h-[40px] text-seccondary' />
@@ -75,11 +75,12 @@ function Comments() {
                     </div>
                 ))}
             </Slider>
-            <div className='absolute -top-[25px] left-0 bg-'>
-                <Image className=''
+            <div className='absolute -top-[25px] left-0'>
+                <Image
                     src={BgImage}
                     alt=''
-                    width='full'
+                    width='0'
+                    height='0'
                 />
             </div>
         </div>

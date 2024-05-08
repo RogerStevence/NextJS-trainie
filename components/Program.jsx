@@ -2,7 +2,12 @@
 import React from 'react';
 import Image from 'next/image';
 import { useState } from 'react';
-import Tets from './tets';
+import ProgramResp from './ProgramResp';
+import ProgramMob from './ProgramMob';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 
 function Program() {
 
@@ -42,20 +47,40 @@ function Program() {
 
     return (
         <div className='relative'>
-            <div className='container mx-auto mt-[132px] max-w-[1440px] z-20 relative'>
-                <div className='flex flex-col justify-center items-center max-w-[1440px] m-auto mb-[64px]'>
-                    <h1 className='text-primary text-[32px] font-medium'>WHAT IS YOUR </h1>
-                    <h2 className='text-seccondary text-5xl font-bold leading-[56.35px]'>PERFECT PROGRAM?</h2>
+            <div className='hidden sm:block'>
+                <div className='container mx-auto mt-[132px] max-w-[1440px] z-20 relative'>
+                    <div className='flex flex-col justify-center items-center max-w-[1440px] m-auto mb-[64px]'>
+                        <h1 className='text-primary text-[32px] font-medium'>WHAT IS YOUR </h1>
+                        <h2 className='text-seccondary text-5xl font-bold leading-[56.35px]'>PERFECT PROGRAM?</h2>
+                    </div>
+                    <div className='flex space-x-[24px]'>
+                        {
+                            ProgramItems.map((item, index) => (
+                                <ProgramResp key={index} item={item} />
+                            ))
+                        }
+                    </div>
                 </div>
-                <div className='flex space-x-[24px]'>
+                <div className='absolute z-10 top-[50%] right-0 bg-[#E9EDBA80]  h-[1166px] w-2/3 rounded-bl-[350px] backdrop-blur-[15px]'></div>
+            </div>
+
+            {/* {'Mobile'} */}
+
+            <div className='sm:hidden mt-[86px]'>
+                <div className='flex flex-col justify-center items-center'>
+                    <h1 className='text-primary font-medium text-[20px]'>WHAT IS YOUR </h1>
+                    <h2 className='text-seccondary text-[32px] fonts-semibold leading-[37.5px] text-center'>PERFECT PROGRAM?</h2>
+                </div>
+
+                <Slider infinite speed={300} dots={false} centerPadding={0} className='mx-6'>
                     {
                         ProgramItems.map((item, index) => (
-                            <Tets key={index} item={item} />
+                            <ProgramMob key={index} item={item} />
                         ))
                     }
-                </div>
+                </Slider>
+
             </div>
-            <div className='absolute z-10 top-[50%] right-0 bg-[#E9EDBA80]  h-[1166px] w-2/3 rounded-bl-[350px] backdrop-blur-[15px]'></div>
         </div>
     )
 }

@@ -5,7 +5,6 @@ import Fresh_Ingredients from '../public/Fresh_Ingredients.png';
 import Affordable_Price from '../public/Affordable_Price.png';
 import Delicious_Food from '../public/Delicious_Food.png';
 import OnTime from '../public/On-Time_Delivery.png';
-import HeroImage from '../public/mobile-hero.png';
 import { BiLogoFacebook, BiLogoTwitter, BiLogoPinterestAlt, BiLogoInstagramAlt } from "react-icons/bi";
 import { ImArrowRight2 } from "react-icons/im";
 import CustomButton from './Button';

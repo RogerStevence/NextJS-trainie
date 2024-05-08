@@ -192,7 +192,7 @@ function Menu() {
                 </div>
                 <div className='flex space-x-[24px] relative mt-[70px]'>
                     {menuItem.map((item, index) => (
-                        <div key={index} className='bg-[#FFFCEC] w-full flex flex-col items-center text-center drop-shadow-xl rounded-[15px]'>
+                        <div key={index} className='bg-[#FFFCEC] w-[100%] max-w-[1436px] flex flex-col items-center text-center drop-shadow-xl rounded-[15px]'>
                             <Image src={item.src} alt='' width='244' height='244' object-fit='containe' className='rounded-full absolute -top-[24px] drop-shadow-md' />
                             <h3 className='mt-[224px] text-[#263800]'>{item.title}</h3>
                             <div className='flex w-full justify-between pl-[21px] pr-[16px] text-seccondary text-[18px]'>
@@ -207,7 +207,7 @@ function Menu() {
                     ))}
                 </div>
             </div>
-            <div className='absolute z-10 top-[75%] left-0 bg-[#FFF1AC80]  h-[864px] w-[1436px] rounded-tr-[350px]'></div>
+            <div className='absolute z-10 top-[75%] left-0 bg-[#FFF1AC80] w-[100%] h-[864px] max-w-[1436px] rounded-tr-[350px]'></div>
         </div>
     )
 }

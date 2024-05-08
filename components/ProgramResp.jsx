@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function tets({ item }) {
+function ProgramResp({ item }) {
 
     const [selected, setSelected] = useState(false);
     const toggleItem = (value) => setSelected(value);
@@ -31,4 +31,4 @@ function tets({ item }) {
     )
 }
 
-export default tets
+export default ProgramResp
