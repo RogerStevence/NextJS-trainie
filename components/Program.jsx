@@ -69,10 +69,10 @@ function Program() {
             <div className='sm:hidden mt-[86px]'>
                 <div className='flex flex-col justify-center items-center'>
                     <h1 className='text-primary font-medium text-[20px]'>WHAT IS YOUR </h1>
-                    <h2 className='text-seccondary text-[32px] fonts-semibold leading-[37.5px] text-center'>PERFECT PROGRAM?</h2>
+                    <h2 className='text-seccondary text-[32px] font-semibold leading-[37.5px] text-center'>PERFECT PROGRAM?</h2>
                 </div>
 
-                <Slider infinite speed={300} dots={false} centerPadding={0} className='mx-6'>
+                <Slider infinite speed={300} dots={false} centerPadding={40} className='mt-8' centerMode={true} >
                     {
                         ProgramItems.map((item, index) => (
                             <ProgramMob key={index} item={item} />
