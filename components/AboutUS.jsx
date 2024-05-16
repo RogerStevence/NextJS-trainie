@@ -29,7 +29,7 @@ function AboutUS() {
     ]
 
     return (
-        <div className='relative'>
+        <div className='relative overflow-hidden'>
             <div className='container mx-auto z-10 relative mt-[314px] hidden sm:flex'>
                 <div className={css.bg}></div>
                 <div className='h-full w-full flex flex-col items-end'>
@@ -59,11 +59,11 @@ function AboutUS() {
                     <p className='z-10'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fringilla nulla iaculis elementum cursus feugiat nibh aliquam pellentesque congue. Cursus bibendum velit eu dolor mattis mollis magnis odio.</p>
                     <p className='z-10'>Laoreet nunc turpis mauris id potenti dolor, mi. At tortor, viverra id montes, ac nibh nullam venenatis. Ullamcorper sem egestas diam diam egestas eget. Blandit odio consectetur mauris nunc.</p>
                 </div>
-                <div className='relative h-[628px] w-[530px] z-50'>
-                    <div className=' absolute h-[628px] w-[530px] -left-[10px] -top-[28px]' style={{ backgroundImage: `url('/mobile_aboutUS.png')`, background: 'contain' }}>
+                <div className='relative h-[628px] max-w-[428px] z-20'>
+                    <div className=' absolute h-[628px] w-[428px]  -top-[28px]' style={{ backgroundImage: `url('/mobile_aboutUS.png')`, background: 'contain' }}>
                     </div>
                 </div>
-                <div className='grid grid-cols-2 grid-rows-2 gap-4 mx-4'>
+                <div className='grid grid-cols-2 grid-rows-2 gap-4 m-4'>
                             {
                                 ItemsList.map((item, index) => (
                                     <div key={index} className='text-[#263800] text-center flex flex-col py-[32px] items-center bg-[#FFFCEC] rounded-[15px] shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] w-[190px] h-[244px] text-[14px]'>

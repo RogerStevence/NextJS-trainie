@@ -28,6 +28,9 @@ module.exports = {
       colors: {
         primary: '#46620B',
         seccondary: '#ECBD00'
+      },
+      boxshadow: {
+      main: '2px 6px 15px 0px rgba(0, 0, 0, 0.25)'
       }
     },
   },

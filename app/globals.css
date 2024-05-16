@@ -111,6 +111,15 @@ body {
   border: 1px solid green;
   cursor: pointer;
 }
+
+.slick-slider.marginmid .slick-slide{
+  margin-right: 16px;
+  width: 138px;
+}
+
+.slick-slider.paddings .slick-track{
+  padding: 32px 0;
+}
 /* .range input::-moz-range-progress{
   background: green; //this progress background is only shown on Firefox
 } */

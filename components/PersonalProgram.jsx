@@ -117,7 +117,7 @@ function Calculatortest() {
                     </label>
                 ));
             case "text":
-                return <input type="text" className="drop-shadow-md focus:outline-none bg-[#FFFCEC] pl-4 py-[11px] w-[75%] min-w-[200px]" placeholder='Add a comment...' />;
+                return <input type="text" className="drop-shadow-md focus:outline-none bg-[#FFFCEC] pl-4 py-[11px] w-[75%] min-w-[277px] " placeholder='Add a comment...' />;
             default:
         }
     };
@@ -128,7 +128,7 @@ function Calculatortest() {
 
     return (
         <div className='relative mt-[224px]'>
-            <div className='container z-30 relative'>
+            <div className='container z-30 relative sm:block hidden'>
                 <div className='flex flex-col'>
                     <div className="mb-16">
                         <h1 className='text-primary text-center text-[32px] uppercase leading-[38px]'>Make</h1>
@@ -190,12 +190,73 @@ function Calculatortest() {
                     </div>
                 </div>
             </div>
-            <div className='absolute -top-[120px] right-0'>
+            <div className='absolute -top-[120px] right-0 sm:block hidden'>
                 <Image className='rounded-l-full'
                     src={BgImage}
                     alt=''
                     width='full'
                 />
+            </div>
+
+            {/* {'Mobile'} */}
+
+            <div className="sm:hidden">
+                <div className="mb-16">
+                    <h1 className='text-primary text-center text-[20px] uppercase leading-[23.5px]'>Make</h1>
+                    <h2 className='text-seccondary text-center text-[32px] uppercase font-semibold leading-[37.5px]'>a personal program</h2>
+                </div>
+                <div className='uppercase mx-4'>
+                    <div className='text-[#263800] bg-[#FFFCEC] shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] rounded-[15px] py-[40px] pl-6 w-full space-y-[32px]'>
+                        {items.map((item, idx) => {
+                            return (
+                                <div key={idx} className="flex space-x-3">
+                                    <div className='flex flex-col space-y-6 w-full'>
+                                        <h1 className='text-seccondary text-[40px] font-thin leading-none flex items-center'>{item.title} <span className='font-semibold text-[20px] ml-6 text-[#263800]'>{item.name}</span></h1>
+                                        <div className="flex flex-col w-full max-w-[200px] space-y-4 text-[#263800] ml-[74px]">{renderInput(item)}</div>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
+                    <div className='w-full bg-[#FFFCEC] rounded-[15px] px-[36px] flex flex-col relative shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] mt-8'>
+                        <h1 className='text-seccondary text-center text-[24px] my-8'>your order</h1>
+                        <div className="flex flex-col space-y-[18px] justify-around text-[16px]">
+                            <div className='flex justify-between text-[#263800]'>
+                                <h2 className="pr-[20px] text-[#263800]">PROGRAM:</h2>
+                                <h3 className="font-semibold">{
+                                    items.find(item => item.state === "havchik").values.find(({ value }) => value === typeOfHavchik)?.title
+                                }</h3>
+                            </div>
+                            <div className='flex justify-between text-[#263800] '>
+                                <h2 className="pr-[20px] text-[#263800]">CALORIES:</h2>
+                                <h3 className="font-semibold">{
+                                    items.find(item => item.state === "calories").values.find(({ value }) => value === calories)?.title
+                                }
+                                </h3>
+                            </div>
+                            <div className='flex justify-between text-[#263800]'>
+                                <h2 className="pr-[20px] text-[#263800]">DELIVERY PERIOD:</h2>
+                                <h3 className="font-semibold">{
+                                    items.find(item => item.state === "days").values.find(({ value }) => value === days)?.title
+                                }</h3>
+                            </div>
+                        </div>
+                        <div className="flex flex-col h-[271px] border-t-[2px] border-[#46620B] mt-8 pt-8">
+                            {/* <div className='pt-[74px] border-b-[2px] border-[#46620B] w-full ' /> */}
+                            <div className="text-[#263800] flex justify-between">
+                                <h2>Program Price:</h2>
+                                <h3>${calculateResult()}</h3></div>
+                            <div className="text-[#263800] flex justify-between mt-[14px]">
+                                <h2>Discount:</h2>
+                                <h3>$0</h3></div>
+                            <div className="text-[#263800] text-[20px] font-semibold flex justify-between my-6">
+                                <h2>Total Price:</h2>
+                                <h3>${calculateResult()}</h3>
+                            </div>
+                            <button className='w-full bg-[#ECBD00] absolute bottom-0 left-0 rounded-b-[15px] h-[72px] mt-[32px] uppercase font-semibold text-[18px]'>order</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );

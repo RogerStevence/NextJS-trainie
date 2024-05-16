@@ -3,6 +3,10 @@ import React from 'react';
 import { format, addDays, startOfWeek } from 'date-fns';
 import { useState } from 'react';
 import Image from 'next/image';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 
 
 
@@ -23,7 +27,8 @@ function Menu() {
 
             weekDays.push(
                 <button
-                    key={i} className={` py-[10px] w-full max-w-[145px] rounded-md shadow-md ${activeIndex === i ? 'bg-[#ECBD00] text-white' : 'bg-[#FFFCEC] text-[#263800]'}`}
+                    key={i}
+                    className={` py-[10px] rounded-md shadow-md  ${activeIndex === i ? 'bg-[#ECBD00] text-white' : 'bg-[#FFFCEC] text-[#263800]'}`}
                     style={{
                         backgroundColor: activeIndex === i ? '#ECBD00' : '#FFFCEC',
                     }}
@@ -167,48 +172,96 @@ function Menu() {
 
 
     return (
-        <div className='relative mt-[224px]'>
-            <div className='container z-30 relative'>
-                <div className="mb-16">
-                    <h1 className='text-primary text-center text-[32px] uppercase leading-[38px]'>Our</h1>
-                    <h2 className='text-seccondary text-center text-[48px] uppercase font-semibold leading-[58px]'>menu</h2>
+        <div className='relative '>
+            <div className='mt-[111px] sm:block hidden'>
+                <div className='container z-30 relative'>
+                    <div className="mb-16">
+                        <h1 className='text-primary text-center text-[32px] uppercase leading-[38px]'>Our</h1>
+                        <h2 className='text-seccondary text-center text-[48px] uppercase font-semibold leading-[58px]'>menu</h2>
+                    </div>
+                    <div className='flex space-x-[32px]'>
+                        {
+                            menuItems.map((item, index) => (
+                                <div key={index} className='flex space-x-2'>
+                                    <input type="radio" name="menuItems" value={item.name} />
+                                    <label className='text-primary'>
+                                        {item.name}
+                                    </label>
+                                </div>
+                            ))
+                        }
+                    </div>
+                    <div className='flex space-x-[32px] mt-[40px]'>
+                        <div className="w-full text-black flex space-x-[16px] uppercase">
+                            {renderWeekDays()}
+                        </div>
+                    </div>
+                    <div className='flex space-x-[24px] relative mt-[70px]'>
+                        {menuItem.map((item, index) => (
+                            <div key={index} className='bg-[#FFFCEC] w-[100%] max-w-[1436px] flex flex-col items-center text-center drop-shadow-xl rounded-[15px]'>
+                                <Image src={item.src} alt='' width='244' height='244' object-fit='containe' className='rounded-full absolute -top-[24px] drop-shadow-md' />
+                                <h3 className='mt-[224px] text-[#263800]'>{item.title}</h3>
+                                <div className='flex w-full justify-between pl-[21px] pr-[16px] text-seccondary text-[18px]'>
+                                    {item.values.map((value, idx) => (
+                                        <div key={idx} className='mb-[16px]'>
+                                            <p>{item[value.title]}</p>
+                                            <p className='text-primary text-[14px]'>{value.title}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
-                <div className='flex space-x-[32px]'>
+            </div>
+            <div className='absolute z-10 top-[75%] left-0 bg-[#FFF1AC80] w-[100%] h-[864px] max-w-[1436px] rounded-tr-[350px] sm:block hidden'></div>
+
+            {/* {'Mobile'} */}
+
+            <div className='sm:hidden z-20 relative mt-[111px]'>
+                <div>
+                    <h1 className='text-primary text-center text-[20px] uppercase leading-[23px]'>Our</h1>
+                    <h2 className='text-seccondary text-center text-[32px] uppercase font-semibold leading-[37px]'>menu</h2>
+                </div>
+                <div className='grid grid-flow-col grid-rows-2 gap-4 mt-8 mx-[37px]'>
                     {
                         menuItems.map((item, index) => (
-                            <div key={index} className='flex space-x-2'>
-                                <input type="radio" name="menuItems" value={item.name} />
-                                <label className='text-primary'>
-                                    {item.name}
+                            <div key={index}>
+                                <label className='text-primary flex space-x-3'>
+                                    <input type="radio" name="menuItems" value={item.name} />
+                                    <div>{item.name}</div>
                                 </label>
                             </div>
                         ))
                     }
                 </div>
-                <div className='flex space-x-[32px] mt-[40px]'>
-                    <div className="w-full text-black flex space-x-[16px] uppercase">
+
+                <div className='mt-[40px] z-30 relative'>
+                    <Slider className='marginmid' infinite speed={300} dots={false} arrows={false} slidesToShow={3}>
                         {renderWeekDays()}
-                    </div>
+                    </Slider>
                 </div>
-                <div className='flex space-x-[24px] relative mt-[70px]'>
-                    {menuItem.map((item, index) => (
-                        <div key={index} className='bg-[#FFFCEC] w-[100%] max-w-[1436px] flex flex-col items-center text-center drop-shadow-xl rounded-[15px]'>
-                            <Image src={item.src} alt='' width='244' height='244' object-fit='containe' className='rounded-full absolute -top-[24px] drop-shadow-md' />
-                            <h3 className='mt-[224px] text-[#263800]'>{item.title}</h3>
-                            <div className='flex w-full justify-between pl-[21px] pr-[16px] text-seccondary text-[18px]'>
-                                {item.values.map((value, idx) => (
-                                    <div key={idx} className='mb-[16px]'>
-                                        <p>{item[value.title]}</p>
-                                        <p className='text-primary text-[14px]'>{value.title}</p>
-                                    </div>
-                                ))}
+                <div className='flex space-x-[24px] mt-[70px] z-40'>
+                    <Slider className='w-full relative paddings' infinite speed={300} dots={false} arrows={false} slidesToShow={1.5}>
+                        {menuItem.map((item, index) => (
+                            <div key={index} className='bg-[#FFFCEC] max-w-[268px] flex flex-col items-center text-center drop-shadow-xl rounded-[15px]'>
+                                <Image src={item.src} alt='' width='231' height='231' object-fit='containe' className='rounded-full absolute left-1/2 transform -translate-x-1/2 -top-[24px] drop-shadow-md' />
+                                <h3 className='mt-[224px] text-[#263800]'>{item.title}</h3>
+                                <div className='flex w-full justify-between pl-[21px] pr-[16px] text-seccondary text-[18px]'>
+                                    {item.values.map((value, idx) => (
+                                        <div key={idx} className='mb-[16px]'>
+                                            <p>{item[value.title]}</p>
+                                            <p className='text-primary text-[14px]'>{value.title}</p>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </Slider>
                 </div>
-            </div>
-            <div className='absolute z-10 top-[75%] left-0 bg-[#FFF1AC80] w-[100%] h-[864px] max-w-[1436px] rounded-tr-[350px]'></div>
-        </div>
+            </div >
+            <div className='absolute z-0 top-[0] left-0 bg-[#F4F4D0] w-[90%] h-[1252px] max-w-[1436px] rounded-tr-[350px] sm:hidden'></div>
+        </div >
     )
 }
 

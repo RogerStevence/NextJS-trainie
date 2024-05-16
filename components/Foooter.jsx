@@ -41,25 +41,51 @@ const secCol = [
         title: 'feedback'
     },
 ];
+
+const fitsMob = [
+    {
+        title: 'About US'
+    },
+    {
+        title: 'Programs'
+    },
+    {
+        title: 'menu'
+    },
+];
+
+const secMob = [
+    {
+        title: 'calculator'
+    },
+    {
+        title: 'delivery'
+    },
+    {
+        title: 'feedback'
+    },
+]
+
+
 const thirdCol = [
     {
         title: '099-900-99-00',
-        src: '/phone-icon.png'
+        src: '/phoneSVG.svg'
     },
     {
         title: 'eatme@food.com',
-        src: '/email-icon.png'
+        src: '/emailSVG.svg'
     },
     {
         title: 'Shevchenko Str. 100',
-        src: '/position-icon.png'
+        src: '/mapSVG.svg'
     },
 ]
 
 function Foooter() {
     return (
-        <div className='bg-[#263800D9] h-[338px] mt-[124px] backdrop-blur-md  bg-opacity-85 z-50'>
-            <div className='container mx-auto'>
+        <div className='bg-[#263800D9] backdrop-blur-md  bg-opacity-85 z-50'>
+            <div className='container mx-auto mt-[124px] sm:block hidden'>
                 <div className='flex justify-between pt-[40px]'>
                     <div className='flex flex-col space-y-8'>
                         <h1 className='text-[#FFFBE5] text-[32px] text-center font-thin'><span className='font-semibold'>eat</span>me</h1>
@@ -125,6 +151,84 @@ function Foooter() {
                         <Link href='/'>PRIVACY POLICY</Link>
                     </div>
                 </div>
+            </div>
+
+            {/* {'Mobile'} */}
+
+            <div className='sm:hidden'>
+                <div className='flex justify-between flex-col mt-8 py-8 mx-4'>
+                    <div className='flex justify-between items-center'>
+                        <h1 className='text-[#FFFBE5] text-[32px] text-center font-thin'><span className='font-semibold'>eat</span>me</h1>
+                        <div className='flex space-x-6'>
+                            {SocialIcons.map((item, index) => {
+                                const IconComponent = {
+                                    BiLogoFacebook,
+                                    BiLogoTwitter,
+                                    BiLogoInstagramAlt,
+                                    BiLogoPinterestAlt,
+                                }[item.title];
+                                return (
+                                    <Link key={index} href='/'>
+                                        <IconComponent size={32} />
+                                    </Link>
+                                );
+                            })}
+                        </div>
+                    </div>
+                    <div className='flex space-x-[66px] justify-between mx-[78px] mt-12 font-thin'>
+                        <div className='flex flex-col space-y-6'>
+                            {fitsMob.map((item, index) => {
+                                return (
+                                    <Link key={index} href='/'>
+                                        <p className='uppercase'>{item.title}</p>
+                                    </Link>
+                                );
+                            })}
+                        </div>
+                        <div className='flex flex-col space-y-6'>
+                            {secMob.map((item, index) => {
+                                return (
+                                    <Link key={index} href='/'>
+                                        <p className='uppercase'>{item.title}</p>
+                                    </Link>
+                                );
+                            })}
+                        </div>
+                    </div>
+                    <div className='flex flex-col mt-12 h-[75px]'>
+                        <p className='mb-2'>NEWSLETTER</p>
+                        <div className='relative'>
+                            <input type="text" name="" id="" maxlength="25" placeholder='Enter your email' className='rounded-[8px] px-[13px] pl-[16px] bg-[#FFFCEC40] absolute placeholder-[#1D1912] h-12 w-full' />
+                            <button className='w-full min-w-[100px] max-w-[140px] h-[48px] rounded-[8px] bg-[#ECBD00] text-[#FFFCEC] cursor-pointer uppercase shadow-md absolute top-[0] right-0'>subscribe</button>
+                        </div>
+                    </div>
+                    <div className='flex flex-col space-y-6 items-center mt-12'>
+                        <div className='flex flex-col space-y-6'>
+                            {thirdCol.map((item, index) => {
+                                return (
+                                    <div key={index} href='/' className='flex space-x-3'>
+                                        <Image
+                                            src={item.src}
+                                            alt=""
+                                            width={24}
+                                            height={18} />
+                                        <p>{item.title}</p>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                    <div className='mt-16'>
+                        <div className='flex space-x-[33px] text-[16px] uppercase leading-[18.78px] mx-8 w-full mb-4 font-thin'>
+                            <Link href='/' >TERMS & CONDITIONS</Link>
+                            <Link href='/' >PRIVACY POLICY</Link>
+                        </div>
+                        <div className='border-solid border-t-2 border-[#ECBD00] w-full flex justify-center'>
+                            <p className='mt-4 text-[12px] uppercase font-thin'>&copy; 2024 Your Company Name. All rights reserved.</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     )

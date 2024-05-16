@@ -14,7 +14,7 @@ function TryNow() {
 
 
             </div>
-            <div className='sm:hidden flex flex-col   relative mt-[64px]' style={{ backgroundImage: ' linear-gradient(134.46deg, rgba(70, 98, 11, 0.8) 0%, #46620B 100%)' }}>
+            <div className='sm:hidden flex flex-col w-[428px] relative mt-[64px] overflow-hidden' style={{ backgroundImage: ' linear-gradient(134.46deg, rgba(70, 98, 11, 0.8) 0%, #46620B 100%)' }}>
                 <div style={{ backgroundImage: `url('/bg_mobile_trynow.png')`, backgroundRepeat: 'no-repeat' }} className='h-[380px] w-[380px] rounded-full absolute -right-[190px] bottom-[22px] z-0'>
                 </div>
                 <h3 className='text-[24px] mx-4 mt-8 leading-[32px] '>Have some doubts? </h3>

@@ -13,8 +13,8 @@ function ProgramMob({ item }) {
             <div className={`px-[16px] relative ${selected ? 'hidden ' : 'flex flex-row backdrop-blur-[15px] rounded-t-[15px]'}`}>
                 <h3 className='text-8xl px-4 py-2 font-thin'>{item.number}</h3>
                 <h4 className={`text-[32px] uppercase ${selected ? 'flex items-center' : 'flex items-center'}`}>{item.title}</h4>
-                <div className='w-12 h-12 rounded-b-full absolute bottom-0 left-[147.5px] translate-y-[65%] flex items-center justify-center'>
-                    <IoArrowDownOutline className='w-6 h-6 text-white' />
+                <div className='w-12 h-12 rounded-b-full absolute bottom-0 left-[147.5px] translate-y-[65%] flex items-center justify-center backdrop-blur-[15px]'>
+                    <IoArrowDownOutline className='w-6 h-6 text-white ' />
                 </div>
             </div>
             <div

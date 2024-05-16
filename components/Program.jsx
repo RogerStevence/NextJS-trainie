@@ -72,7 +72,7 @@ function Program() {
                     <h2 className='text-seccondary text-[32px] font-semibold leading-[37.5px] text-center'>PERFECT PROGRAM?</h2>
                 </div>
 
-                <Slider infinite speed={300} dots={false} centerPadding={40} className='mt-8' centerMode={true} >
+                <Slider infinite speed={300} dots={false} centerPadding={40} className='mt-8' centerMode={true} arrows={false} >
                     {
                         ProgramItems.map((item, index) => (
                             <ProgramMob key={index} item={item} />
