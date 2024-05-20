@@ -1,15 +1,21 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { MdOutlineDirectionsRun } from "react-icons/md";
 import { IoIosFemale } from "react-icons/io";
 import { IoIosMale } from "react-icons/io";
-import { useEffect } from 'react';
+import css from '../components/Ccalculator.module.css';
+
+
 
 const buttonClasses = 'text-[#263800] py-2 px-4 rounded-[8px] shadow-xl focus:outline-none flex items-center';
 const inputRangeClasses = 'sm:max-w-[328px] max-w-[267px] appearance-none w-full h-[2px] bg-[#263800] rounded-lg outline-none';
 const selectClasses = 'w-full bg-[#FFFCEC] text-zinc-700 py-2 px-3 rounded-lg focus:outline-none shadow-[0px_4px_15px_0_rgba(0,0,0,0.25)]';
 
+
+
 const CalorieCalculator = () => {
+
+
     const [gender, setGender] = useState('male');
     const [age, setAge] = useState(30);
     const [weight, setWeight] = useState(55);
@@ -17,6 +23,44 @@ const CalorieCalculator = () => {
     const [goal, setGoal] = useState('WEIGHT BALANCE');
     const [selectedItems, setSelectedItems] = useState(Array.from({ length: 5 }, () => false));
     const [isSelectionFixed, setIsSelectionFixed] = useState(false);
+
+    const outputRefs = useRef([React.createRef(), React.createRef(), React.createRef()]);
+    const inputRefs = useRef([React.createRef(), React.createRef(), React.createRef()]);
+
+
+    useEffect(() => {
+        const handleInput = (index) => {
+            const output = outputRefs.current[index].current;
+            const input = inputRefs.current[index].current;
+            const value = (input.value - input.min) / (input.max - input.min) * 100;
+            output.innerHTML = input.value;
+            output.style.left = `calc(${value}% - 16px)`;
+            output.style.transform = `translateX(-${value}%)`;
+        };
+
+        inputRefs.current.forEach((inputRef, index) => {
+            const input = inputRef.current;
+            const output = outputRefs.current[index].current;
+
+            if (input && output) {
+                input.addEventListener('input', () => handleInput(index));
+                // Initial call to set position and value
+                handleInput(index);
+            }
+        });
+
+        // Clean up the event listeners
+        return () => {
+            inputRefs.current.forEach((inputRef, index) => {
+                const input = inputRef.current;
+                if (input) {
+                    input.removeEventListener('input', () => handleInput(index));
+                }
+            });
+        };
+    }, []);
+
+
 
     // Function to toggle the selected state of a specific item and all items before or after it
     const toggleItem = index => {
@@ -69,36 +113,12 @@ const CalorieCalculator = () => {
         });
     };
 
-    useEffect(() => {
-        const slideValue = document.querySelector("span");
-        const inputSlider = document.querySelector("input");
-
-        const handleInput = () => {
-            let value = inputSlider.value;
-            slideValue.textContent = value;
-            slideValue.style.left = (value / 2) + "%";
-            slideValue.classList.add("show");
-        };
-
-        const handleBlur = () => {
-            slideValue.classList.remove("show");
-        };
-
-        inputSlider.addEventListener('input', handleInput);
-        inputSlider.addEventListener('blur', handleBlur);
-
-        return () => {
-            inputSlider.removeEventListener('input', handleInput);
-            inputSlider.removeEventListener('blur', handleBlur);
-        };
-    }, []);
-
 
 
     return (
         <div className="">
             <div className=' mt-[248px] sm:block hidden'>
-                <div className='container z-30 relative '>
+                <div className='container z-30 relative'>
                     <div className='flex flex-col items-center'>
                         <h1 className='text-primary text-center text-[32px] uppercase leading-[38px]'>CALORIE</h1>
                         <h2 className='text-seccondary text-center text-[48px] uppercase font-semibold leading-[58px]'>CALCULATOR</h2>
@@ -132,7 +152,7 @@ const CalorieCalculator = () => {
                                         <span className="text-green-600">medium</span>
                                     </div>
                                     <div className="mt-6 w-[100%] max-w-[289px] min-w-[100px]">
-                                    <label className="block text-[#263800] mb-4">GOAL</label>
+                                        <label className="block text-[#263800] mb-4">GOAL</label>
                                         <select className={selectClasses} value={goal} onChange={(e) => setGoal(e.target.value)}>
                                             <option>WEIGHT BALANCE</option>
                                             <option>WEIGHT LOSS</option>
@@ -142,27 +162,50 @@ const CalorieCalculator = () => {
                                 </div>
                                 <div className="mt-6 w-[50%] flex flex-col space-y-[69px]">
                                     <div className='w-[100%] max-w-[442px] flex items-center justify-between'>
-                                        <label className="block text-zinc-700 w-[100px]">AGE</label>
-                                        <input type="range" min="0" max="100" value={age} className={inputRangeClasses} onInput={(e) => setAge(e.target.value)} />
+                                        <label className="block text-zinc-700 w-[100px] uppercase">Age</label>
+                                        <div className="relative w-full">
+                                            <span className="absolute top-[-30px] text-[#263800] bg-[#FFFBE6] w-[44px] pointer-down shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] text-center rounded-[5px]" ref={outputRefs.current[0]}></span>
+                                            <input
+                                                type="range"
+                                                min="0"
+                                                max="100"
+                                                value={age}
+                                                ref={inputRefs.current[0]}
+                                                className={inputRangeClasses}
+                                                onInput={(e) => setAge(e.target.value)}
+                                            />
+                                        </div>
                                     </div>
                                     <div className='w-[100%] max-w-[442px] flex items-center justify-between'>
-                                        <label className="block text-zinc-700 w-[100px]">WEIGHT</label>
-                                        <input type="range" min="0" max="200" value={weight} className={inputRangeClasses} onInput={(e) => setWeight(e.target.value)} />
+                                        <label className="block text-zinc-700 w-[100px] uppercase">weight</label>
+                                        <div className="relative w-full">
+                                            <span className="absolute top-[-30px] text-[#263800] bg-[#FFFBE6] w-[44px] pointer-down shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] text-center rounded-[5px]" ref={outputRefs.current[1]}></span>
+                                            <input
+                                                type="range"
+                                                min="0"
+                                                max="100"
+                                                value={weight}
+                                                ref={inputRefs.current[1]}
+                                                className={inputRangeClasses}
+                                                onInput={(e) => setWeight(e.target.value)}
+                                            />
+                                        </div>
                                     </div>
                                     <div className='w-[100%] max-w-[442px] flex items-center justify-between'>
-                                        <label className="block text-zinc-700 w-[100px]">HEIGHT</label>
-                                        <input type="range" min="0" max="250" value={height} className={inputRangeClasses} onInput={(e) => setHeight(e.target.value)} />
+                                        <label className="block text-zinc-700 w-[100px] uppercase">HEIGHT</label>
+                                        <div className="relative w-full">
+                                            <span className="absolute top-[-30px] text-[#263800] bg-[#FFFBE6] w-[44px] pointer-down shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] text-center rounded-[5px]" ref={outputRefs.current[2]}></span>
+                                            <input
+                                                type="range"
+                                                min="0"
+                                                max="250"
+                                                value={height}
+                                                ref={inputRefs.current[2]}
+                                                className={inputRangeClasses}
+                                                onInput={(e) => setHeight(e.target.value)}
+                                            />
+                                        </div>
                                     </div>
-                                    {/* <div className="range">
-                                    <div className="sliderValue">
-                                        <span>100</span>
-                                    </div>
-                                    <div className="field">
-                                        <div className="value left">0</div>
-                                        <input type="range" min="10" max="200" defaultValue="100" step="1" />
-                                        <div className="value right">200</div>
-                                    </div>
-                                </div> */}
                                 </div>
                             </div>
                         </div>
@@ -177,7 +220,7 @@ const CalorieCalculator = () => {
 
             {/* {'Mobile'} */}
 
-            <div className='z-30 relative sm:hidden mt-[96px]'>
+            <div className='z-30 sm:hidden mt-[96px] relative'>
                 <div className='flex flex-col items-center mx-8'>
                     <h1 className='text-primary text-center text-[20px] uppercase leading-[23.48px]'>CALORIE</h1>
                     <h2 className='text-seccondary text-center text-[32px] uppercase font-semibold leading-[37.57px]'>CALCULATOR</h2>
@@ -189,7 +232,7 @@ const CalorieCalculator = () => {
                             <button className={buttonClasses + (gender === 'male' ? ' bg-[#ECBD00] text-white' : '')} onClick={() => setGender('male')}>MALE <IoIosMale className='h-full w-full pl-2' /></button>
                             <button className={buttonClasses + (gender === 'female' ? ' bg-[#ECBD00] text-white' : '')} onClick={() => setGender('female')}>FEMALE <IoIosFemale className='h-full w-full pl-2' /></button>
                         </div>
-                        <div className="flex flex-wrap justify-between mt-8">
+                        <div className="flex flex-wrap mt-8">
                             <div className="w-full md:w-1/2">
                                 <label className="block text-black">ACTIVITY</label>
                                 <div className="mt-[24px] flex items-center">
@@ -219,29 +262,52 @@ const CalorieCalculator = () => {
                                     </select>
                                 </div>
                             </div>
-                            <div className="mt-12 w-[100%] flex flex-col space-y-[69px]">
+                            <div className="mt-20 w-full flex flex-col space-y-[69px]">
                                 <div className='w-[100%] max-w-[442px] flex items-center justify-between'>
-                                    <label className="block text-zinc-700 w-[100px]">AGE</label>
-                                    <input type="range" min="0" max="100" value={age} className={inputRangeClasses} onInput={(e) => setAge(e.target.value)} />
-                                </div>
-                                <div className='w-[100%] max-w-[442px] flex items-center justify-between'>
-                                    <label className="block text-zinc-700 w-[100px]">WEIGHT</label>
-                                    <input type="range" min="0" max="200" value={weight} className={inputRangeClasses} onInput={(e) => setWeight(e.target.value)} />
-                                </div>
-                                <div className='w-[100%] max-w-[442px] flex items-center justify-between'>
-                                    <label className="block text-zinc-700 w-[100px]">HEIGHT</label>
-                                    <input type="range" min="0" max="250" value={height} className={inputRangeClasses} onInput={(e) => setHeight(e.target.value)} />
-                                </div>
-                                {/* <div className="range">
-                                    <div className="sliderValue">
-                                        <span>100</span>
+                                    <label className="block text-zinc-700 w-[100px] uppercase">Age</label>
+                                    <div className="relative w-full">
+                                        <span className="absolute top-[-30px] text-[#263800] bg-[#FFFBE6] w-[44px] pointer-down shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] text-center rounded-[5px]" ref={outputRefs.current[0]}></span>
+                                        <input
+                                            type="range"
+                                            min="0"
+                                            max="100"
+                                            value={age}
+                                            ref={inputRefs.current[0]}
+                                            className={inputRangeClasses}
+                                            onInput={(e) => setAge(e.target.value)}
+                                        />
                                     </div>
-                                    <div className="field">
-                                        <div className="value left">0</div>
-                                        <input type="range" min="10" max="200" defaultValue="100" step="1" />
-                                        <div className="value right">200</div>
+                                </div>
+                                <div className='w-[100%] max-w-[442px] flex items-center'>
+                                    <label className="block text-zinc-700 w-[100px] uppercase">weight</label>
+                                    <div className="relative w-full">
+                                        <span className="absolute top-[-30px] text-[#263800] bg-[#FFFBE6] w-[44px] pointer-down shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] text-center rounded-[5px]" ref={outputRefs.current[1]}></span>
+                                        <input
+                                            type="range"
+                                            min="0"
+                                            max="100"
+                                            value={weight}
+                                            ref={inputRefs.current[1]}
+                                            className={inputRangeClasses}
+                                            onInput={(e) => setWeight(e.target.value)}
+                                        />
                                     </div>
-                                </div> */}
+                                </div>
+                                <div className='w-[100%] max-w-[442px] flex items-center justify-between'>
+                                    <label className="block text-zinc-700 w-[100px] uppercase">HEIGHT</label>
+                                    <div className="relative w-full">
+                                        <span className="absolute top-[-30px] text-[#263800] bg-[#FFFBE6] w-[44px] pointer-down shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] text-center rounded-[5px]" ref={outputRefs.current[2]}></span>
+                                        <input
+                                            type="range"
+                                            min="0"
+                                            max="250"
+                                            value={height}
+                                            ref={inputRefs.current[2]}
+                                            className={inputRangeClasses}
+                                            onInput={(e) => setHeight(e.target.value)}
+                                        />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

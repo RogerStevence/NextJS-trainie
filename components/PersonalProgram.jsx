@@ -8,7 +8,15 @@ function Calculatortest() {
     const [typeOfHavchik, setHavchik] = useState(0);
     const [calories, setCalories] = useState(0);
     const [days, setDays] = useState(0);
-    // const [needs, setGender] = useState(0);
+    const [inputValue, setInputValue] = useState("");
+    const [h3Value, setH3Value] = useState("");
+
+    const handleKeyPress = (event) => {
+        if (event.key === "Enter") {
+            setH3Value(inputValue);
+            setInputValue(""); // Очистка поля ввода
+        }
+    };
 
     const items = [
         {
@@ -117,7 +125,8 @@ function Calculatortest() {
                     </label>
                 ));
             case "text":
-                return <input type="text" className="drop-shadow-md focus:outline-none bg-[#FFFCEC] pl-4 py-[11px] w-[75%] min-w-[277px] " placeholder='Add a comment...' />;
+                return <input type="text" className="drop-shadow-md focus:outline-none bg-[#FFFCEC] pl-4 py-[11px] w-[75%] min-w-[277px]" value={inputValue} onChange={(e) => setInputValue(e.target.value)}
+                    onKeyPress={handleKeyPress} placeholder='Add a comment...' />;
             default:
         }
     };
@@ -170,9 +179,15 @@ function Calculatortest() {
                                         items.find(item => item.state === "days").values.find(({ value }) => value === days)?.title
                                     }</h3>
                                 </div>
+                                <div className='flex justify-between text-[#263800]'>
+                                    <h2 className="pr-[20px] text-[#263800]">SPECIAL NEEDS:</h2>
+                                    <div className="max-w-[200px] h-[80px] flex text-right">
+                                        <p className="font-semibold overflow-auto break-word">{h3Value ? h3Value : '—'}</p>
+                                    </div>
+                                </div>
                             </div>
                             <div className="flex flex-col space-y-4 justify-around">
-                                <div className='pt-[74px] border-b-[2px] border-[#46620B] w-full ' />
+                                <div className=' border-b-[2px] border-[#46620B] w-full ' />
                                 <div className="text-[#263800] flex justify-between">
                                     <h2>Program Price:</h2>
                                     <h3>${calculateResult()}</h3></div>

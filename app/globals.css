@@ -123,3 +123,29 @@ body {
 /* .range input::-moz-range-progress{
   background: green; //this progress background is only shown on Firefox
 } */
+
+input[type="range"]::-webkit-slider-thumb {
+  pointer-events: auto;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  -webkit-appearance: none;
+  @apply bg-[#ECBD00];
+  border: 2px solid #263800;
+  cursor: pointer;
+
+  /* @apply w-6 h-6 appearance-none pointer-events-auto; */
+}
+
+.pointer-down::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 10px solid #FFFBE6;
+    bottom: -0.5em;
+    left: 50%;
+    transform: translateX(-50%); /* Центрирование по горизонтали */
+}

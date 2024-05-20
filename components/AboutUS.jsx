@@ -49,7 +49,8 @@ function AboutUS() {
                     </div>
                 </div>
             </div>
-            <div className='absolute z-0 bottom-0 right-0 bg-[#FFF6C9] h-[calc(100%-3rem)] w-1/3 hidden sm:flex'></div>
+            <div className='absolute z-0 bottom-0 right-0 bg-[#FFF6C9] h-[584px] w-1/3 sm:flex hidden'></div>
+
 
             {/* {'Mobile'} */}
 
@@ -64,17 +65,17 @@ function AboutUS() {
                     </div>
                 </div>
                 <div className='grid grid-cols-2 grid-rows-2 gap-4 m-4'>
-                            {
-                                ItemsList.map((item, index) => (
-                                    <div key={index} className='text-[#263800] text-center flex flex-col py-[32px] items-center bg-[#FFFCEC] rounded-[15px] shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] w-[190px] h-[244px] text-[14px]'>
-                                        <Image src={item.src} alt='' width='48' height='48' />
-                                        <h2 className='font-bold mt-6 w-[190px] leading-[20px] text-center px-[21px]'>{item.title}</h2>
-                                        <p className='pt-4 pb-8 px-4'>{item.desc}</p>
-                                    </div>))}
-                        </div>
-            <div className='bg-[#FFF6C9] absolute top-[82px] right-0 w-[95%] h-[653px] rounded-tl-[300px] rounded-bl-[15px]'></div>
+                    {
+                        ItemsList.map((item, index) => (
+                            <div key={index} className='text-[#263800] text-center flex flex-col py-[32px] items-center bg-[#FFFCEC] rounded-[15px] shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] w-[190px] h-[244px] text-[14px]'>
+                                <Image src={item.src} alt='' width='48' height='48' />
+                                <h2 className='font-bold mt-6 w-[190px] leading-[20px] text-center px-[21px]'>{item.title}</h2>
+                                <p className='pt-4 pb-8 px-4'>{item.desc}</p>
+                            </div>))}
+                </div>
+                <div className='bg-[#FFF6C9] absolute top-[82px] right-0 w-[95%] h-[653px] rounded-tl-[300px] rounded-bl-[15px]'></div>
             </div>
-            
+
         </div>
 
     )
