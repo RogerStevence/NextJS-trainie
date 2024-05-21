@@ -155,8 +155,8 @@ function Foooter() {
 
             {/* {'Mobile'} */}
 
-            <div className='sm:hidden'>
-                <div className='flex justify-between flex-col mt-8 py-8 mx-4'>
+            <div className='sm:hidden '>
+                <div className='flex justify-between flex-col mt-8 py-8 mx-4 '>
                     <div className='flex justify-between items-center'>
                         <h1 className='text-[#FFFBE5] text-[32px] text-center font-thin'><span className='font-semibold'>eat</span>me</h1>
                         <div className='flex space-x-6'>
@@ -219,7 +219,7 @@ function Foooter() {
                         </div>
                     </div>
                     <div className='mt-16'>
-                        <div className='flex space-x-[33px] text-[16px] uppercase leading-[18.78px] mx-8 w-full mb-4 font-thin'>
+                        <div className='flex space-x-[33px] text-[16px] uppercase leading-[18.78px] mx-8 max-w-[332px] mb-4 font-thin'>
                             <Link href='/' >TERMS & CONDITIONS</Link>
                             <Link href='/' >PRIVACY POLICY</Link>
                         </div>
