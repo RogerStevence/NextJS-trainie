@@ -11,11 +11,11 @@ function ProgramMob({ item }) {
 
     return (
         <div className='relative flex flex-col h-[704px] w-[341px] rounded-[15px] bg-no-repeat bg-cover bg-center text-left overflow-hidden ml-[50px]' style={{ backgroundImage: `url(${item.src})` }}>
-            <div className={`px-[16px] relative ${css.customStyle}`}>
+            <div className={`px-[16px] ${css.customStyle}`}>
                 <h3 className='text-8xl px-4 py-2 font-thin'>{item.number}</h3>
                 <h4 className={`text-[32px] uppercase ${selected ? 'flex items-center' : 'flex items-center'}`}>{item.title}</h4>
-                <div className='w-12 h-[31px] rounded-b-full absolute -bottom-[10px] left-[147.5px] translate-y-[65%] flex items-center justify-center backdrop-blur-[15px]'>
-                    <IoArrowDownOutline className='w-6 h-6 text-white' />
+                <div className={`w-[64px] h-[31px] absolute top-[92px] left-[147.5px] translate-y-[65%] flex items-center justify-center `}>
+                    <IoArrowDownOutline className='w-6 h-6 text-white mb-4' />
                 </div>
             </div>
             <div

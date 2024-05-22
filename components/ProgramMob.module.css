@@ -3,22 +3,21 @@
     padding-left: 16px;
     padding-right: 16px;
     backdrop-filter: blur(15px);
+    background-color: #11111126;
     display: flex;
     flex-direction: row;
     border-radius: 15px 15px 0 0;
 }
 
-.customStyle::before {
+.customStyle::after {
     content: '';
     position: absolute;
-    width: 0;
-    height: 0;
-    border-left: 1px solid transparent;
-    border-right: 10px solid transparent;
-    border-radius: 1px;
-    border-top: 31px solid transparent;
-    filter: blur(15px);
-    bottom: -20px;
-    left: 50%;
-    transform: translateX(-50%);
+    width: 64px; /* Диаметр круга */
+    height: 32px; 
+    background-color: #11111126; 
+    border-radius: 0 0 100px 100px;
+    bottom: -32px;
+    left: calc(50% + 9px);
+    transform: translate(-50%);
 }
+
