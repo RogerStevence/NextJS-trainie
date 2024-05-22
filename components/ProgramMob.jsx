@@ -14,10 +14,12 @@ function ProgramMob({ item }) {
             <div className={`px-[16px] ${css.customStyle}`}>
                 <h3 className='text-8xl px-4 py-2 font-thin'>{item.number}</h3>
                 <h4 className={`text-[32px] uppercase ${selected ? 'flex items-center' : 'flex items-center'}`}>{item.title}</h4>
-                <div className={`w-[64px] h-[31px] absolute top-[92px] left-[147.5px] translate-y-[65%] flex items-center justify-center `}>
-                    <IoArrowDownOutline className='w-6 h-6 text-white mb-4' />
-                </div>
+                
             </div>
+            <div className={`w-[64px] h-[31px] absolute top-[112px] left-[147.5px] translate-y-[65%] flex items-center justify-center  ${css.customArrow}`}>
+                <IoArrowDownOutline className='w-6 h-6 text-white mb-4' />
+            </div>
+            
             <div
                 onMouseEnter={() => toggleItem(true)}
                 onMouseLeave={() => toggleItem(false)}
@@ -27,7 +29,7 @@ function ProgramMob({ item }) {
                     <div className={`px-[16px] ${selected ? 'flex flex-row backdrop-blur-[15px] rounded-t-[15px] text-[white]' : 'hidden'}`}>
                         <h3 className='text-8xl px-4 py-2 font-thin'>{item.number}</h3>
                         <h4 className={`text-[32px] pr-[40px] uppercase ${selected ? 'flex items-center' : 'flex items-center'}`}>{item.title}</h4>
-                        
+
                     </div>
                     <p className={`p-4 absolute top-[25%] w-full transition-transform duration-1000 transform ${selected ? 'translate-y-[0] opacity-100 ' : '-translate-y-full opacity-0 '}`} style={{ wordWrap: 'break-word' }}>
                         {item.desc}

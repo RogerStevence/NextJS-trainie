@@ -136,8 +136,8 @@ function Calculatortest() {
     };
 
     return (
-        <div className='relative mt-[224px]'>
-            <div className='container z-30 relative sm:block hidden'>
+        <div className='relative'>
+            <div className='container z-30 relative sm:block hidden mt-[224px]'>
                 <div className='flex flex-col'>
                     <div className="mb-16">
                         <h1 className='text-primary text-center text-[32px] uppercase leading-[38px]'>Make</h1>
