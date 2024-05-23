@@ -84,7 +84,7 @@ function Comments() {
                     ))}
                 </Slider>
                 <div className='container z-50 flex justify-end relative'>
-                    <div className='flex space-x-4 w-[80px]'>
+                <div className='flex space-x-4 w-[80px]'>
                         <div className='w-8 h-8 rounded-[6px] border-2 border-[#354909] cursor-pointer flex items-center justify-center' onClick={() => sliderRef.current.slickPrev()}>
                             <FaArrowLeft className='text-[#354909]' />
                         </div>

@@ -8,7 +8,7 @@ import css from '../components/Ccalculator.module.css';
 
 
 const buttonClasses = 'text-[#263800] py-2 px-4 rounded-[8px] shadow-xl focus:outline-none flex items-center';
-const inputRangeClasses = 'sm:max-w-[328px] max-w-[267px] appearance-none w-full h-[2px] bg-[#263800] rounded-lg outline-none';
+const inputRangeClasses = 'sm:max-w-[328px] max-w-[267px] appearance-none w-full h-[2px] bg-[#263800] rounded-lg outline-none relative';
 const selectClasses = 'w-full bg-[#FFFCEC] text-zinc-700 py-2 px-3 rounded-lg focus:outline-none shadow-[0px_4px_15px_0_rgba(0,0,0,0.25)]';
 
 
@@ -47,17 +47,7 @@ const CalorieCalculator = () => {
                 // Initial call to set position and value
                 handleInput(index);
             }
-        });
-
-        // Clean up the event listeners
-        return () => {
-            inputRefs.current.forEach((inputRef, index) => {
-                const input = inputRef.current;
-                if (input) {
-                    input.removeEventListener('input', () => handleInput(index));
-                }
-            });
-        };
+        });        
     }, []);
 
 
@@ -116,7 +106,7 @@ const CalorieCalculator = () => {
 
 
     return (
-        <div className="">
+        <div>
             <div className=' mt-[248px] sm:block hidden'>
                 <div className='container z-30 relative'>
                     <div className='flex flex-col items-center'>
@@ -164,7 +154,7 @@ const CalorieCalculator = () => {
                                     <div className='w-[100%] max-w-[442px] flex items-center justify-between'>
                                         <label className="block text-zinc-700 w-[100px] uppercase">Age</label>
                                         <div className="relative w-full">
-                                            <span className="absolute top-[-30px] text-[#263800] bg-[#FFFBE6] w-[44px] pointer-down shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] text-center rounded-[5px]" ref={outputRefs.current[0]}></span>
+                                            <span className="absolute top-[-30px] text-[#263800] bg-[#FFFBE6] w-[44px] pointer-down shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] text-center rounded-[5px] h-6" ref={outputRefs.current[0]}></span>
                                             <input
                                                 type="range"
                                                 min="0"

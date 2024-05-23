@@ -23,27 +23,27 @@ const Header = () => {
         },
         {
             title: 'About US',
-            href: '/AboutUS'
+            href: '/'
         },
         {
             title: 'Programs',
-            href: '/Programs'
+            href: '/'
         },
         {
             title: 'Calculator',
-            href: '/Calculator'
+            href: '/'
         },
         {
             title: 'Delivery',
-            href: '/Delivery'
+            href: '/'
         },
         {
             title: 'Feedback',
-            href: '/Feedback'
+            href: '/'
         },
         {
             title: 'Contacts',
-            href: '/Contacts'
+            href: '/'
         }
     ];
 
@@ -116,7 +116,7 @@ const Header = () => {
                             {linksList.map((link, index) => (
                                 <div>
                                     <li key={index} className='py-3 text-[16px] font-semibold hover:text-[#1e250c]'>
-                                        <Link href={link.href}>{link.title}</Link>
+                                        <Link href='/'>{link.title}</Link>
                                     </li>
                                 </div>
                             ))}

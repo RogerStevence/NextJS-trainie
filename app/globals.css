@@ -120,9 +120,6 @@ body {
 .slick-slider.paddings .slick-track{
   padding: 32px 0;
 }
-/* .range input::-moz-range-progress{
-  background: green; //this progress background is only shown on Firefox
-} */
 
 input[type="range"]::-webkit-slider-thumb {
   pointer-events: auto;
@@ -133,8 +130,6 @@ input[type="range"]::-webkit-slider-thumb {
   @apply bg-[#ECBD00];
   border: 2px solid #263800;
   cursor: pointer;
-
-  /* @apply w-6 h-6 appearance-none pointer-events-auto; */
 }
 
 .pointer-down::after {
@@ -147,5 +142,5 @@ input[type="range"]::-webkit-slider-thumb {
     border-top: 10px solid #FFFBE6;
     bottom: -0.5em;
     left: 50%;
-    transform: translateX(-50%); /* Центрирование по горизонтали */
+    transform: translateX(-50%); 
 }

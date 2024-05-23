@@ -61,7 +61,7 @@ function AboutUS() {
                     <p className='z-10'>Laoreet nunc turpis mauris id potenti dolor, mi. At tortor, viverra id montes, ac nibh nullam venenatis. Ullamcorper sem egestas diam diam egestas eget. Blandit odio consectetur mauris nunc.</p>
                 </div>
                 <div className='relative h-[628px] max-w-[428px] z-20'>
-                    <div className=' absolute h-[628px] w-[428px]  -top-[28px]' style={{ backgroundImage: `url('/mobile_aboutUS.png')`, background: 'contain' }}>
+                    <div className=' absolute h-[628px] w-[428px]  -top-[28px]' style={{ backgroundImage: `url('/mobile_aboutus.png')`, background: 'contain' }}>
                     </div>
                 </div>
                 <div className='grid grid-cols-2 grid-rows-2 gap-4 m-4'>
