@@ -1,4 +1,5 @@
 "use client";
+import { useId } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -19,61 +20,113 @@ const Header = () => {
     const linksList = [
         {
             title: 'Home',
-            href: '/'
+            href: '/',
+            id: 1
         },
         {
             title: 'About US',
-            href: '/'
+            href: '/',
+            id: 2
         },
         {
             title: 'Programs',
-            href: '/'
+            href: '/',
+            id: 3,
         },
         {
             title: 'Calculator',
-            href: '/'
+            href: '/',
+            id: 4
         },
         {
             title: 'Delivery',
-            href: '/'
+            href: '/',
+            id: 5
         },
         {
             title: 'Feedback',
-            href: '/'
+            href: '/',
+            id: 6
         },
         {
             title: 'Contacts',
-            href: '/'
+            href: '/',
+            id: 7
+        }
+    ];
+
+    const linksListM = [
+        {
+            title: 'Home',
+            href: '/',
+            id: 15
+        },
+        {
+            title: 'About US',
+            href: '/',
+            id: 16
+        },
+        {
+            title: 'Programs',
+            href: '/',
+            id: 17
+        },
+        {
+            title: 'Calculator',
+            href: '/',
+            id: 18
+        },
+        {
+            title: 'Delivery',
+            href: '/',
+            id: 19
+        },
+        {
+            title: 'Feedback',
+            href: '/',
+            id: 20
+        },
+        {
+            title: 'Contacts',
+            href: '/',
+            id: 21
         }
     ];
 
     const menuContacts = [
         {
             title: '099-900-99-00',
-            src: '/menu-phone.png'
+            src: '/menu-phone.png',
+            id: 8
         },
         {
             title: 'eatme@food.com',
-            src: '/menu-mail.png'
+            src: '/menu-mail.png',
+            id: 9
         },
         {
             title: 'Shevchenko Str. 100',
-            src: '/menu-map.png'
+            src: '/menu-map.png',
+            id: 10
         },
     ]
 
     const SocialIcons = [
         {
-            title: 'BiLogoFacebook'
+            title: 'BiLogoFacebook',
+            id: 11
         },
         {
-            title: 'BiLogoTwitter'
+            title: 'BiLogoTwitter',
+            id: 12
         },
         {
-            title: 'BiLogoInstagramAlt'
+            title: 'BiLogoInstagramAlt',
+            id: 13
         },
         {
-            title: 'BiLogoPinterestAlt'
+            title: 'BiLogoPinterestAlt',
+            id: 14
         },
     ];
 
@@ -86,18 +139,23 @@ const Header = () => {
                         <Link href='/'>
                             <h1 className='hidden sm:flex text-primary text-[32px]'><span className='font-medium'>eat</span>me</h1>
                         </Link>
-                        <div className='text-[18px] flex uppercase items-center text-primary'>
-                            <ul className='hidden sm:flex justify-between'>
+                        <div >
+                            <ul className='text-[16px] flex uppercase items-center text-primary space-x-8 font-semibold'>
                                 {linksList.map((link, index) => (
-                                    <li key={index} className='pl-[32px] whitespace-nowrap'>
-                                        <Link href={link.href}>{link.title}</Link>
-                                    </li>
+                                    <React.Fragment key={index}>
+                                        <li className='hover:text-[#ECBD00] hover:border-b-[2px] hover:border-[#ECBD00]'>
+                                            <Link href='/'>{link.title}</Link>
+                                        </li>
+                                    </React.Fragment>
                                 ))}
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
+
+            {/* {'Mobile'} */}
+
             <div className='w-[428px] fixed top-0 left-0 z-50 bg-[#FFFBE6]'>
                 <div className='flex max-w-[428px] sm:hidden items-center justify-between flex-wrap px-4'>
                     <div onClick={handleNav} className='text-primary sm:hidden z-50'>
@@ -113,18 +171,18 @@ const Header = () => {
                 <div className={nav ? 'sm:hidden absolute top-0 bottom-0 left-0 right-0 flex pt-[32px] pl-8 w-full h-screen text-primary ease-in duration-300 bg-[#FFFBE6] z-40' : 'sm:hidden absolute top-0 bottom-0 left-[-100%] right-0 flex pt-[32px] w-full h-screen text-primary ease-in duration-300'}>
                     <div className='flex flex-col justify-between'>
                         <ul>
-                            {linksList.map((link, index) => (
-                                <div>
-                                    <li key={index} className='py-3 text-[16px] font-semibold hover:text-[#1e250c]'>
+                            {linksListM.map((link, index) => (
+                                <React.Fragment key={index}>
+                                    <li className='py-3 text-[16px] font-semibold hover:text-[#1e250c]'>
                                         <Link href='/'>{link.title}</Link>
                                     </li>
-                                </div>
+                                </React.Fragment>
                             ))}
                         </ul>
                         <div className='flex flex-col space-y-6'>
-                            {menuContacts.map((item, index) => {
+                            {menuContacts.map((item) => {
                                 return (
-                                    <div key={index} href='/' className='flex space-x-3 text-primary text-[18px] w-full'>
+                                    <div key={item.id * 10} href='/' className='flex space-x-3 text-primary text-[18px] w-full'>
                                         <Image
                                             src={item.src}
                                             alt=""
@@ -135,7 +193,7 @@ const Header = () => {
                                 );
                             })}
                             <div className='mt-8 border-t-[1px] border-primary w-[256px] flex pt-4 space-x-8 pb-8'>
-                                {SocialIcons.map((item, index) => {
+                                {SocialIcons.map((item) => {
                                     const IconComponent = {
                                         BiLogoFacebook,
                                         BiLogoTwitter,
@@ -143,7 +201,7 @@ const Header = () => {
                                         BiLogoPinterestAlt,
                                     }[item.title];
                                     return (
-                                        <Link key={index} href='/'>
+                                        <Link key={item.id * 10} href='/'>
                                             <IconComponent size={32} />
                                         </Link>
                                     );

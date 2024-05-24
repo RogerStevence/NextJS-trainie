@@ -198,7 +198,7 @@ function Foooter() {
                     <div className='flex flex-col mt-12 h-[75px]'>
                         <p className='mb-2'>NEWSLETTER</p>
                         <div className='relative'>
-                            <input type="text" name="" id="" maxlength="25" placeholder='Enter your email' className='rounded-[8px] px-[13px] pl-[16px] bg-[#FFFCEC40] absolute placeholder-[#1D1912] h-12 w-full' />
+                            <input type="text" name="" id="" maxLength="25" placeholder='Enter your email' className='rounded-[8px] px-[13px] pl-[16px] bg-[#FFFCEC40] absolute placeholder-[#1D1912] h-12 w-full' />
                             <button className='w-full min-w-[100px] max-w-[140px] h-[48px] rounded-[8px] bg-[#ECBD00] text-[#FFFCEC] cursor-pointer uppercase shadow-md absolute top-[0] right-0'>subscribe</button>
                         </div>
                     </div>

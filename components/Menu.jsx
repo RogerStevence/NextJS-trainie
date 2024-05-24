@@ -28,7 +28,7 @@ function Menu() {
             weekDays.push(
                 <button
                     key={i}
-                    className={` py-[10px] rounded-md shadow-md  ${activeIndex === i ? 'bg-[#ECBD00] text-white' : 'bg-[#FFFCEC] text-[#263800]'}`}
+                    className={` py-[12px] px-[30px] rounded-md shadow-md  ${activeIndex === i ? 'bg-[#ECBD00] text-white' : 'bg-[#FFFCEC] text-[#263800]'}`}
                     style={{
                         backgroundColor: activeIndex === i ? '#ECBD00' : '#FFFCEC',
                     }}

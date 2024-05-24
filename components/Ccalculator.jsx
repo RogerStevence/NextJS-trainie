@@ -26,6 +26,8 @@ const CalorieCalculator = () => {
 
     const outputRefs = useRef([React.createRef(), React.createRef(), React.createRef()]);
     const inputRefs = useRef([React.createRef(), React.createRef(), React.createRef()]);
+    const outputRefsM = useRef([React.createRef(), React.createRef(), React.createRef()]);
+    const inputRefsM = useRef([React.createRef(), React.createRef(), React.createRef()]);
 
 
     useEffect(() => {
@@ -38,14 +40,32 @@ const CalorieCalculator = () => {
             output.style.transform = `translateX(-${value}%)`;
         };
 
+        const handleInputM = (index) => {
+            const output = outputRefsM.current[index].current;
+            const input = inputRefsM.current[index].current;
+            const value = (input.value - input.min) / (input.max - input.min) * 100;
+            output.innerHTML = input.value;
+            output.style.left = `calc(${value}% - 16px)`;
+            output.style.transform = `translateX(-${value}%)`;
+        };
+
         inputRefs.current.forEach((inputRef, index) => {
             const input = inputRef.current;
             const output = outputRefs.current[index].current;
 
             if (input && output) {
                 input.addEventListener('input', () => handleInput(index));
-                // Initial call to set position and value
                 handleInput(index);
+            }
+        });       
+        
+        inputRefsM.current.forEach((inputRefM, index) => {
+            const input = inputRefM.current;
+            const output = outputRefsM.current[index].current;
+
+            if (input && output) {
+                input.addEventListener('input', () => handleInputM(index));
+                handleInputM(index);
             }
         });        
     }, []);
@@ -154,7 +174,7 @@ const CalorieCalculator = () => {
                                     <div className='w-[100%] max-w-[442px] flex items-center justify-between'>
                                         <label className="block text-zinc-700 w-[100px] uppercase">Age</label>
                                         <div className="relative w-full">
-                                            <span className="absolute top-[-30px] text-[#263800] bg-[#FFFBE6] w-[44px] pointer-down shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] text-center rounded-[5px] h-6" ref={outputRefs.current[0]}></span>
+                                            <span className="absolute top-[-30px] text-[#263800] bg-[#FFFBE6] w-[44px] pointer-down shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] text-center rounded-[5px]" ref={outputRefs.current[0]}></span>
                                             <input
                                                 type="range"
                                                 min="0"
@@ -256,13 +276,13 @@ const CalorieCalculator = () => {
                                 <div className='w-[100%] max-w-[442px] flex items-center justify-between'>
                                     <label className="block text-zinc-700 w-[100px] uppercase">Age</label>
                                     <div className="relative w-full">
-                                        <span className="absolute top-[-30px] text-[#263800] bg-[#FFFBE6] w-[44px] pointer-down shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] text-center rounded-[5px]" ref={outputRefs.current[0]}></span>
+                                        <span className="absolute top-[-30px] text-[#263800] bg-[#FFFBE6] w-[44px] pointer-down shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] text-center rounded-[5px]" ref={outputRefsM.current[0]}></span>
                                         <input
                                             type="range"
                                             min="0"
                                             max="100"
                                             value={age}
-                                            ref={inputRefs.current[0]}
+                                            ref={inputRefsM.current[0]}
                                             className={inputRangeClasses}
                                             onInput={(e) => setAge(e.target.value)}
                                         />
@@ -271,13 +291,13 @@ const CalorieCalculator = () => {
                                 <div className='w-[100%] max-w-[442px] flex items-center'>
                                     <label className="block text-zinc-700 w-[100px] uppercase">weight</label>
                                     <div className="relative w-full">
-                                        <span className="absolute top-[-30px] text-[#263800] bg-[#FFFBE6] w-[44px] pointer-down shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] text-center rounded-[5px]" ref={outputRefs.current[1]}></span>
+                                        <span className="absolute top-[-30px] text-[#263800] bg-[#FFFBE6] w-[44px] pointer-down shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] text-center rounded-[5px]" ref={outputRefsM.current[1]}></span>
                                         <input
                                             type="range"
                                             min="0"
                                             max="100"
                                             value={weight}
-                                            ref={inputRefs.current[1]}
+                                            ref={inputRefsM.current[1]}
                                             className={inputRangeClasses}
                                             onInput={(e) => setWeight(e.target.value)}
                                         />
@@ -286,13 +306,13 @@ const CalorieCalculator = () => {
                                 <div className='w-[100%] max-w-[442px] flex items-center justify-between'>
                                     <label className="block text-zinc-700 w-[100px] uppercase">HEIGHT</label>
                                     <div className="relative w-full">
-                                        <span className="absolute top-[-30px] text-[#263800] bg-[#FFFBE6] w-[44px] pointer-down shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] text-center rounded-[5px]" ref={outputRefs.current[2]}></span>
+                                        <span className="absolute top-[-30px] text-[#263800] bg-[#FFFBE6] w-[44px] pointer-down shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] text-center rounded-[5px]" ref={outputRefsM.current[2]}></span>
                                         <input
                                             type="range"
                                             min="0"
                                             max="250"
                                             value={height}
-                                            ref={inputRefs.current[2]}
+                                            ref={inputRefsM.current[2]}
                                             className={inputRangeClasses}
                                             onInput={(e) => setHeight(e.target.value)}
                                         />

@@ -48,10 +48,10 @@ function Comments() {
     ]
 
     const sliderRef = useRef(null);
-    useEffect(() => {
-        console.log(sliderRef);
-    }, []);
+    
 
+    const sliderRefM = useRef(null);
+    
 
     const ratingOptions = [1, 2, 3, 4, 5,]
 
@@ -107,7 +107,7 @@ function Comments() {
                         <h2 className='text-seccondary text-center text-[48px] uppercase font-semibold leading-[56,3px]'>Feedback</h2>
                     </div>
                 </div>
-                <Slider className='w-full z-30' infinite speed={300} dots={false} slidesToShow={1.1} centerPadding={1} ref={sliderRef} arrows={false}>
+                <Slider className='w-full z-30' infinite speed={300} dots={false} slidesToShow={1.1} centerPadding={1} ref={sliderRefM} arrows={false}>
                     {CommentsItems.map((item, index) => (
                         <div key={index} className='text-[#263800] bg-[#FFFCEC] max-w-[364px] shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] ml-[57px] p-6 rounded-[15px] mb-12'>
                             <BiSolidQuoteRight className='w-[40px] h-[40px] text-seccondary' />
@@ -128,10 +128,10 @@ function Comments() {
                 </Slider>
                 <div className=' z-30 flex justify-end relative mr-[48px]'>
                     <div className='flex space-x-4 w-[80px]'>
-                        <div className='w-8 h-8 rounded-[6px] border-2 border-[#354909] cursor-pointer flex items-center justify-center' onClick={() => sliderRef.current.slickPrev()}>
+                        <div className='w-8 h-8 rounded-[6px] border-2 border-[#354909] cursor-pointer flex items-center justify-center' onClick={() => sliderRefM.current.slickPrev()}>
                             <FaArrowLeft className='text-[#354909]' />
                         </div>
-                        <div className='w-8 h-8 rounded-[6px] border-2 border-[#354909] cursor-pointer flex items-center justify-center' onClick={() => sliderRef.current.slickNext()}>
+                        <div className='w-8 h-8 rounded-[6px] border-2 border-[#354909] cursor-pointer flex items-center justify-center' onClick={() => sliderRefM.current.slickNext()}>
                             <FaArrowRight className='text-[#354909]' />
                         </div>
                     </div>
