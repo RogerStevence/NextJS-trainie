@@ -65,6 +65,10 @@ function Calculatortest() {
                     title: "1600",
                     value: 20,
                 },
+                {
+                    title: "2200",
+                    value: 25,
+                },
             ],
         },
         {
@@ -78,16 +82,20 @@ function Calculatortest() {
                     value: 0.99,
                 },
                 {
-                    title: "2 day",
+                    title: "5 days",
                     value: 2,
                 },
                 {
-                    title: "3 day",
+                    title: "7 days",
                     value: 3,
                 },
                 {
-                    title: "4 day",
+                    title: "14 days",
                     value: 4,
+                },
+                {
+                    title: "30 days",
+                    value: 5,
                 },
             ],
         },
@@ -102,8 +110,9 @@ function Calculatortest() {
         switch (item.type) {
             case "radio":
                 return item.values.map(({ title, value }, idx) => (
-                    <label key={idx} className="flex space-x-1">
+                    <label key={idx} className="flex space-x-2 radio_custom_label items-center">
                         <input
+                            className="radio_custom"
                             name={item.state}
                             type="radio"
                             onChange={() => {
@@ -121,11 +130,11 @@ function Calculatortest() {
                             }}
                             value={value}
                         />
-                        <div>{title}</div>
+                        <div className="leading-[21.13px] text-[18px]">{title}</div>
                     </label>
                 ));
             case "text":
-                return <input type="text" className="drop-shadow-md focus:outline-none bg-[#FFFCEC] pl-4 py-[11px] w-[75%] min-w-[277px]" value={inputValue} onChange={(e) => setInputValue(e.target.value)}
+                return <input type="text"  maxLength="64" className="drop-shadow-md focus:outline-none bg-[#FFFCEC] pl-4 pr-2 py-[11px] w-[547px] min-w-[277px] h-[41px] text-[16px] leading-[18.78px]" value={inputValue} onChange={(e) => setInputValue(e.target.value)}
                     onKeyPress={handleKeyPress} placeholder='Add a comment...' />;
             default:
         }
@@ -140,49 +149,49 @@ function Calculatortest() {
             <div className='container z-30 relative sm:block hidden mt-[224px]'>
                 <div className='flex flex-col'>
                     <div className="mb-16">
-                        <h1 className='text-primary text-center text-[32px] uppercase leading-[38px]'>Make</h1>
-                        <h2 className='text-seccondary text-center text-[48px] uppercase font-semibold leading-[58px]'>a personal program</h2>
+                        <h1 className='text-primary text-center text-[32px] uppercase leading-[38px] font-[500]'>Make</h1>
+                        <h2 className='text-seccondary text-center text-[48px] uppercase leading-[56px] font-[700]'>a personal program</h2>
                     </div>
-                    <div className='flex uppercase space-x-3 h-[586px]'>
-                        <div className='text-[#263800] bg-[#FFFCEC] shadow-md rounded-[15px] py-[40px] pl-6 w-full space-y-[32px]'>
+                    <div className='flex uppercase space-x-6 h-[586px]'>
+                        <div className='text-[#263800] bg-[#FFFCEC] shadow-md rounded-[15px] py-[40px] pl-6 min-w-[871px] space-y-[64px]'>
                             {items.map((item, idx) => {
                                 return (
                                     <div key={idx} className="flex items-center space-x-3">
-                                        <h1 className='text-seccondary text-[64px] w-[75px] text-center'>{item.title}</h1>
-                                        <div className='flex flex-col space-y-3 w-full'>
-                                            <h2 className='font-semibold'>{item.name}</h2>
-                                            <div className="flex space-x-4 w-full">{renderInput(item)}</div>
+                                        <h1 className='text-seccondary text-[64px] w-[75px] text-center leading-[64px] font-[300]'>{item.title}</h1>
+                                        <div className='flex flex-col space-y-[24px] w-full'>
+                                            <h2 className='font-semibold leading-[28.18px]'>{item.name}</h2>
+                                            <div className="flex space-x-8 w-full">{renderInput(item)}</div>
                                         </div>
                                     </div>
                                 );
                             })}
                         </div>
-                        <div className='w-3/5 max-w-3/5 bg-[#FFFCEC] rounded-[15px] px-[36px] pt-10 flex flex-col space-y-3 relative'>
-                            <h1 className='text-seccondary text-center text-[32px]'>your order</h1>
-                            <div className="flex flex-col space-y-6 justify-around">
+                        <div className='min-w-[541px] bg-[#FFFCEC] rounded-[15px] px-[36px] pt-10 flex flex-col relative'>
+                            <h1 className='text-seccondary text-center text-[32px] leading-[38px] font-[500] mb-[43px]'>your order</h1>
+                            <div className="flex flex-col space-y-6 justify-around font-[500] text-[18px] leading-[21px]">
                                 <div className='flex justify-between text-[#263800]'>
                                     <h2 className="pr-[20px] text-[#263800]">PROGRAM:</h2>
-                                    <h3 className="font-semibold">{
+                                    <h3 className="font-[600] text-[24px] leading-[28px]">{
                                         items.find(item => item.state === "havchik").values.find(({ value }) => value === typeOfHavchik)?.title
                                     }</h3>
                                 </div>
                                 <div className='flex justify-between text-[#263800] '>
                                     <h2 className="pr-[20px] text-[#263800]">CALORIES:</h2>
-                                    <h3 className="font-semibold">{
+                                    <h3 className="font-[600] text-[24px] leading-[28px]">{
                                         items.find(item => item.state === "calories").values.find(({ value }) => value === calories)?.title
                                     }
                                     </h3>
                                 </div>
                                 <div className='flex justify-between text-[#263800]'>
                                     <h2 className="pr-[20px] text-[#263800]">DELIVERY PERIOD:</h2>
-                                    <h3 className="font-semibold">{
+                                    <h3 className="font-[600] text-[24px] leading-[28px]">{
                                         items.find(item => item.state === "days").values.find(({ value }) => value === days)?.title
                                     }</h3>
                                 </div>
                                 <div className='flex justify-between text-[#263800]'>
                                     <h2 className="pr-[20px] text-[#263800]">SPECIAL NEEDS:</h2>
                                     <div className="max-w-[200px] h-[80px] flex text-right">
-                                        <p className="font-semibold overflow-auto break-word">{h3Value ? h3Value : '—'}</p>
+                                        <p className="font-[600] text-[24px] leading-[28px] overflow-auto break-word">{h3Value ? h3Value : '—'}</p>
                                     </div>
                                 </div>
                             </div>
@@ -199,7 +208,7 @@ function Calculatortest() {
                                         <h2>Total Price:</h2>
                                         <h3>${calculateResult()}</h3></div>
                                 </div>
-                                <button className='w-full bg-[#ECBD00] absolute bottom-0 left-0 rounded-b-[15px] h-[72px] mt-[32px] uppercase font-semibold text-[18px]'>order</button>
+                                <button className='w-full bg-[#ECBD00] absolute bottom-0 left-0 rounded-b-[15px] h-[72px] mt-[32px] uppercase font-[700] leading-[21px] text-[18px] text-[#FFFEFA]'>order</button>
                             </div>
                         </div>
                     </div>

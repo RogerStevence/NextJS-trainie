@@ -133,14 +133,14 @@ const Header = () => {
 
     return (
         <div>
-            <div className='fixed left-0 top-0 w-full z-40 bg-[#FFFBE6]'>
+            <div className='fixed left-0 top-0 w-full z-50 bg-[#FFFBE6] pt-[31px] '>
                 <div className=' container mx-auto sm:block hidden'>
                     <div className='flex justify-between items-center'>
                         <Link href='/'>
-                            <h1 className='hidden sm:flex text-primary text-[32px]'><span className='font-medium'>eat</span>me</h1>
+                            <h1 className='hidden sm:flex text-primary text-[32px] leading-[37.57px]'><span className='font-[700]'>eat</span>me</h1>
                         </Link>
                         <div >
-                            <ul className='text-[16px] flex uppercase items-center text-primary space-x-8 font-semibold'>
+                            <ul className='text-[18px] leading-[21.13px] flex uppercase items-center text-primary space-x-8 font-semibold'>
                                 {linksList.map((link, index) => (
                                     <React.Fragment key={index}>
                                         <li className='hover:text-[#ECBD00] hover:border-b-[2px] hover:border-[#ECBD00]'>

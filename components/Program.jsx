@@ -50,7 +50,7 @@ function Program() {
             <div className='hidden sm:block'>
                 <div className='container mx-auto mt-[132px] max-w-[1440px] z-20 relative'>
                     <div className='flex flex-col justify-center items-center max-w-[1440px] m-auto mb-[64px]'>
-                        <h1 className='text-primary text-[32px] font-medium'>WHAT IS YOUR </h1>
+                        <h1 className='text-primary text-[32px] font-medium leading-[38px]'>WHAT IS YOUR </h1>
                         <h2 className='text-seccondary text-5xl font-bold leading-[56.35px]'>PERFECT PROGRAM?</h2>
                     </div>
                     <div className='flex space-x-[24px]'>

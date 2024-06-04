@@ -30,20 +30,20 @@ function AboutUS() {
 
     return (
         <div className='relative overflow-hidden'>
-            <div className='container mx-auto z-10 relative mt-[314px] hidden sm:flex'>
+            <div className='container mx-auto z-10 relative mt-[340px] hidden sm:flex'>
                 <div className={css.bg}></div>
                 <div className='h-full w-full flex flex-col items-end'>
-                    <h1 className='text-primary text-5xl sm:flex md:text-2xl lg:text-3xl xl:text-5xl'>YOUR <span className='text-seccondary'>DELIVERY</span> TO A <span className='text-seccondary'>HEALTHY</span> LIFE</h1>
-                    <div className='flex flex-col items-end bg-[#FFF6C9] pt-6 pl-[144px] rounded-tl-[327px]'>
-                        <p className='text-primary text-right  mb-[64px] max-w-[852px]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fringilla nulla iaculis elementum cursus feugiat nibh aliquam pellentesque congue. Cursus bibendum velit eu dolor mattis mollis magnis odio. Laoreet nunc turpis mauris id potenti dolor, mi. At tortor, viverra id montes, ac nibh nullam venenatis. Ullamcorper sem egestas diam diam egestas eget. Blandit odio consectetur mauris nunc.
+                    <h1 className='text-primary text-5xl sm:flex md:text-2xl lg:text-3xl xl:text-5xl font-[800] leading-[64px] z-10'>YOUR<span className='text-seccondary'>&nbsp;DELIVERY</span>&nbsp;TO A<span className='text-seccondary'>&nbsp;HEALTHY</span>&nbsp;LIFE</h1>
+                    <div className='flex flex-col items-end bg-[#FFF6C9] pt-6 pl-[144px] rounded-tl-[327px] mt-[10px]'>
+                        <p className='text-primary text-right  mb-[64px] max-w-[852px] z-10'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fringilla nulla iaculis elementum cursus feugiat nibh aliquam pellentesque congue. Cursus bibendum velit eu dolor mattis mollis magnis odio. Laoreet nunc turpis mauris id potenti dolor, mi. At tortor, viverra id montes, ac nibh nullam venenatis. Ullamcorper sem egestas diam diam egestas eget. Blandit odio consectetur mauris nunc.
                             Laoreet nunc turpis mauris id potenti dolor, mi. At tortor, viverra id montes, ac nibh nullam venenatis. Ullamcorper sem egestas diam diam egestas eget. Blandit odio consectetur mauris nunc.</p>
-                        <div className='flex items-center space-x-4  mb-[64px]'>
+                        <div className='flex items-center space-x-4  mb-[64px] z-10'>
                             {
                                 ItemsList.map((item, index) => (
                                     <div key={index} className='text-[#263800] text-center flex flex-col py-[32px] items-center bg-[#FFFCEC] rounded-[15px] shadow-md w-[238px] h-[288px]'>
                                         <Image src={item.src} alt='' width='64' height='64' />
-                                        <h2 className='text-lg font-bold pt-6 w-[190px]'>{item.title}</h2>
-                                        <p className='pt-4 pb-8'>{item.desc}</p>
+                                        <h2 className='text-lg font-bold pt-6 w-[190px] leading-[24px]'>{item.title}</h2>
+                                        <p className='mt-4 px-2 text-[18px] h-[72px] leading-[24px]'>{item.desc}</p>
                                     </div>))}
                         </div>
                     </div>

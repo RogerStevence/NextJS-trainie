@@ -6,9 +6,9 @@ function TryNow() {
         <div>
             <div className='bg-primary w-full h-[162px] items-center z-10 relative sm:flex hidden' >
                 <div className='container mx-auto flex justify-center flex-row space-x-[93px] items-center max-w-[1440px] z-10 '>
-                    <h1 className='text-[32px] flex-none'>Have some doubts? </h1>
-                    <h2 className='text-[40px] font-extrabold flex-none'>ORDER A TEST DAY JUST FOR  <span className='text-seccondary'>$4.99</span></h2>
-                    <CustomButton> Try Now </CustomButton>
+                    <h1 className='text-[32px] flex-none leading-[32px]'>Have some doubts? </h1>
+                    <h2 className='text-[40px] font-extrabold flex-none leading-[50px]'>ORDER A TEST DAY JUST FOR  <span className='text-seccondary leading-[48px]'>$4.99</span></h2>
+                    <button className='min-w-[268px] h-[56px] rounded-[8px] bg-[#ECBD00] shadow-md cursor-pointer uppercase font-[700] text-[18px] leading-[21px]'> Try Now </button>
                 </div>
                 {/* {'Mobile'} */}
 
@@ -24,7 +24,7 @@ function TryNow() {
                         JUST FOR </p>
                     <p className='text-[48px] leading-[48px] text-seccondary font-bold mt-4'>$4.99</p>
                     <div className='my-8 mb'>
-                        <CustomButton>Try Now</CustomButton>
+                        <button className='min-w-[268px] h-[56px] rounded-[8px] bg-[#ECBD00] shadow-md cursor-pointer uppercase'> Try Now </button>
                     </div>
                 </div>
             </div>
