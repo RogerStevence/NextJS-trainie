@@ -6,8 +6,8 @@ function ProgramResp({ item }) {
     const toggleItem = (value) => setSelected(value);
 
     return (
-        <div className='relative flex flex-col h-[704px] w-full rounded-[15px] bg-no-repeat bg-cover bg-center text-left overflow-hidden' style={{ backgroundImage: `url(${item.src})` }}>
-            <div className={`px-[16px] ${selected ? 'hidden ' : 'flex flex-row space-x-3 backdrop-blur-[15px] rounded-t-[15px]'}`}>
+        <div className='relative flex flex-col h-[704px] w-full rounded-[15px] bg-no-repeat bg-cover bg-center text-left overflow-hidden z-30' style={{ backgroundImage: `url(${item.src})` }}>
+            <div className={`px-[16px] z-30 ${selected ? 'hidden ' : 'flex flex-row space-x-3 backdrop-blur-[15px] rounded-t-[15px]'}`}>
                 <h3 className='text-9xl font-[300]'>{item.number}</h3>
                 <h4 className={`text-[32px] leading-[38px] ${selected ? 'font-semibold flex items-center' : 'font-semibold flex items-center'}`}>{item.title}</h4>
             </div>

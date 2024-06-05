@@ -5,9 +5,9 @@ function TryNow() {
     return (
         <div>
             <div className='bg-primary w-full h-[162px] items-center z-10 relative sm:flex hidden' >
-                <div className='container mx-auto flex justify-center flex-row space-x-[93px] items-center max-w-[1440px] z-10 '>
-                    <h1 className='text-[32px] flex-none leading-[32px]'>Have some doubts? </h1>
-                    <h2 className='text-[40px] font-extrabold flex-none leading-[50px]'>ORDER A TEST DAY JUST FOR  <span className='text-seccondary leading-[48px]'>$4.99</span></h2>
+                <div className='container flex justify-center space-x-[93px] items-center max-w-[1440px] z-10 '>
+                    <h1 className='text-[32px] flex-none leading-[32px] font-[400] w-[307px]'>Have some doubts? </h1>
+                    <h2 className='text-[40px] flex-none leading-[50px] font-[700] w-[675px] h-[50px] tracking-tighter'>ORDER A TEST DAY JUST FOR  <span className='text-seccondary leading-[48px]'>$4.99</span></h2>
                     <button className='min-w-[268px] h-[56px] rounded-[8px] bg-[#ECBD00] shadow-md cursor-pointer uppercase font-[700] text-[18px] leading-[21px]'> Try Now </button>
                 </div>
                 {/* {'Mobile'} */}

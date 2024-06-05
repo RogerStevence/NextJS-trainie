@@ -7,6 +7,9 @@ import { useState } from 'react';
 import { AiOutlineMenu, AiOutLineClose } from 'react-icons/ai';
 import { MdPhoneInTalk } from "react-icons/md";
 import { BiLogoFacebook, BiLogoTwitter, BiLogoPinterestAlt, BiLogoInstagramAlt } from "react-icons/bi";
+import { ImArrowRight2 } from "react-icons/im";
+import CustomButton from './Button';
+import { LuArrowDownSquare } from "react-icons/lu";
 
 
 const Header = () => {
@@ -133,8 +136,8 @@ const Header = () => {
 
     return (
         <div>
-            <div className='fixed left-0 top-0 w-full z-50 bg-[#FFFBE6] pt-[31px] '>
-                <div className=' container mx-auto sm:block hidden'>
+            <div className='fixed left-0 top-0 w-full z-50 bg-[#FFFBE6] pt-[31px]'>
+                <div className=' container mx-auto relative sm:block hidden'>
                     <div className='flex justify-between items-center'>
                         <Link href='/'>
                             <h1 className='hidden sm:flex text-primary text-[32px] leading-[37.57px]'><span className='font-[700]'>eat</span>me</h1>
@@ -151,7 +154,32 @@ const Header = () => {
                             </ul>
                         </div>
                     </div>
+                    <div className='hidden absolute top-[357px] -left-[117px] sm:flex flex-col h-[400px] items-center justify-around text-[#46620B]'>
+                    {SocialIcons.map((item, index) => {
+                        const IconComponent = {
+                            BiLogoFacebook,
+                            BiLogoTwitter,
+                            BiLogoInstagramAlt,
+                            BiLogoPinterestAlt,
+                        }[item.title];
+                        return (
+                            <Link key={index} href='/'>
+                                <IconComponent size={24} />
+                            </Link>
+                        );
+                    })}
+                    <Link href='\' className='-rotate-90 uppercase font-bold mt-[40px]'>
+                        <p>follow us</p>
+                    </Link>
                 </div>
+                <div className='hidden absolute top-[389px] -right-[180px] sm:flex flex-col h-[400px] items-center justify-around mr-[5px] text-[#46620B]'>
+                            <div className='rotate-90 border-b-2 border-[#46620B] w-[224px]'></div>
+                            <Link href='\' className='rotate-90 uppercase font-bold mt-[40px]'>
+                                <p className='flex items-center'>Next <ImArrowRight2 size={16} /></p>
+                            </Link>
+                        </div>
+                </div>
+                
             </div>
 
             {/* {'Mobile'} */}

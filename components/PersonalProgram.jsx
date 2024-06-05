@@ -134,7 +134,7 @@ function Calculatortest() {
                     </label>
                 ));
             case "text":
-                return <input type="text"  maxLength="64" className="drop-shadow-md focus:outline-none bg-[#FFFCEC] pl-4 pr-2 py-[11px] w-[547px] min-w-[277px] h-[41px] text-[16px] leading-[18.78px]" value={inputValue} onChange={(e) => setInputValue(e.target.value)}
+                return <input type="text" maxLength="64" className="drop-shadow-md focus:outline-none bg-[#FFFCEC] pl-4 pr-2 py-[11px] w-[547px] min-w-[277px] h-[41px] text-[16px] leading-[18.78px]" value={inputValue} onChange={(e) => setInputValue(e.target.value)}
                     onKeyPress={handleKeyPress} placeholder='Add a comment...' />;
             default:
         }
@@ -145,9 +145,9 @@ function Calculatortest() {
     };
 
     return (
-        <div className='relative'>
+        <div className='relative z-10'>
             <div className='container z-30 relative sm:block hidden mt-[224px]'>
-                <div className='flex flex-col'>
+                <div className='flex flex-col z-30 relative'>
                     <div className="mb-16">
                         <h1 className='text-primary text-center text-[32px] uppercase leading-[38px] font-[500]'>Make</h1>
                         <h2 className='text-seccondary text-center text-[48px] uppercase leading-[56px] font-[700]'>a personal program</h2>
@@ -166,7 +166,7 @@ function Calculatortest() {
                                 );
                             })}
                         </div>
-                        <div className='min-w-[541px] bg-[#FFFCEC] rounded-[15px] px-[36px] pt-10 flex flex-col relative'>
+                        <div className='min-w-[545px] bg-[#FFFCEC] rounded-[15px] px-[36px] pt-10 flex flex-col relative'>
                             <h1 className='text-seccondary text-center text-[32px] leading-[38px] font-[500] mb-[43px]'>your order</h1>
                             <div className="flex flex-col space-y-6 justify-around font-[500] text-[18px] leading-[21px]">
                                 <div className='flex justify-between text-[#263800]'>
@@ -213,14 +213,20 @@ function Calculatortest() {
                         </div>
                     </div>
                 </div>
+                <div className='absolute -top-[56px] -right-[231px] z-0 sm:block hidden'>
+                    <Image className='rounded-l-full'
+                        src={BgImage}
+                        alt=''
+                        width='full'
+                    />
+                </div>
+                <div className=" bg-[#E9EDBA80] backdrop-blur-[4px] absolute w-[591px] h-[600px] -top-[56px] -right-[231px] rounded-tl-[500px]"></div>
             </div>
-            <div className='absolute -top-[120px] right-0 sm:block hidden'>
-                <Image className='rounded-l-full'
-                    src={BgImage}
-                    alt=''
-                    width='full'
-                />
-            </div>
+            <div className='absolute z-10 -top-[113px] left-[25%] bg-[#E9EDBA80]  rounded-bl-[350px] h-[655px] w-3/4 backdrop-blur-[15px]'></div>
+
+
+
+
 
             {/* {'Mobile'} */}
 

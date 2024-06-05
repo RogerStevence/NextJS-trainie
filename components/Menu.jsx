@@ -173,7 +173,7 @@ function Menu() {
 
     return (
         <div className='relative '>
-            <div className='mt-[111px] sm:block hidden'>
+            <div className='mt-[248px] sm:block hidden'>
                 <div className='container z-30 relative'>
                     <div className="mb-16">
                         <h1 className='text-primary text-center text-[32px] uppercase leading-[38px]'>Our</h1>

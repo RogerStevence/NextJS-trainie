@@ -49,7 +49,7 @@ function AboutUS() {
                     </div>
                 </div>
             </div>
-            <div className='absolute z-0 bottom-0 right-0 bg-[#FFF6C9] h-[584px] w-1/3 sm:flex hidden'></div>
+            <div className='absolute z-0 bottom-0 right-0 bg-[#FFF6C9] h-[584px] w-[45%] sm:flex hidden'></div>
 
 
             {/* {'Mobile'} */}

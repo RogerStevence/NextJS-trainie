@@ -61,7 +61,7 @@ function Program() {
                         }
                     </div>
                 </div>
-                <div className='absolute z-10 top-[50%] right-0 bg-[#E9EDBA80]  h-[1166px] w-2/3 rounded-bl-[350px] backdrop-blur-[15px]'></div>
+                <div className='absolute z-10 top-[50%] left-[25%] bg-[#E9EDBA80]  h-[542px] w-3/4 backdrop-blur-[15px]'></div>
             </div>
 
             {/* {'Mobile'} */}

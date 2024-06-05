@@ -47,7 +47,7 @@ const Hero = () => {
 
     return (
         <div className='container mx-auto'>
-            <div className='sm:flex justify-center items-center mt-[101px] w-[1437px]'>
+            <div className='sm:flex justify-center items-center mt-[101px]'>
                 <div className='hidden sm:flex bg-[#46620B] rounded-l-[15px] z-10 h-[910px] w-[561px] relative'>
                     <div className='flex flex-col mx-[40px] mt-[160px] text-[20px] relative'>
                         <h1 className='sm:text-[48px] mb-[12px] font-bold text-[#FFFBE5]'>YOUR <span className='text-[#ECBD00]'>DELIVERY</span> TO A <span className='text-[#ECBD00]'>HEALTHY</span> LIFE</h1>
@@ -72,34 +72,10 @@ const Hero = () => {
                                 ))
                             }
                         </div>
-                        <div className='hidden absolute top-[110px] -left-[168px] sm:flex flex-col h-[400px] items-center justify-around text-[#46620B]'>
-                            {SocialIcons.map((item, index) => {
-                                const IconComponent = {
-                                    BiLogoFacebook,
-                                    BiLogoTwitter,
-                                    BiLogoInstagramAlt,
-                                    BiLogoPinterestAlt,
-                                }[item.title];
-                                return (
-                                    <Link key={index} href='/'>
-                                        <IconComponent size={24} />
-                                    </Link>
-                                );
-                            })}
-                            <Link href='\' className='-rotate-90 uppercase font-bold mt-[40px]'>
-                                <p>follow us</p>
-                            </Link>
-                        </div>
-                        <div className='hidden absolute top-[150px] -right-[1104px] sm:flex flex-col h-[400px] items-center justify-around mr-[5px] text-[#46620B]'>
-                            <div className='rotate-90 border-b-2 border-[#46620B] w-[224px]'></div>
-                            <Link href='\' className='rotate-90 uppercase font-bold mt-[40px]'>
-                                <p className='flex items-center'>Next <ImArrowRight2 size={16} /></p>
-                            </Link>
-                        </div>
                     </div>
 
                 </div>
-                <div className=' h-[910px] w-[876px] z-20 rounded-br-[300px]  rounded-tr-[15px] min-w-[876px] hidden sm:flex' style={{ backgroundImage: `url('/hero.png')`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }}>
+                <div className=' h-[910px] w-[880px] z-20 rounded-br-[300px]  rounded-tr-[15px] min-w-[880px] hidden sm:flex' style={{ backgroundImage: `url('/hero.png')`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
                 </div>
 
 

@@ -64,9 +64,9 @@ function Comments() {
                         <h2 className='text-seccondary text-center text-[48px] uppercase font-semibold leading-[56,3px]'>Feedback</h2>
                     </div>
                 </div>
-                <Slider className='w-full z-30' infinite speed={300} dots={false} centerPadding={0} slidesToShow={4} ref={sliderRef} arrows={false}>
+                <Slider className='margicomments z-30 container'speed={300} dots={false} centerPadding={16} slidesToShow={3.28} ref={sliderRef} arrows={false}>
                     {CommentsItems.map((item, index) => (
-                        <div key={index} className='text-[#263800] bg-[#FFFCEC] max-w-[414px] shadow-xl mr-6 p-6 rounded-[15px] mb-[38px]'>
+                        <div key={index} className='text-[#263800] bg-[#FFFCEC] max-w-[416px]  shadow-xl p-6 ml-[130px] rounded-[15px] mb-[38px]'>
                             <BiSolidQuoteRight className='w-[40px] h-[40px] text-seccondary' />
                             <p className='mt-6'>{item.desc}</p>
                             <div className='flex mt-6'>
@@ -83,7 +83,7 @@ function Comments() {
                         </div>
                     ))}
                 </Slider>
-                <div className='container z-50 flex justify-end relative'>
+                <div className='container z-30 flex justify-end relative'>
                 <div className='flex space-x-4 w-[80px]'>
                         <div className='w-8 h-8 rounded-[6px] border-2 border-[#354909] cursor-pointer flex items-center justify-center' onClick={() => sliderRef.current.slickPrev()}>
                             <FaArrowLeft className='text-[#354909]' />

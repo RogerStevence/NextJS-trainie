@@ -144,7 +144,7 @@ function Foooter() {
 
                     </div>
                 </div>
-                <div className='border-solid border-t-2 border-[#ECBD00] w-full mt-20 flex justify-between'>
+                <div className='border-solid border-t-2 border-[#ECBD00] w-full mt-20 flex justify-between pb-10'>
                     <p className='mt-[18px]'>&copy; 2024 Your Company Name. All rights reserved.</p>
                     <div className='flex mt-[18px] space-x-[34px] text-[14px]'>
                         <Link href='/'>TERMS & CONDITIONS</Link>
