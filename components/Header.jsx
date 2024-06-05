@@ -155,31 +155,31 @@ const Header = () => {
                         </div>
                     </div>
                     <div className='hidden absolute top-[357px] -left-[117px] sm:flex flex-col h-[400px] items-center justify-around text-[#46620B]'>
-                    {SocialIcons.map((item, index) => {
-                        const IconComponent = {
-                            BiLogoFacebook,
-                            BiLogoTwitter,
-                            BiLogoInstagramAlt,
-                            BiLogoPinterestAlt,
-                        }[item.title];
-                        return (
-                            <Link key={index} href='/'>
-                                <IconComponent size={24} />
-                            </Link>
-                        );
-                    })}
-                    <Link href='\' className='-rotate-90 uppercase font-bold mt-[40px]'>
-                        <p>follow us</p>
-                    </Link>
+                        {SocialIcons.map((item, index) => {
+                            const IconComponent = {
+                                BiLogoFacebook,
+                                BiLogoTwitter,
+                                BiLogoInstagramAlt,
+                                BiLogoPinterestAlt,
+                            }[item.title];
+                            return (
+                                <Link key={index} href='/'>
+                                    <IconComponent size={24} />
+                                </Link>
+                            );
+                        })}
+                        <Link href='\' className='-rotate-90 uppercase font-bold mt-[40px]'>
+                            <p>follow us</p>
+                        </Link>
+                    </div>
+                    <div className='hidden absolute top-[541px] -right-[279px] sm:flex h-[50px] mr-[5px] text-[#46620B] z-0 w-[400px] rotate-90'>
+                        <Link href='\' className=' uppercase font-bold w-[400px] h-[] flex items-center space-x-[40px]'>
+                            <div className=' border-b-2 border-[#46620B] w-[224px]'></div>
+                            <p className='flex items-center'>Next <ImArrowRight2 size={16} /></p>
+                        </Link>
+                    </div>
                 </div>
-                <div className='hidden absolute top-[389px] -right-[180px] sm:flex flex-col h-[400px] items-center justify-around mr-[5px] text-[#46620B]'>
-                            <div className='rotate-90 border-b-2 border-[#46620B] w-[224px]'></div>
-                            <Link href='\' className='rotate-90 uppercase font-bold mt-[40px]'>
-                                <p className='flex items-center'>Next <ImArrowRight2 size={16} /></p>
-                            </Link>
-                        </div>
-                </div>
-                
+
             </div>
 
             {/* {'Mobile'} */}
