@@ -1,5 +1,5 @@
 "use client";
-import { useId } from 'react';
+import { useEffect, useId } from 'react';
 import Image from 'next/image';
 import ScrollLink from './ScrollLink';
 import Link from 'next/link';
@@ -15,7 +15,20 @@ import { id } from 'date-fns/locale';
 
 
 
+
 const Header = () => {
+
+    useEffect(() => {
+        const { hash } = window.location;
+        if (hash) {
+            const element = document.querySelector(hash);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    }, []);
+
+    const router = useRouter();
 
     const pathname = usePathname();
 
@@ -43,13 +56,13 @@ const Header = () => {
             id: 3,
         },
         {
-            title: 'Calculator',
-            href: 'calculator',
+            title: 'Delivery',
+            href: 'delivery',
             id: 4
         },
         {
-            title: 'Delivery',
-            href: 'delivery',
+            title: 'Calculator',
+            href: 'calculator',
             id: 5
         },
         {
@@ -63,6 +76,8 @@ const Header = () => {
             id: 7
         }
     ];
+
+    const [activeMenuItem, setActiveMenuItem] = useState(linksList[0].href);
 
     const linksListM = [
         {
@@ -154,16 +169,14 @@ const Header = () => {
                         </ScrollLink>
                         <div >
                             <ul className='text-[18px] leading-[21.13px] flex uppercase items-center text-primary space-x-8 font-semibold'>
-                                {linksList.map((link, index) => {
-                                    const isActive = pathname.startsWith(ScrollLink.id);
-                                    return (
-                                        <React.Fragment key={index}>
-                                            <ScrollLink id={link.href}>
-                                                <li className={`  hover:text-[#ECBD00] hover:border-b-[2px] hover:border-[#ECBD00] duration-200 active:text-[#b99400] active:border-[#b99400]`}>{link.title}</li>
-                                            </ScrollLink>
-                                        </React.Fragment>
-                                    )
-                                })}
+                                {linksList.map((link, index) => (
+                                    <React.Fragment key={index}>
+                                        <ScrollLink id={link.href}>
+                                            <li style={link.href === activeMenuItem ? { color: '#ECBD00', borderBottom: '2px solid #ECBD00' } : {}} className={'hover:text-[#ECBD00] hover:border-b-[2px] hover:border-[#ECBD00] duration-200 active:text-[#b99400] active:border-[#b99400]'} onClick={() => { setActiveMenuItem(link.href) }}>{link.title}</li>
+                                        </ScrollLink>
+                                    </React.Fragment>
+                                )
+                                )}
                             </ul>
                         </div>
                     </div>
@@ -186,10 +199,19 @@ const Header = () => {
                         </Link>
                     </div>
                     <div className='hidden absolute top-[509px] -right-[279px] sm:flex h-[50px] mr-[5px] text-[#46620B] z-0 w-[400px] rotate-90 bg-[#FFFBE6] pl-8 rounded-full'>
-                        <Link href='\' className='group uppercase font-bold w-[400px] flex items-center space-x-[40px] '>
+                        <div className='group uppercase font-bold w-[400px] flex items-center space-x-[40px] ' onClick={() => {
+                            if (activeMenuItem === 'hero') { router.push('#about'); setActiveMenuItem('about') }
+                            if (activeMenuItem === 'about') { router.push('#programs'); setActiveMenuItem('programs') }
+                            if (activeMenuItem === 'programs') { router.push('#delivery'); setActiveMenuItem('delivery') }
+                            if (activeMenuItem === 'delivery') { router.push('#menu'); setActiveMenuItem('menu') }
+                            if (activeMenuItem === 'menu') { router.push('#calculator'); setActiveMenuItem('calculator') }
+                            if (activeMenuItem === 'calculator') { router.push('#feedback'); setActiveMenuItem('feedback') }
+                            if (activeMenuItem === 'feedback') { router.push('#questions'); setActiveMenuItem('questions') }
+                            if (activeMenuItem === 'questions') { router.push('#hero'); setActiveMenuItem('hero') }
+                        }}>
                             <div className=' border-b-2 border-[#46620B] w-[224px] group-hover:border-seccondary duration-200'></div>
                             <p className='flex items-center group-hover:text-seccondary duration-500'>Next <ImArrowRight2 size={16} /></p>
-                        </Link>
+                        </div>
                     </div>
                 </div>
 
@@ -252,7 +274,7 @@ const Header = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

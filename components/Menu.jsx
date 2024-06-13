@@ -172,7 +172,7 @@ function Menu() {
 
 
     return (
-        <div className='relative '>
+        <div className='relative' id='menu'>
             <div className='mt-[248px] sm:block hidden'>
                 <div className='container z-30 relative'>
                     <div className="mb-16">

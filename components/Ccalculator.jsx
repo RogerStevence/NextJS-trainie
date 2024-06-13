@@ -7,7 +7,7 @@ import CustomSelect from './CustomSelect'
 
 
 
-const buttonClasses = 'text-[#263800] py-2 px-4 rounded-[8px] shadow-xl focus:outline-none flex items-center hover:shadow-[2px_6px_15px_0_rgba(0,0,0,0.25) focus:border-none] duration-200';
+const buttonClasses = 'text-[#263800] py-2 px-4 rounded-[8px] shadow-xl focus:outline-none flex items-center hover:shadow-[2px_6px_15px_0_rgba(0,0,0,0.25) focus:border-none hover:bg-[#b99400]] duration-200';
 const inputRangeClasses = 'sm:max-w-[328px] max-w-[267px] appearance-none w-full h-[2px] bg-[#263800] rounded-lg outline-none relative';
 const selectClasses = 'w-full bg-[#FFFCEC]  text-zinc-700 py-2 px-3 rounded-lg focus:outline-none shadow-[0px_4px_15px_0_rgba(0,0,0,0.25)]';
 
@@ -210,14 +210,9 @@ const CalorieCalculator = () => {
                                     </div>
                                     <div className="mt-6 w-[100%] max-w-[289px] min-w-[100px]">
                                         <label className="block text-[#263800] mb-4">GOAL</label>
-                                        <div className="">
+                                        <div>
                                             <CustomSelect goal={goal} setGoal={setGoal} options={options} />
                                         </div>
-                                        {/* <select className={selectClasses} value={goal} onChange={(e) => setGoal(e.target.value)}>
-                                            <option className='hover:bg-primary'>WEIGHT BALANCE</option>
-                                            <option>WEIGHT LOSS</option>
-                                            <option>WEIGHT GAIN</option>
-                                        </select> */}
                                     </div>
                                 </div>
                                 <div className="mt-6 w-[50%] flex flex-col space-y-[69px]">

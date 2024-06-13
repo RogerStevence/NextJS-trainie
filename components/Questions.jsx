@@ -15,7 +15,7 @@ const inputItems = [
 
 function Questions() {
     return (
-        <div className='z-40 relative'>
+        <div className='z-40 relative' id='questions'>
             <div className='container mx-auto mt-[124px] sm:flex hidden'>
                 <div className='h-full w-full flex flex-col items-end'>
                     <form action="" className='flex flex-col w-[100%] max-w-[670px] h-[706px] items-center shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] bg-[#FFFCEC] rounded-[15px]'>
