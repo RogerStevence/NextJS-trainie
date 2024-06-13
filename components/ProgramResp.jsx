@@ -25,7 +25,7 @@ function ProgramResp({ item }) {
                         {item.desc}
                     </p>
                 </div>
-                <button className={`absolute bottom-[0] p-6 flex w-full bg-seccondary justify-center items-center font-[700] text-[18px] leading-[21px] text-[#FFFEFA] ${selected ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}>VIEW MENU</button>
+                <button className={`absolute bottom-[0] p-6 flex w-full bg-seccondary justify-center items-center font-[700] text-[18px] leading-[21px] text-[#FFFEFA] hover:bg-[#ecbd00b9] duration-500 active:bg-[#b99400]  ${selected ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}>VIEW MENU</button>
             </div>
         </div >
     )

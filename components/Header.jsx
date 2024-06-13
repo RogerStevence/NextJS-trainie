@@ -1,6 +1,7 @@
 "use client";
 import { useId } from 'react';
 import Image from 'next/image';
+import ScrollLink from './ScrollLink';
 import Link from 'next/link';
 import React from 'react';
 import { useState } from 'react';
@@ -8,11 +9,16 @@ import { AiOutlineMenu, AiOutLineClose } from 'react-icons/ai';
 import { MdPhoneInTalk } from "react-icons/md";
 import { BiLogoFacebook, BiLogoTwitter, BiLogoPinterestAlt, BiLogoInstagramAlt } from "react-icons/bi";
 import { ImArrowRight2 } from "react-icons/im";
-import CustomButton from './Button';
 import { LuArrowDownSquare } from "react-icons/lu";
+import { usePathname, useRouter } from 'next/navigation';
+import { id } from 'date-fns/locale';
+
 
 
 const Header = () => {
+
+    const pathname = usePathname();
+
 
     const [nav, setNav] = useState(false)
 
@@ -23,37 +29,37 @@ const Header = () => {
     const linksList = [
         {
             title: 'Home',
-            href: '/',
+            href: 'hero',
             id: 1
         },
         {
             title: 'About US',
-            href: '/',
+            href: 'about',
             id: 2
         },
         {
             title: 'Programs',
-            href: '/',
+            href: 'programs',
             id: 3,
         },
         {
             title: 'Calculator',
-            href: '/',
+            href: 'calculator',
             id: 4
         },
         {
             title: 'Delivery',
-            href: '/',
+            href: 'delivery',
             id: 5
         },
         {
             title: 'Feedback',
-            href: '/',
+            href: 'feedback',
             id: 6
         },
         {
             title: 'Contacts',
-            href: '/',
+            href: 'contacts',
             id: 7
         }
     ];
@@ -66,7 +72,7 @@ const Header = () => {
         },
         {
             title: 'About US',
-            href: '/',
+            href: '#about',
             id: 16
         },
         {
@@ -117,44 +123,51 @@ const Header = () => {
     const SocialIcons = [
         {
             title: 'BiLogoFacebook',
+            link: 'https://www.facebook.com/',
             id: 11
         },
         {
             title: 'BiLogoTwitter',
+            link: 'https://x.com/?lang=en',
             id: 12
         },
         {
             title: 'BiLogoInstagramAlt',
+            link: 'https://www.instagram.com/',
             id: 13
         },
         {
             title: 'BiLogoPinterestAlt',
+            link: 'https://www.pinterest.com/',
             id: 14
         },
     ];
 
 
     return (
-        <div>
+        <div id='header'>
             <div className='fixed left-0 top-0 w-full z-50 bg-[#FFFBE6] pt-[31px]'>
                 <div className=' container mx-auto relative sm:block hidden'>
                     <div className='flex justify-between items-center'>
-                        <Link href='/'>
+                        <ScrollLink id='hero'>
                             <h1 className='hidden sm:flex text-primary text-[32px] leading-[37.57px]'><span className='font-[700]'>eat</span>me</h1>
-                        </Link>
+                        </ScrollLink>
                         <div >
                             <ul className='text-[18px] leading-[21.13px] flex uppercase items-center text-primary space-x-8 font-semibold'>
-                                {linksList.map((link, index) => (
-                                    <React.Fragment key={index}>
-                                        <li className='hover:text-[#ECBD00] hover:border-b-[2px] hover:border-[#ECBD00]'>
-                                            <Link href='/'>{link.title}</Link>
-                                        </li>
-                                    </React.Fragment>
-                                ))}
+                                {linksList.map((link, index) => {
+                                    const isActive = pathname.startsWith(ScrollLink.id);
+                                    return (
+                                        <React.Fragment key={index}>
+                                            <ScrollLink id={link.href}>
+                                                <li className={`  hover:text-[#ECBD00] hover:border-b-[2px] hover:border-[#ECBD00] duration-200 active:text-[#b99400] active:border-[#b99400]`}>{link.title}</li>
+                                            </ScrollLink>
+                                        </React.Fragment>
+                                    )
+                                })}
                             </ul>
                         </div>
                     </div>
-                    <div className='hidden absolute top-[357px] -left-[117px] sm:flex flex-col h-[400px] items-center justify-around text-[#46620B]'>
+                    <div className='hidden absolute top-[357px] -left-[123px] sm:flex flex-col h-[400px] items-center text-[#46620B]'>
                         {SocialIcons.map((item, index) => {
                             const IconComponent = {
                                 BiLogoFacebook,
@@ -163,19 +176,19 @@ const Header = () => {
                                 BiLogoPinterestAlt,
                             }[item.title];
                             return (
-                                <Link key={index} href='/'>
-                                    <IconComponent size={24} />
+                                <Link key={index} href={item.link} target='_blank' className='bg-[#FFFBE6] rounded-full mb-[17px] p-1'>
+                                    <IconComponent size={24} className='hover:text-seccondary duration-500 active:text-[#b99400]' />
                                 </Link>
                             );
                         })}
-                        <Link href='\' className='-rotate-90 uppercase font-bold mt-[40px]'>
+                        <Link href='https://www.google.co.uk/' className='-rotate-90 uppercase font-bold mt-[51px] hover:text-seccondary duration-500 bg-[#FFFBE6] rounded-md px-2 active:text-[#b99400]' target='_blank'>
                             <p>follow us</p>
                         </Link>
                     </div>
-                    <div className='hidden absolute top-[541px] -right-[279px] sm:flex h-[50px] mr-[5px] text-[#46620B] z-0 w-[400px] rotate-90'>
-                        <Link href='\' className=' uppercase font-bold w-[400px] h-[] flex items-center space-x-[40px]'>
-                            <div className=' border-b-2 border-[#46620B] w-[224px]'></div>
-                            <p className='flex items-center'>Next <ImArrowRight2 size={16} /></p>
+                    <div className='hidden absolute top-[509px] -right-[279px] sm:flex h-[50px] mr-[5px] text-[#46620B] z-0 w-[400px] rotate-90 bg-[#FFFBE6] pl-8 rounded-full'>
+                        <Link href='\' className='group uppercase font-bold w-[400px] flex items-center space-x-[40px] '>
+                            <div className=' border-b-2 border-[#46620B] w-[224px] group-hover:border-seccondary duration-200'></div>
+                            <p className='flex items-center group-hover:text-seccondary duration-500'>Next <ImArrowRight2 size={16} /></p>
                         </Link>
                     </div>
                 </div>
@@ -202,7 +215,7 @@ const Header = () => {
                             {linksListM.map((link, index) => (
                                 <React.Fragment key={index}>
                                     <li className='py-3 text-[16px] font-semibold hover:text-[#1e250c]'>
-                                        <Link href='/'>{link.title}</Link>
+                                        <ScrollLink href='/'>{link.title}</ScrollLink>
                                     </li>
                                 </React.Fragment>
                             ))}

@@ -2,7 +2,6 @@
 import { useState } from "react";
 import Image from 'next/image';
 import BgImage from '../public/PersonalProgramBG.png';
-import CustomButton from './Button';
 
 function Calculatortest() {
     const [typeOfHavchik, setHavchik] = useState(0);
@@ -134,7 +133,7 @@ function Calculatortest() {
                     </label>
                 ));
             case "text":
-                return <input type="text" maxLength="64" className="drop-shadow-md focus:outline-none bg-[#FFFCEC] pl-4 pr-2 py-[11px] w-[547px] min-w-[277px] h-[41px] text-[16px] leading-[18.78px]" value={inputValue} onChange={(e) => setInputValue(e.target.value)}
+                return <input type="text" maxLength="64" className="drop-shadow-md focus:shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] focus:outline-none duration-100 focus:bg-[#fff1a2] bg-[#FFFCEC] pl-4 pr-2 py-[11px] w-[547px] min-w-[277px] h-[41px] text-[16px] leading-[18.78px]" value={inputValue} onChange={(e) => setInputValue(e.target.value)}
                     onKeyPress={handleKeyPress} placeholder='Add a comment...' />;
             default:
         }
@@ -145,7 +144,7 @@ function Calculatortest() {
     };
 
     return (
-        <div className='relative z-10'>
+        <div className='relative z-10' id="delivery">
             <div className='container z-30 relative sm:block hidden mt-[224px]'>
                 <div className='flex flex-col z-30 relative'>
                     <div className="mb-16">
@@ -168,31 +167,29 @@ function Calculatortest() {
                         </div>
                         <div className='min-w-[545px] bg-[#FFFCEC] rounded-[15px] px-[36px] pt-10 flex flex-col relative'>
                             <h1 className='text-seccondary text-center text-[32px] leading-[38px] font-[500] mb-[43px]'>your order</h1>
-                            <div className="flex flex-col space-y-6 justify-around font-[500] text-[18px] leading-[21px]">
-                                <div className='flex justify-between text-[#263800]'>
+                            <div className="flex flex-col space-y-4 justify-around font-[500] text-[18px] leading-[21px]">
+                                <div className='flex justify-between items-center text-[#263800] h-[29px]'>
                                     <h2 className="pr-[20px] text-[#263800]">PROGRAM:</h2>
                                     <h3 className="font-[600] text-[24px] leading-[28px]">{
                                         items.find(item => item.state === "havchik").values.find(({ value }) => value === typeOfHavchik)?.title
                                     }</h3>
                                 </div>
-                                <div className='flex justify-between text-[#263800] '>
+                                <div className='flex justify-between items-center text-[#263800] h-[29px]'>
                                     <h2 className="pr-[20px] text-[#263800]">CALORIES:</h2>
                                     <h3 className="font-[600] text-[24px] leading-[28px]">{
                                         items.find(item => item.state === "calories").values.find(({ value }) => value === calories)?.title
                                     }
                                     </h3>
                                 </div>
-                                <div className='flex justify-between text-[#263800]'>
+                                <div className='flex justify-between items-center text-[#263800] h-[29px]'>
                                     <h2 className="pr-[20px] text-[#263800]">DELIVERY PERIOD:</h2>
                                     <h3 className="font-[600] text-[24px] leading-[28px]">{
                                         items.find(item => item.state === "days").values.find(({ value }) => value === days)?.title
                                     }</h3>
                                 </div>
-                                <div className='flex justify-between text-[#263800]'>
-                                    <h2 className="pr-[20px] text-[#263800]">SPECIAL NEEDS:</h2>
-                                    <div className="max-w-[200px] h-[80px] flex text-right">
-                                        <p className="font-[600] text-[24px] leading-[28px] overflow-auto break-word">{h3Value ? h3Value : '—'}</p>
-                                    </div>
+                                <div className='flex text-[#263800]'>
+                                    <h2 className="pr-[20px] text-[#263800] text-[18px] max-w-[170px] min-w-[170px] h-[21px]">SPECIAL NEEDS:</h2>
+                                    <p className="text-[16px] overflow-auto break-word h-[80px] w-full text-right">{h3Value ? h3Value : '—'}</p>
                                 </div>
                             </div>
                             <div className="flex flex-col space-y-4 justify-around">
@@ -208,7 +205,7 @@ function Calculatortest() {
                                         <h2>Total Price:</h2>
                                         <h3>${calculateResult()}</h3></div>
                                 </div>
-                                <button className='w-full bg-[#ECBD00] absolute bottom-0 left-0 rounded-b-[15px] h-[72px] mt-[32px] uppercase font-[700] leading-[21px] text-[18px] text-[#FFFEFA]'>order</button>
+                                <button className='w-full bg-[#ECBD00] absolute bottom-0 left-0 rounded-b-[15px] h-[72px] mt-[32px] uppercase font-[700] leading-[21px] text-[18px] text-[#FFFEFA] hover:bg-primary duration-500 hover:text-[20px] hover:text-seccondary active:bg-[#253406] active:text-[#b99400]'>order</button>
                             </div>
                         </div>
                     </div>

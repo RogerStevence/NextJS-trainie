@@ -46,7 +46,7 @@ function Program() {
     ]
 
     return (
-        <div className='relative'>
+        <div className='relative' id='programs'>
             <div className='hidden sm:block'>
                 <div className='container mx-auto mt-[132px] max-w-[1440px] z-20 relative'>
                     <div className='flex flex-col justify-center items-center max-w-[1440px] m-auto mb-[64px]'>

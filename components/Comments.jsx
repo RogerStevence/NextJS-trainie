@@ -56,7 +56,7 @@ function Comments() {
     const ratingOptions = [1, 2, 3, 4, 5,]
 
     return (
-        <div className='relative'>
+        <div className='relative' id='feedback'>
             <div className='sm:flex flex-col hidden mt-[96px]'>
                 <div className='container z-30'>
                     <div className="mb-16">
@@ -85,11 +85,11 @@ function Comments() {
                 </Slider>
                 <div className='container z-30 flex justify-end relative'>
                 <div className='flex space-x-4 w-[80px]'>
-                        <div className='w-8 h-8 rounded-[6px] border-2 border-[#354909] cursor-pointer flex items-center justify-center' onClick={() => sliderRef.current.slickPrev()}>
-                            <FaArrowLeft className='text-[#354909]' />
+                        <div className='group w-8 h-8 rounded-[6px] border-2 border-[#354909] cursor-pointer flex items-center justify-center active:bg-primary active:border-[#FFFBE6]' onClick={() => sliderRef.current.slickPrev()}>
+                            <FaArrowLeft className='text-[#354909] group-active:text-white' />
                         </div>
-                        <div className='w-8 h-8 rounded-[6px] border-2 border-[#354909] cursor-pointer flex items-center justify-center' onClick={() => sliderRef.current.slickNext()}>
-                            <FaArrowRight className='text-[#354909]' />
+                        <div className='group w-8 h-8 rounded-[6px] border-2 border-[#354909] cursor-pointer flex items-center justify-center active:bg-primary active:border-[#FFFBE6]' onClick={() => sliderRef.current.slickNext()}>
+                            <FaArrowRight className='text-[#354909] group-active:text-white' />
                         </div>
                     </div>
                 </div>
@@ -128,10 +128,10 @@ function Comments() {
                 </Slider>
                 <div className=' z-30 flex justify-end relative mr-[48px]'>
                     <div className='flex space-x-4 w-[80px]'>
-                        <div className='w-8 h-8 rounded-[6px] border-2 border-[#354909] cursor-pointer flex items-center justify-center' onClick={() => sliderRefM.current.slickPrev()}>
+                        <div className='w-8 h-8 rounded-[6px] border-2 border-[#354909] cursor-pointer flex items-center justify-center ' onClick={() => sliderRefM.current.slickPrev()}>
                             <FaArrowLeft className='text-[#354909]' />
                         </div>
-                        <div className='w-8 h-8 rounded-[6px] border-2 border-[#354909] cursor-pointer flex items-center justify-center' onClick={() => sliderRefM.current.slickNext()}>
+                        <div className='w-8 h-8 rounded-[6px] border-2 border-[#354909] cursor-pointer flex items-center justify-center ' onClick={() => sliderRefM.current.slickNext()}>
                             <FaArrowRight className='text-[#354909]' />
                         </div>
                     </div>

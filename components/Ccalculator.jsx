@@ -3,25 +3,74 @@ import React, { useState, useEffect, useRef } from 'react';
 import { MdOutlineDirectionsRun } from "react-icons/md";
 import { IoIosFemale } from "react-icons/io";
 import { IoIosMale } from "react-icons/io";
-import css from '../components/Ccalculator.module.css';
+import CustomSelect from './CustomSelect'
 
 
 
-const buttonClasses = 'text-[#263800] py-2 px-4 rounded-[8px] shadow-xl focus:outline-none flex items-center';
+const buttonClasses = 'text-[#263800] py-2 px-4 rounded-[8px] shadow-xl focus:outline-none flex items-center hover:shadow-[2px_6px_15px_0_rgba(0,0,0,0.25) focus:border-none] duration-200';
 const inputRangeClasses = 'sm:max-w-[328px] max-w-[267px] appearance-none w-full h-[2px] bg-[#263800] rounded-lg outline-none relative';
-const selectClasses = 'w-full bg-[#FFFCEC] text-zinc-700 py-2 px-3 rounded-lg focus:outline-none shadow-[0px_4px_15px_0_rgba(0,0,0,0.25)]';
+const selectClasses = 'w-full bg-[#FFFCEC]  text-zinc-700 py-2 px-3 rounded-lg focus:outline-none shadow-[0px_4px_15px_0_rgba(0,0,0,0.25)]';
 
 
 
 const CalorieCalculator = () => {
 
+    const options = [
+        {
+            name: "WEIGHT BALANCE",
+            value: 100
+        },
+        {
+            name: "WEIGHT LOSS",
+            value: 200
+        },
+        {
+            name: "WEIGHT GAIN",
+            value: 300
+        }
+
+    ];
+
+    const runItems = [
+        {
+            id: 1,
+            name: "Low",
+            color: "red",
+            value: 100
+        },
+        {
+            id: 2,
+            name: "Low medium",
+            color: "orange",
+            value: 200
+        },
+        {
+            id: 3,
+            name: "Medium",
+            color: "green",
+            value: 300
+        },
+        {
+            id: 4,
+            name: "High",
+            color: "blue",
+            value: 400
+        },
+        {
+            id: 5,
+            name: "Very high",
+            color: "grey",
+            value: 500
+        }
+    ];
 
     const [gender, setGender] = useState('male');
     const [age, setAge] = useState(30);
     const [weight, setWeight] = useState(55);
     const [height, setHeight] = useState(170);
     const [goal, setGoal] = useState('WEIGHT BALANCE');
-    const [selectedItems, setSelectedItems] = useState(Array.from({ length: 5 }, () => false));
+    const [selectedItems, setSelectedItems] = useState(runItems.map(() => false));
+    const [selectedItem, setSelectedItem] = useState(null);
     const [isSelectionFixed, setIsSelectionFixed] = useState(false);
 
     const outputRefs = useRef([React.createRef(), React.createRef(), React.createRef()]);
@@ -57,8 +106,8 @@ const CalorieCalculator = () => {
                 input.addEventListener('input', () => handleInput(index));
                 handleInput(index);
             }
-        });       
-        
+        });
+
         inputRefsM.current.forEach((inputRefM, index) => {
             const input = inputRefM.current;
             const output = outputRefsM.current[index].current;
@@ -67,7 +116,7 @@ const CalorieCalculator = () => {
                 input.addEventListener('input', () => handleInputM(index));
                 handleInputM(index);
             }
-        });        
+        });
     }, []);
 
 
@@ -97,8 +146,8 @@ const CalorieCalculator = () => {
         }
     };
 
-    // Function to fix the selection up to the clicked item
-    const fixSelection = index => {
+    const fixSelection = (index) => {
+        const newSelectedItems = selectedItems.map((item, i) => i === index ? true : item);
         setSelectedItems(prevState => {
             const newState = [...prevState];
             // Mark all items up to the clicked item as selected
@@ -107,26 +156,22 @@ const CalorieCalculator = () => {
             }
             return newState;
         });
-        // Set the selection as fixed
-        setIsSelectionFixed(true);
+        setSelectedItem(runItems[index]);
     };
 
-    // Function to deselect items above the clicked item
-    const deselectAbove = index => {
-        setSelectedItems(prevState => {
-            const newState = [...prevState];
-            // Deselect all items above the clicked item
-            for (let i = index + 1; i < newState.length; i++) {
-                newState[i] = false;
-            }
-            return newState;
-        });
+    const deselectAbove = (index) => {
+        const newSelectedItems = selectedItems.map((item, i) => i <= index ? item : false);
+        setSelectedItems(newSelectedItems);
+        setSelectedItem(runItems[index]);
     };
 
+    const calculateResult = () => {
+        return options.value + runItems.value;
+    };
 
 
     return (
-        <div>
+        <div id='calculator'>
             <div className=' mt-[248px] sm:block hidden'>
                 <div className='container z-30 relative'>
                     <div className='flex flex-col items-center'>
@@ -148,7 +193,7 @@ const CalorieCalculator = () => {
                                             {selectedItems.map((selected, index) => (
                                                 <MdOutlineDirectionsRun
                                                     key={index}
-                                                    className={`text-black h-[40px] w-[40px] font-semibold ${selected || (isSelectionFixed && index < selectedItems.indexOf(true)) ? 'text-green-600' : ''}`}
+                                                    className={`text-black h-[40px] w-[40px] font-semibold duration-150 ${selected || (isSelectionFixed && index < selectedItems.indexOf(true)) ? 'text-green-600' : ''}`}
                                                     onClick={() => {
                                                         if (!selected || (isSelectionFixed && index < selectedItems.indexOf(true))) {
                                                             fixSelection(index);
@@ -159,15 +204,20 @@ const CalorieCalculator = () => {
                                                 />
                                             ))}
                                         </div>
-                                        <span className="text-green-600">medium</span>
+                                        <h3 className='h-[21px] duration-500' style={{ color: selectedItem ? selectedItem.color : 'black' }}>
+                                            {selectedItem ? selectedItem.name : ''}
+                                        </h3>
                                     </div>
                                     <div className="mt-6 w-[100%] max-w-[289px] min-w-[100px]">
                                         <label className="block text-[#263800] mb-4">GOAL</label>
-                                        <select className={selectClasses} value={goal} onChange={(e) => setGoal(e.target.value)}>
-                                            <option>WEIGHT BALANCE</option>
+                                        <div className="">
+                                            <CustomSelect goal={goal} setGoal={setGoal} options={options} />
+                                        </div>
+                                        {/* <select className={selectClasses} value={goal} onChange={(e) => setGoal(e.target.value)}>
+                                            <option className='hover:bg-primary'>WEIGHT BALANCE</option>
                                             <option>WEIGHT LOSS</option>
                                             <option>WEIGHT GAIN</option>
-                                        </select>
+                                        </select> */}
                                     </div>
                                 </div>
                                 <div className="mt-6 w-[50%] flex flex-col space-y-[69px]">
@@ -221,8 +271,8 @@ const CalorieCalculator = () => {
                         </div>
                         <div className="w-full md:w-1/3 p-4 bg-yellow-50 rounded-lg shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] flex flex-col items-center pt-[119px] mx-auto">
                             <h2 className="text-[18px] text-[#263800]">YOUR DAILY RATE</h2>
-                            <p className="text-5xl text-seccondary font-semibold mt-[12px]">1563 ccal</p>
-                            <button className="mt-6 w-[100%] min-w-[100px] max-w-[268px] text-[#263800] text-[18px] border-2 border-[#263800] font-bold py-2 px-4 rounded-lg focus:outline-none">SEE MENU</button>
+                            <p className="text-5xl text-seccondary font-semibold mt-[12px]">{calculateResult()} calories</p>
+                            <button className="mt-6 w-[100%] min-w-[100px] max-w-[268px] h-[56px] text-[#263800] text-[18px] border-2 border-[#263800] font-bold py-2 px-4 rounded-lg focus:outline-none hover:bg-seccondary duration-300 hover:border-none hover:text-white active:bg-[#b99400] transition-[background-color]">SEE MENU</button>
                         </div>
                     </div>
                 </div>

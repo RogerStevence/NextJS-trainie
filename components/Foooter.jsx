@@ -3,6 +3,7 @@ import { BiLogoFacebook, BiLogoTwitter, BiLogoPinterestAlt, BiLogoInstagramAlt }
 import Link from 'next/link';
 import Image from 'next/image';
 import Phone from '../public/phone-icon.png'
+import ScrollLink from './ScrollLink';
 
 
 const SocialIcons = [
@@ -21,24 +22,30 @@ const SocialIcons = [
 ];
 const firstCol = [
     {
-        title: 'About US'
+        title: 'About US',
+        id: 'about'
     },
     {
-        title: 'Programs'
+        title: 'Programs',
+        id: 'programs'
     },
     {
-        title: 'delivery'
+        title: 'delivery',
+        id: 'delivery'
     },
 ];
 const secCol = [
     {
-        title: 'menu'
+        title: 'menu',
+        id: 'menu'
     },
     {
-        title: 'calculator'
+        title: 'calculator',
+        id: 'calculator'
     },
     {
-        title: 'feedback'
+        title: 'feedback',
+        id: 'feedback'
     },
 ];
 
@@ -84,11 +91,11 @@ const thirdCol = [
 
 function Foooter() {
     return (
-        <div className='bg-[#263800D9] backdrop-blur-md  bg-opacity-85 z-50'>
+        <div className='bg-[#263800D9] backdrop-blur-md  bg-opacity-85 z-50' id='contacts'>
             <div className='container mx-auto mt-[124px] sm:block hidden'>
                 <div className='flex justify-between pt-[40px]'>
                     <div className='flex flex-col space-y-8'>
-                        <h1 className='text-[#FFFBE5] text-[32px] text-center font-thin'><span className='font-semibold'>eat</span>me</h1>
+                        <Link href='/' className='text-[#FFFBE5] text-[32px] text-center font-thin'><span className='font-semibold'>eat</span>me</Link>
                         <div className='flex space-x-6'>
                             {SocialIcons.map((item, index) => {
                                 const IconComponent = {
@@ -99,7 +106,7 @@ function Foooter() {
                                 }[item.title];
                                 return (
                                     <Link key={index} href='/'>
-                                        <IconComponent size={32} />
+                                        <IconComponent size={32} className='hover:text-seccondary duration-500 active:text-[#b99400]' />
                                     </Link>
                                 );
                             })}
@@ -108,18 +115,18 @@ function Foooter() {
                     <div className='flex flex-col space-y-6'>
                         {firstCol.map((item, index) => {
                             return (
-                                <Link key={index} href='/'>
-                                    <p className='uppercase'>{item.title}</p>
-                                </Link>
+                                <ScrollLink key={index} id={item.id}>
+                                    <p className='uppercase hover:text-seccondary duration-500 active:text-[#b99400]'>{item.title}</p>
+                                </ScrollLink>
                             );
                         })}
                     </div>
                     <div className='flex flex-col space-y-6'>
                         {secCol.map((item, index) => {
                             return (
-                                <Link key={index} href='/'>
-                                    <p className='uppercase'>{item.title}</p>
-                                </Link>
+                                <ScrollLink key={index} id={item.id}>
+                                    <p className='uppercase hover:text-seccondary duration-500 active:text-[#b99400]'>{item.title}</p>
+                                </ScrollLink>
                             );
                         })}
                     </div>
@@ -139,16 +146,16 @@ function Foooter() {
                     </div>
                     <div className='flex flex-col'>
                         <p>NEWSLETTER</p>
-                        <input type="text" name="" id="" placeholder='Enter your email' className='rounded-[8px] px-[13px] pl-[16px] mt-[18px] bg-[#FFFCEC40] placeholder-[#1D1912] h-12' />
-                        <button className='w-full min-w-[100px] max-w-[268px] h-[48px] rounded-[8px] bg-[#ECBD00] text-[#FFFCEC] mt-[8px] cursor-pointer uppercase shadow-md'>subscribe</button>
+                        <input type="text" name="" id="" placeholder='Enter your email' maxLength="20" className='rounded-[8px] px-[13px] pl-[16px] mt-[18px] bg-[#FFFCEC40] placeholder-[#1D1912] h-12' />
+                        <button className='w-full min-w-[100px] max-w-[268px] h-[48px] rounded-[8px] bg-[#ECBD00] text-[#FFFCEC] mt-[8px] cursor-pointer uppercase shadow-md hover:bg-[#ecbd00a9] focus:bg-[#b99400] duration-150'>subscribe</button>
 
                     </div>
                 </div>
                 <div className='border-solid border-t-2 border-[#ECBD00] w-full mt-20 flex justify-between pb-10'>
                     <p className='mt-[18px]'>&copy; 2024 Your Company Name. All rights reserved.</p>
                     <div className='flex mt-[18px] space-x-[34px] text-[14px]'>
-                        <Link href='/'>TERMS & CONDITIONS</Link>
-                        <Link href='/'>PRIVACY POLICY</Link>
+                        <Link href='/' className='hover:text-seccondary duration-500 active:text-[#b99400]'>TERMS & CONDITIONS</Link>
+                        <Link href='/' className='hover:text-seccondary duration-500 active:text-[#b99400]'>PRIVACY POLICY</Link>
                     </div>
                 </div>
             </div>
@@ -199,7 +206,7 @@ function Foooter() {
                         <p className='mb-2'>NEWSLETTER</p>
                         <div className='relative'>
                             <input type="text" name="" id="" maxLength="25" placeholder='Enter your email' className='rounded-[8px] px-[13px] pl-[16px] bg-[#FFFCEC40] absolute placeholder-[#1D1912] h-12 w-full' />
-                            <button className='w-full min-w-[100px] max-w-[140px] h-[48px] rounded-[8px] bg-[#ECBD00] text-[#FFFCEC] cursor-pointer uppercase shadow-md absolute top-[0] right-0'>subscribe</button>
+                            <button className='w-full min-w-[100px] max-w-[140px] h-[48px] rounded-[8px] bg-[#ECBD00] text-[#FFFCEC] cursor-pointer uppercase shadow-md absolute top-0 right-0 hover:bg-[#ecbd00a9] focus:bg-[#b99400] duration-150'>subscribe</button>
                         </div>
                     </div>
                     <div className='flex flex-col space-y-6 items-center mt-12'>

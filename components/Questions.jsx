@@ -3,11 +3,13 @@ import React from 'react';
 const inputItems = [
     {
         holder: 'Your email address',
-        type: 'text'
+        type: 'text',
+        maxLength: '25'
     },
     {
         holder: 'Your name',
-        type: 'text'
+        type: 'text',
+        maxLength: '40'
     }
 ]
 
@@ -24,12 +26,12 @@ function Questions() {
                         <div className='mt-[40px] flex flex-col w-[100%] max-w-[546px] space-y-[18px] text-primary '>
                             {
                                 inputItems.map((item, index) =>
-                                    <input key={index} type={item.type} placeholder={item.holder} className='shadow-xl pl-[16px] py-[11px] focus:outline-none'/>
+                                    <input key={index} type={item.type} placeholder={item.holder} maxLength={item.maxLength} className='shadow-xl pl-[16px] py-[11px] focus:outline-none focus:bg-slate-200'/>
                                 )
                             }
-                            <textarea name="" id="" cols="30" rows="10" className='text-primary shadow-xl pl-[16px] pt-[11px] resize-none focus:outline-none' placeholder='Enter your message here'></textarea>
+                            <textarea name="" id="" cols="30" rows="10" maxLength="360" className='text-primary shadow-xl pl-[16px] pt-[11px] resize-none focus:outline-none focus:bg-slate-200' placeholder='Enter your message here'></textarea>
                         </div>
-                        <button className='w-full min-w-[100px] max-w-[216px] h-[56px] rounded-[8px] bg-[#ECBD00] text-[#FFFCEC] cursor-pointer uppercase mt-[32px] shadow-md'>send</button>
+                        <button className='w-full min-w-[100px] max-w-[216px] h-[56px] rounded-[8px] bg-[#ECBD00] text-[#FFFCEC] cursor-pointer uppercase mt-[32px] shadow-md hover:bg-[#ecbd00a9] focus:bg-[#b99400] duration-150'>send</button>
                     </form>
                 </div>
             </div>

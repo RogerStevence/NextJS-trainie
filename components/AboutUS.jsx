@@ -29,8 +29,8 @@ function AboutUS() {
     ]
 
     return (
-        <div className='relative overflow-hidden'>
-            <div className='container mx-auto z-10 relative mt-[340px] hidden sm:flex'>
+        <div className='relative overflow-hidden' id='about'>
+            <div className='container mx-auto z-10 relative mt-[250px] hidden sm:flex'>
                 <div className={css.bg}></div>
                 <div className='h-full w-full flex flex-col items-end'>
                     <h1 className='text-primary text-5xl sm:flex md:text-2xl lg:text-3xl xl:text-5xl font-[800] leading-[64px] z-10'>YOUR<span className='text-seccondary'>&nbsp;DELIVERY</span>&nbsp;TO A<span className='text-seccondary'>&nbsp;HEALTHY</span>&nbsp;LIFE</h1>
