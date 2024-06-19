@@ -13,7 +13,7 @@ function Calculatortest() {
     const handleKeyPress = (event) => {
         if (event.key === "Enter") {
             setH3Value(inputValue);
-            setInputValue(""); // Очистка поля ввода
+            setInputValue(""); 
         }
     };
 

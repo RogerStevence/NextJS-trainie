@@ -3,7 +3,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { MdOutlineDirectionsRun } from "react-icons/md";
 import { IoIosFemale } from "react-icons/io";
 import { IoIosMale } from "react-icons/io";
-import CustomSelect from './CustomSelect'
+import CustomSelect from './CustomSelect';
+// import css from './CalculatorRange.module.css'
 
 
 
@@ -18,7 +19,7 @@ const CalorieCalculator = () => {
     const options = [
         {
             name: "WEIGHT BALANCE",
-            value: 100
+            value: 0
         },
         {
             name: "WEIGHT LOSS",
@@ -64,20 +65,62 @@ const CalorieCalculator = () => {
         }
     ];
 
+
     const [gender, setGender] = useState('male');
-    const [age, setAge] = useState(30);
-    const [weight, setWeight] = useState(55);
-    const [height, setHeight] = useState(170);
-    const [goal, setGoal] = useState('WEIGHT BALANCE');
+    const [age, setAge] = useState(0);
+    const [weight, setWeight] = useState(0);
+    const [height, setHeight] = useState(0);
+    const [goal, setGoal] = useState(options[0]);
     const [selectedItems, setSelectedItems] = useState(runItems.map(() => false));
     const [selectedItem, setSelectedItem] = useState(null);
     const [isSelectionFixed, setIsSelectionFixed] = useState(false);
+    const [finalResult, setFinalResult] = useState(0)
 
     const outputRefs = useRef([React.createRef(), React.createRef(), React.createRef()]);
     const inputRefs = useRef([React.createRef(), React.createRef(), React.createRef()]);
     const outputRefsM = useRef([React.createRef(), React.createRef(), React.createRef()]);
     const inputRefsM = useRef([React.createRef(), React.createRef(), React.createRef()]);
 
+    const calculateResult = () => {
+        let result = 0;
+        if (age != 0) {
+            result += Number(age)
+        }
+        if (weight != 0) {
+            result += Number(weight)
+        }
+        if (height != 0) {
+            result += Number(height)
+        }
+
+        if (goal && goal.value != null) {
+            result += Number(goal.value);
+        }
+
+        if (result !== 0) {
+            if (gender === 'male') {
+                result *= 1.5
+            }
+            if (gender === 'female') {
+                result *= 1.2
+            }
+        }
+        let activity = 0;
+        selectedItems.forEach((e) => {
+            if (e === true) {
+                activity += 50
+            }
+        })
+        result += activity
+
+        result = Math.round(result);
+
+        setFinalResult(result)
+    }
+
+    useEffect(() => {
+        calculateResult();
+    }, [age, gender, goal, selectedItems, weight, height])
 
     useEffect(() => {
         const handleInput = (index) => {
@@ -85,7 +128,7 @@ const CalorieCalculator = () => {
             const input = inputRefs.current[index].current;
             const value = (input.value - input.min) / (input.max - input.min) * 100;
             output.innerHTML = input.value;
-            output.style.left = `calc(${value}% - 16px)`;
+            output.style.left = `calc(${value}% - 15px)`;
             output.style.transform = `translateX(-${value}%)`;
         };
 
@@ -121,26 +164,21 @@ const CalorieCalculator = () => {
 
 
 
-    // Function to toggle the selected state of a specific item and all items before or after it
     const toggleItem = index => {
         setSelectedItems(prevState => {
             const newState = [...prevState];
-            // Toggle the selected state for the clicked item
             newState[index] = !newState[index];
-            // If the item is selected, mark all previous items as selected
             if (newState[index]) {
                 for (let i = 0; i < index; i++) {
                     newState[i] = true;
                 }
             } else {
-                // If the item is deselected, mark all subsequent items as deselected
                 for (let i = index + 1; i < newState.length; i++) {
                     newState[i] = false;
                 }
             }
             return newState;
         });
-        // If item is toggled after selection fixation, unfixed the selection
         if (isSelectionFixed) {
             setIsSelectionFixed(false);
         }
@@ -150,7 +188,6 @@ const CalorieCalculator = () => {
         const newSelectedItems = selectedItems.map((item, i) => i === index ? true : item);
         setSelectedItems(prevState => {
             const newState = [...prevState];
-            // Mark all items up to the clicked item as selected
             for (let i = 0; i <= index; i++) {
                 newState[i] = true;
             }
@@ -165,10 +202,6 @@ const CalorieCalculator = () => {
         setSelectedItem(runItems[index]);
     };
 
-    const calculateResult = () => {
-        return options.value + runItems.value;
-    };
-
 
     return (
         <div id='calculator'>
@@ -180,7 +213,7 @@ const CalorieCalculator = () => {
                         <p className='text-[18px] text-primary text-center pt-[17px] pb-[58px]'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe quasi quidem nesciunt autem vel temporibus doloremque?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe quasi quidem nesciunt autem vel temporibus doloremque?</p>
                     </div>
                     <div className='flex space-x-6'>
-                        <div className="w-full mx-auto bg-[#FFFBE6] p-6 rounded-lg shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)]">
+                        <div className="w-[998px] mx-auto bg-[#FFFBE6] p-6 rounded-lg shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)]">
                             <div className="flex space-x-6">
                                 <button className={buttonClasses + (gender === 'male' ? ' bg-[#ECBD00] text-white' : '')} onClick={() => setGender('male')}>MALE <IoIosMale className='h-full w-full pl-2' /></button>
                                 <button className={buttonClasses + (gender === 'female' ? ' bg-[#ECBD00] text-white' : '')} onClick={() => setGender('female')}>FEMALE <IoIosFemale className='h-full w-full pl-2' /></button>
@@ -193,7 +226,7 @@ const CalorieCalculator = () => {
                                             {selectedItems.map((selected, index) => (
                                                 <MdOutlineDirectionsRun
                                                     key={index}
-                                                    className={`text-black h-[40px] w-[40px] font-semibold duration-150 ${selected || (isSelectionFixed && index < selectedItems.indexOf(true)) ? 'text-green-600' : ''}`}
+                                                    className={`text-black h-[40px] w-[40px] font-semibold duration-150 cursor-pointer ${selected || (isSelectionFixed && index < selectedItems.indexOf(true)) ? 'text-green-600' : ''}`}
                                                     onClick={() => {
                                                         if (!selected || (isSelectionFixed && index < selectedItems.indexOf(true))) {
                                                             fixSelection(index);
@@ -211,7 +244,7 @@ const CalorieCalculator = () => {
                                     <div className="mt-6 w-[100%] max-w-[289px] min-w-[100px]">
                                         <label className="block text-[#263800] mb-4">GOAL</label>
                                         <div>
-                                            <CustomSelect goal={goal} setGoal={setGoal} options={options} />
+                                            <CustomSelect goal={goal} setGoal={setGoal} options={options} onChange={(event) => setGoal(options.find((e) => e.name === event.target.value))}/>
                                         </div>
                                     </div>
                                 </div>
@@ -233,8 +266,8 @@ const CalorieCalculator = () => {
                                     </div>
                                     <div className='w-[100%] max-w-[442px] flex items-center justify-between'>
                                         <label className="block text-zinc-700 w-[100px] uppercase">weight</label>
-                                        <div className="relative w-full">
-                                            <span className="absolute top-[-30px] text-[#263800] bg-[#FFFBE6] w-[44px] pointer-down shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] text-center rounded-[5px]" ref={outputRefs.current[1]}></span>
+                                        <div className=" w-full relative">
+                                            <label className="absolute top-[-30px] text-[#263800] bg-[#FFFBE6] w-[44px] pointer-down shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] text-center rounded-[5px]" ref={outputRefs.current[1]}></label>
                                             <input
                                                 type="range"
                                                 min="0"
@@ -264,9 +297,9 @@ const CalorieCalculator = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="w-full md:w-1/3 p-4 bg-yellow-50 rounded-lg shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] flex flex-col items-center pt-[119px] mx-auto">
+                        <div className="w-[414px] md:w-1/3 p-4 bg-yellow-50 rounded-lg shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] flex flex-col items-center pt-[119px] mx-auto">
                             <h2 className="text-[18px] text-[#263800]">YOUR DAILY RATE</h2>
-                            <p className="text-5xl text-seccondary font-semibold mt-[12px]">{calculateResult()} calories</p>
+                            <p className="text-[48px] text-seccondary font-semibold mt-[12px] w-full text-center leading-[57.6px]">{finalResult} calories</p>
                             <button className="mt-6 w-[100%] min-w-[100px] max-w-[268px] h-[56px] text-[#263800] text-[18px] border-2 border-[#263800] font-bold py-2 px-4 rounded-lg focus:outline-none hover:bg-seccondary duration-300 hover:border-none hover:text-white active:bg-[#b99400] transition-[background-color]">SEE MENU</button>
                         </div>
                     </div>
@@ -310,7 +343,7 @@ const CalorieCalculator = () => {
                                 </div>
                                 <div className="mt-6 w-[100%] max-w-[289px] min-w-[100px]">
                                     <label className="block text-[#263800] mb-4">GOAL</label>
-                                    <select className={selectClasses} value={goal} onChange={(e) => setGoal(e.target.value)}>
+                                    <select className={selectClasses} value={goal} onChange={(event) => setGoal(options.find((e) => { e.name === event.target.name }))}>
                                         <option>WEIGHT BALANCE</option>
                                         <option>WEIGHT LOSS</option>
                                         <option>WEIGHT GAIN</option>

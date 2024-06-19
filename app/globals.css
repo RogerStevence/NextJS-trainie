@@ -173,11 +173,8 @@ input[type="radio"]{
 }
 
 input[type="radio"]:checked {
-  /* change our border color to burgundy */
   border-color: #263800;
-  /* makes the input burgundy */
   background-color: #263800;
-  /* creates a white ring inside of the input */
   box-shadow: inset -.005rem -.005rem 0 .12rem #FFFBE6;
 }
 

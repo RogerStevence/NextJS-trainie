@@ -18,15 +18,7 @@ import { id } from 'date-fns/locale';
 
 const Header = () => {
 
-    useEffect(() => {
-        const { hash } = window.location;
-        if (hash) {
-            const element = document.querySelector(hash);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-    }, []);
+
 
     const router = useRouter();
 
@@ -158,6 +150,45 @@ const Header = () => {
         },
     ];
 
+    const scrollWithOffset = (id) => {
+        const element = document.getElementById(id);
+        if (element) {
+            const offsetTop = element.getBoundingClientRect().top + window.pageYOffset - 110;
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    };
+
+    const handleClick = () => {
+        if (activeMenuItem === 'hero') { 
+            scrollWithOffset('about');
+            setActiveMenuItem('about');
+        } else if (activeMenuItem === 'about') { 
+            scrollWithOffset('programs');
+            setActiveMenuItem('programs');
+        } else if (activeMenuItem === 'programs') { 
+            scrollWithOffset('delivery');
+            setActiveMenuItem('delivery');
+        } else if (activeMenuItem === 'delivery') { 
+            scrollWithOffset('menu');
+            setActiveMenuItem('menu');
+        } else if (activeMenuItem === 'menu') { 
+            scrollWithOffset('calculator');
+            setActiveMenuItem('calculator');
+        } else if (activeMenuItem === 'calculator') { 
+            scrollWithOffset('feedback');
+            setActiveMenuItem('feedback');
+        } else if (activeMenuItem === 'feedback') { 
+            scrollWithOffset('questions');
+            setActiveMenuItem('questions');
+        } else if (activeMenuItem === 'questions') { 
+            scrollWithOffset('hero');
+            setActiveMenuItem('hero');
+        }
+    };
+
 
     return (
         <div id='header'>
@@ -199,16 +230,7 @@ const Header = () => {
                         </Link>
                     </div>
                     <div className='hidden absolute top-[509px] -right-[279px] sm:flex h-[50px] mr-[5px] text-[#46620B] z-0 w-[400px] rotate-90 bg-[#FFFBE6] pl-8 rounded-full'>
-                        <div className='group uppercase font-bold w-[400px] flex items-center space-x-[40px] ' onClick={() => {
-                            if (activeMenuItem === 'hero') { router.push('#about'); setActiveMenuItem('about') }
-                            if (activeMenuItem === 'about') { router.push('#programs'); setActiveMenuItem('programs') }
-                            if (activeMenuItem === 'programs') { router.push('#delivery'); setActiveMenuItem('delivery') }
-                            if (activeMenuItem === 'delivery') { router.push('#menu'); setActiveMenuItem('menu') }
-                            if (activeMenuItem === 'menu') { router.push('#calculator'); setActiveMenuItem('calculator') }
-                            if (activeMenuItem === 'calculator') { router.push('#feedback'); setActiveMenuItem('feedback') }
-                            if (activeMenuItem === 'feedback') { router.push('#questions'); setActiveMenuItem('questions') }
-                            if (activeMenuItem === 'questions') { router.push('#hero'); setActiveMenuItem('hero') }
-                        }}>
+                        <div className='group uppercase font-bold w-[400px] flex items-center space-x-[40px] ' onClick={handleClick}>
                             <div className=' border-b-2 border-[#46620B] w-[224px] group-hover:border-seccondary duration-200'></div>
                             <p className='flex items-center group-hover:text-seccondary duration-500'>Next <ImArrowRight2 size={16} /></p>
                         </div>

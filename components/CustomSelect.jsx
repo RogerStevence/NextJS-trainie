@@ -40,14 +40,14 @@ const customStyles = {
 
 const CustomSelect = ({ goal, setGoal, options }) => {
     const handleChange = (selectedOption) => {
-        setGoal(selectedOption.value);
+        setGoal(selectedOption);
     };
 
     const formattedOptions = options.map((option) => ({ value: option.value, label: option.name }));
 
     return (
         <Select
-            value={formattedOptions.find(option => option.value === goal)}
+            value={formattedOptions.find(option => option.value === goal.value)}
             onChange={handleChange}
             options={formattedOptions}
             styles={customStyles}
