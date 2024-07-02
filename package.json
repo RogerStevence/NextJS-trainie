@@ -15,6 +15,7 @@
     "@yaireo/ui-range": "^2.1.15",
     "date-fns": "^2.30.0",
     "input-range-scss": "^1.5.3",
+    "lodash": "^4.17.21",
     "next": "^14.2.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

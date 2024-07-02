@@ -13,7 +13,7 @@ function Calculatortest() {
     const handleKeyPress = (event) => {
         if (event.key === "Enter") {
             setH3Value(inputValue);
-            setInputValue(""); 
+            setInputValue("");
         }
     };
 
@@ -165,7 +165,7 @@ function Calculatortest() {
                                 );
                             })}
                         </div>
-                        <div className='min-w-[545px] bg-[#FFFCEC] rounded-[15px] px-[36px] pt-10 flex flex-col relative'>
+                        <div className='max-w-[545px] w-full bg-[#FFFCEC] rounded-[15px] px-[36px] pt-10 flex flex-col relative'>
                             <h1 className='text-seccondary text-center text-[32px] leading-[38px] font-[500] mb-[43px]'>your order</h1>
                             <div className="flex flex-col space-y-4 justify-around font-[500] text-[18px] leading-[21px]">
                                 <div className='flex justify-between items-center text-[#263800] h-[29px]'>
@@ -210,14 +210,6 @@ function Calculatortest() {
                         </div>
                     </div>
                 </div>
-                <div className='absolute -top-[56px] -right-[231px] z-0 sm:block hidden'>
-                    <Image className='rounded-l-full'
-                        src={BgImage}
-                        alt=''
-                        width='full'
-                    />
-                </div>
-                <div className=" bg-[#E9EDBA80] backdrop-blur-[4px] absolute w-[591px] h-[600px] -top-[56px] -right-[231px] rounded-tl-[500px]"></div>
             </div>
             <div className='absolute z-10 -top-[113px] left-[25%] bg-[#E9EDBA80]  rounded-bl-[350px] h-[655px] w-3/4 backdrop-blur-[15px]'></div>
 

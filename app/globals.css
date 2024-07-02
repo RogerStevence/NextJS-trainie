@@ -16,6 +16,39 @@
   }
 }
 
+@media (min-width: 1120px) {
+  .container {
+    max-width: 1000px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1160px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1300px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1440px;
+  }
+}
+
+/* @media (min-width: 1240px) {
+  .container{
+   
+  }
+  header{
+    margin-left: 20px;
+  }
+} */
+
 body {
   color: rgb(var(--foreground-rgb));
   background-color: #FFFBE6;
@@ -160,7 +193,7 @@ input[type="range"]::-webkit-slider-thumb {
   transform: translateX(-50%);
 }
 
-input[type="radio"]{
+input[type="radio"] {
   appearance: none;
   background-color: var(--background);
   display: inline-block;
@@ -177,4 +210,3 @@ input[type="radio"]:checked {
   background-color: #263800;
   box-shadow: inset -.005rem -.005rem 0 .12rem #FFFBE6;
 }
-

@@ -7,6 +7,8 @@ import ProgramMob from './ProgramMob';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import BgImage from '../public/PersonalProgramBG.png';
+
 
 
 function Program() {
@@ -61,7 +63,14 @@ function Program() {
                         }
                     </div>
                 </div>
-                <div className='absolute z-10 top-[50%] left-[25%] bg-[#E9EDBA80]  h-[542px] w-3/4 backdrop-blur-[15px]'></div>
+                <div className='absolute top-[50%] left-[25%] bg-[#E9EDBA80]  h-[542px] w-3/4 backdrop-blur-[15px]'></div>
+                <div className='absolute top-[120%] -right-[0] z-[-1] sm:block hidden overflow-hidden pointer-events-none'>
+                    <Image className='rounded-l-full overflow-hidden z-[-1] relative'
+                        src={BgImage}
+                        alt=''
+                        width='full'
+                    />
+                </div>
             </div>
 
             {/* {'Mobile'} */}

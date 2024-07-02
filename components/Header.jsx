@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useId } from 'react';
+import { useEffect, useId, useCallback } from 'react';
 import Image from 'next/image';
 import ScrollLink from './ScrollLink';
 import Link from 'next/link';
@@ -12,7 +12,7 @@ import { ImArrowRight2 } from "react-icons/im";
 import { LuArrowDownSquare } from "react-icons/lu";
 import { usePathname, useRouter } from 'next/navigation';
 import { id } from 'date-fns/locale';
-
+import _ from 'lodash';
 
 
 
@@ -70,6 +70,7 @@ const Header = () => {
     ];
 
     const [activeMenuItem, setActiveMenuItem] = useState(linksList[0].href);
+    const [isScrolling, setIsScrolling] = useState(false);
 
     const linksListM = [
         {
@@ -161,34 +162,72 @@ const Header = () => {
         }
     };
 
+    const handleScroll = useCallback(
+        _.debounce(() => {
+            if (isScrolling) return;
+
+            let currentSection = '';
+            const scrollPosition = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+
+            linksList.forEach(link => {
+                const section = document.getElementById(link.href);
+                if (section) {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+
+                    if (scrollPosition >= sectionTop - 110 && scrollPosition < sectionTop + sectionHeight - 110) {
+                        if (link.href != '') currentSection = link.href; //судя по всему ошибка здесь!!
+                    }
+                }
+            });
+
+            if (windowHeight + scrollPosition >= documentHeight - 5) {
+                currentSection = linksList[linksList.length - 1].href;
+            }
+            console.log(1, currentSection)
+            setActiveMenuItem(currentSection);
+        }, 100),
+        [isScrolling, linksList]
+    );
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [handleScroll]);
+
+
     const handleClick = () => {
-        if (activeMenuItem === 'hero') { 
+        console.log(activeMenuItem)
+        if (activeMenuItem === 'hero') {
             scrollWithOffset('about');
             setActiveMenuItem('about');
-        } else if (activeMenuItem === 'about') { 
+        } else if (activeMenuItem === 'about') {
             scrollWithOffset('programs');
             setActiveMenuItem('programs');
-        } else if (activeMenuItem === 'programs') { 
+        } else if (activeMenuItem === 'programs') {
             scrollWithOffset('delivery');
             setActiveMenuItem('delivery');
-        } else if (activeMenuItem === 'delivery') { 
+        } else if (activeMenuItem === 'delivery') {
             scrollWithOffset('menu');
             setActiveMenuItem('menu');
-        } else if (activeMenuItem === 'menu') { 
+        } else if (activeMenuItem === 'menu' || activeMenuItem === '') {
             scrollWithOffset('calculator');
             setActiveMenuItem('calculator');
-        } else if (activeMenuItem === 'calculator') { 
+        } else if (activeMenuItem === 'calculator') {
             scrollWithOffset('feedback');
             setActiveMenuItem('feedback');
-        } else if (activeMenuItem === 'feedback') { 
+        } else if (activeMenuItem === 'feedback') {
             scrollWithOffset('questions');
             setActiveMenuItem('questions');
-        } else if (activeMenuItem === 'questions') { 
+        } else if (activeMenuItem === '') {
             scrollWithOffset('hero');
             setActiveMenuItem('hero');
         }
     };
-
 
     return (
         <div id='header'>
@@ -203,7 +242,7 @@ const Header = () => {
                                 {linksList.map((link, index) => (
                                     <React.Fragment key={index}>
                                         <ScrollLink id={link.href}>
-                                            <li style={link.href === activeMenuItem ? { color: '#ECBD00', borderBottom: '2px solid #ECBD00' } : {}} className={'hover:text-[#ECBD00] hover:border-b-[2px] hover:border-[#ECBD00] duration-200 active:text-[#b99400] active:border-[#b99400]'} onClick={() => { setActiveMenuItem(link.href) }}>{link.title}</li>
+                                            <li style={link.href === activeMenuItem ? { color: '#ECBD00', borderBottom: '2px solid #ECBD00' } : {}} className={'hover:text-[#ECBD00] hover:border-b-[2px] hover:border-[#ECBD00] duration-200 active:text-[#b99400] active:border-[#b99400]'} onClick={() => { if (link.href) { setActiveMenuItem(link.href) } else { console.log('error') } }}>{link.title}</li>
                                         </ScrollLink>
                                     </React.Fragment>
                                 )

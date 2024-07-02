@@ -4,7 +4,9 @@ import { MdOutlineDirectionsRun } from "react-icons/md";
 import { IoIosFemale } from "react-icons/io";
 import { IoIosMale } from "react-icons/io";
 import CustomSelect from './CustomSelect';
-// import css from './CalculatorRange.module.css'
+import Range from './range'
+import css from './Range.module.css'
+
 
 
 
@@ -244,7 +246,7 @@ const CalorieCalculator = () => {
                                     <div className="mt-6 w-[100%] max-w-[289px] min-w-[100px]">
                                         <label className="block text-[#263800] mb-4">GOAL</label>
                                         <div>
-                                            <CustomSelect goal={goal} setGoal={setGoal} options={options} onChange={(event) => setGoal(options.find((e) => e.name === event.target.value))}/>
+                                            <CustomSelect goal={goal} setGoal={setGoal} options={options} onChange={(event) => setGoal(options.find((e) => e.name === event.target.value))} />
                                         </div>
                                     </div>
                                 </div>
@@ -294,6 +296,8 @@ const CalorieCalculator = () => {
                                             />
                                         </div>
                                     </div>
+
+                                        <Range></Range>
                                 </div>
                             </div>
                         </div>

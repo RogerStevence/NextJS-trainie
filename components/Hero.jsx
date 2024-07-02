@@ -46,8 +46,8 @@ const Hero = () => {
 
 
     return (
-        <div className='container mx-auto' id='hero'>
-            <div className='sm:flex justify-center items-center mt-[101px]'>
+        <div className='container' id='hero'>
+            <div className='sm:flex xl:flex justify-center items-center mt-[101px] w-full'>
                 <div className='hidden sm:flex bg-[#46620B] rounded-l-[15px] z-10 h-[910px] w-[561px] relative'>
                     <div className='flex flex-col mx-[40px] mt-[160px] text-[20px] relative'>
                         <h1 className='sm:text-[48px] mb-[12px] font-bold text-[#FFFBE5]'>YOUR <span className='text-[#ECBD00]'>DELIVERY</span> TO A <span className='text-[#ECBD00]'>HEALTHY</span> LIFE</h1>
