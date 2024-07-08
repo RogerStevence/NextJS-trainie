@@ -53,19 +53,24 @@ const Header = () => {
             id: 4
         },
         {
+            title: 'Menu',
+            href: 'menu',
+            id: 5
+        },
+        {
             title: 'Calculator',
             href: 'calculator',
-            id: 5
+            id: 6
         },
         {
             title: 'Feedback',
             href: 'feedback',
-            id: 6
+            id: 7
         },
         {
             title: 'Contacts',
             href: 'contacts',
-            id: 7
+            id: 8
         }
     ];
 
@@ -213,7 +218,7 @@ const Header = () => {
         } else if (activeMenuItem === 'delivery') {
             scrollWithOffset('menu');
             setActiveMenuItem('menu');
-        } else if (activeMenuItem === 'menu' || activeMenuItem === '') {
+        } else if (activeMenuItem === 'menu') {
             scrollWithOffset('calculator');
             setActiveMenuItem('calculator');
         } else if (activeMenuItem === 'calculator') {
@@ -238,7 +243,7 @@ const Header = () => {
                         </ScrollLink>
                         <div >
                             <ul className='text-[18px] leading-[21.13px] flex uppercase items-center text-primary space-x-8 font-semibold'>
-                                {linksList.map((link, index) => (
+                                {linksList.filter(link => link.id !== 5).map((link, index) => (
                                     <React.Fragment key={index}>
                                         <ScrollLink id={link.href}>
                                             <li style={link.href === activeMenuItem ? { color: '#ECBD00', borderBottom: '2px solid #ECBD00' } : {}} className={'hover:text-[#ECBD00] hover:border-b-[2px] hover:border-[#ECBD00] duration-200 active:text-[#b99400] active:border-[#b99400]'} onClick={() => { if (link.href) { setActiveMenuItem(link.href) } else { console.log('error') } }}>{link.title}</li>
