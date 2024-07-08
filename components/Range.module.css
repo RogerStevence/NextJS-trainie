@@ -1,21 +1,24 @@
 .range_wrap {
     position: relative;
-    width: 328px;
+    min-width: 267px;
+    max-width: 328px;
 }
 
 .range {
     width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
 }
 
 .bubble {
     position: absolute;
     text-align: center;
     width: 44px;
-    top: -30px;
+    top: -35px;
     left: 50%;
     transform: translateX(-50%);
     background: #fffbe6;
-    color: black;
+    color: #263800;
     padding: 5px 10px;
     border-radius: 5px;
     font-size: 14px;
@@ -46,13 +49,13 @@
 }
 
 .range::-webkit-slider-thumb {
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
     -webkit-appearance: none;
-    @apply bg-[#ECBD00];
-
-    cursor: pointer;
+    appearance: none;
+    background-color: #ECBD00;
+    border: 2px solid #263800;
     margin-top: -7px;
 }
 
@@ -72,6 +75,18 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: black;
+    background-color: #ECBD00;
+    border: 2px solid #263800;
     cursor: pointer;
+    margin-top: -7px;
+}
+
+.range::-ms-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #ECBD00;
+    border: 2px solid #263800;
+    cursor: pointer;
+    margin-top: -7px;
 }

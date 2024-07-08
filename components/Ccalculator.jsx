@@ -5,6 +5,7 @@ import { IoIosFemale } from "react-icons/io";
 import { IoIosMale } from "react-icons/io";
 import CustomSelect from './CustomSelect';
 import Range from './range'
+import BigRange from './RangeBig'
 import css from './Range.module.css'
 
 
@@ -254,51 +255,22 @@ const CalorieCalculator = () => {
                                     <div className='w-[100%] max-w-[442px] flex items-center justify-between'>
                                         <label className="block text-zinc-700 w-[100px] uppercase">Age</label>
                                         <div className="relative w-full">
-                                            <span className="absolute top-[-30px] text-[#263800] bg-[#FFFBE6] w-[44px] pointer-down shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] text-center rounded-[5px]" ref={outputRefs.current[0]}></span>
-                                            <input
-                                                type="range"
-                                                min="0"
-                                                max="100"
-                                                value={age}
-                                                ref={inputRefs.current[0]}
-                                                className={inputRangeClasses}
-                                                onInput={(e) => setAge(e.target.value)}
-                                            />
+                                            <Range value={age} setValue={(e) => setAge(e)} />
                                         </div>
                                     </div>
                                     <div className='w-[100%] max-w-[442px] flex items-center justify-between'>
                                         <label className="block text-zinc-700 w-[100px] uppercase">weight</label>
                                         <div className=" w-full relative">
-                                            <label className="absolute top-[-30px] text-[#263800] bg-[#FFFBE6] w-[44px] pointer-down shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] text-center rounded-[5px]" ref={outputRefs.current[1]}></label>
-                                            <input
-                                                type="range"
-                                                min="0"
-                                                max="100"
-                                                value={weight}
-                                                ref={inputRefs.current[1]}
-                                                className={inputRangeClasses}
-                                                onInput={(e) => setWeight(e.target.value)}
-                                            />
+                                            <Range value={weight} setValue={(e) => setWeight(e)} />
                                         </div>
                                     </div>
                                     <div className='w-[100%] max-w-[442px] flex items-center justify-between'>
                                         <label className="block text-zinc-700 w-[100px] uppercase">HEIGHT</label>
                                         <div className="relative w-full">
-                                            {/* <span className="absolute top-[-30px] text-[#263800] bg-[#FFFBE6] w-[44px] pointer-down shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] text-center rounded-[5px]" ref={outputRefs.current[2]}></span>
-                                            <input
-                                                type="range"
-                                                min="0"
-                                                max="250"
-                                                value={height}
-                                                ref={inputRefs.current[2]}
-                                                className={inputRangeClasses}
-                                                
-                                            /> */}
-                                            <Range value={height} setValue={(e) => setHeight(e)}/>
+                                            <BigRange value={height} setValue={(e) => setHeight(e)} />
                                         </div>
                                     </div>
 
-                                        
                                 </div>
                             </div>
                         </div>
@@ -359,46 +331,19 @@ const CalorieCalculator = () => {
                                 <div className='w-[100%] max-w-[442px] flex items-center justify-between'>
                                     <label className="block text-zinc-700 w-[100px] uppercase">Age</label>
                                     <div className="relative w-full">
-                                        <span className="absolute top-[-30px] text-[#263800] bg-[#FFFBE6] w-[44px] pointer-down shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] text-center rounded-[5px]" ref={outputRefsM.current[0]}></span>
-                                        <input
-                                            type="range"
-                                            min="0"
-                                            max="100"
-                                            value={age}
-                                            ref={inputRefsM.current[0]}
-                                            className={inputRangeClasses}
-                                            onInput={(e) => setAge(e.target.value)}
-                                        />
+                                        <Range value={age} setValue={(e) => setAge(e)} />
                                     </div>
                                 </div>
                                 <div className='w-[100%] max-w-[442px] flex items-center'>
                                     <label className="block text-zinc-700 w-[100px] uppercase">weight</label>
                                     <div className="relative w-full">
-                                        <span className="absolute top-[-30px] text-[#263800] bg-[#FFFBE6] w-[44px] pointer-down shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] text-center rounded-[5px]" ref={outputRefsM.current[1]}></span>
-                                        <input
-                                            type="range"
-                                            min="0"
-                                            max="100"
-                                            value={weight}
-                                            ref={inputRefsM.current[1]}
-                                            className={inputRangeClasses}
-                                            onInput={(e) => setWeight(e.target.value)}
-                                        />
+                                        <Range value={weight} setValue={(e) => setWeight(e)} />
                                     </div>
                                 </div>
                                 <div className='w-[100%] max-w-[442px] flex items-center justify-between'>
                                     <label className="block text-zinc-700 w-[100px] uppercase">HEIGHT</label>
                                     <div className="relative w-full">
-                                        <span className="absolute top-[-30px] text-[#263800] bg-[#FFFBE6] w-[44px] pointer-down shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] text-center rounded-[5px]" ref={outputRefsM.current[2]}></span>
-                                        <input
-                                            type="range"
-                                            min="0"
-                                            max="250"
-                                            value={height}
-                                            ref={inputRefsM.current[2]}
-                                            className={inputRangeClasses}
-                                            onInput={(e) => setHeight(e.target.value)}
-                                        />
+                                        <BigRange value={height} setValue={(e) => setHeight(e)} />
                                     </div>
                                 </div>
                             </div>

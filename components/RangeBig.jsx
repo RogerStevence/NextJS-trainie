@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import css from './Range.module.css';
 
-const RangeComponent = ({ value, setValue }) => {
+const RangeComponentBig = ({ value, setValue }) => {
 
     const rangeRef = useRef(null);
     const bubbleRef = useRef(null);
@@ -17,7 +17,7 @@ const RangeComponent = ({ value, setValue }) => {
         };
 
         range.addEventListener('input', handleInput);
-        setBubble(range, bubble);
+        setBubble(range, bubble); // Инициализация позиции пузырька
 
         return () => {
             range.removeEventListener('input', handleInput);
@@ -27,7 +27,7 @@ const RangeComponent = ({ value, setValue }) => {
     const setBubble = (range, bubble) => {
         const val = range.value;
         const min = range.min ? range.min : 0;
-        const max = range.max ? range.max : 100;
+        const max = range.max ? range.max : 200;
         const newVal = Number(((val - min) * 100) / (max - min));
         bubble.innerHTML = val;
         bubble.style.left = `calc(${newVal}% + (${8 - newVal * 0.15}px))`;
@@ -40,7 +40,7 @@ const RangeComponent = ({ value, setValue }) => {
                 type="range"
                 className={css.range}
                 min="0"
-                max="100"
+                max="200"
                 defaultValue="0"
                 onChange={() => setValue(rangeRef.current.value)}
             />
@@ -51,4 +51,4 @@ const RangeComponent = ({ value, setValue }) => {
     );
 };
 
-export default RangeComponent;
+export default RangeComponentBig;

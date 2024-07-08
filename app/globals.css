@@ -40,27 +40,9 @@
   }
 }
 
-/* @media (min-width: 1240px) {
-  .container{
-   
-  }
-  header{
-    margin-left: 20px;
-  }
-} */
-
 body {
   color: rgb(var(--foreground-rgb));
   background-color: #FFFBE6;
-}
-
-.range {
-  height: 80px;
-  width: 380px;
-  background: #fff;
-  border-radius: 10px;
-  padding: 0 65px 0 45px;
-  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .sliderValue {
@@ -121,62 +103,13 @@ body {
   right: -43px;
 }
 
-.range input {
-  -webkit-appearance: none;
-  width: 100%;
-  height: 3px;
-  background: #ddd;
-  border-radius: 5px;
-  outline: none;
-  border: none;
-  z-index: 2222;
-}
-
-.range input::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 20px;
-  height: 20px;
-  background: red;
-  border-radius: 50%;
-  background: green;
-  border: 1px solid green;
-  cursor: pointer;
-}
-
-.range input::-moz-range-thumb {
-  -webkit-appearance: none;
-  width: 20px;
-  height: 20px;
-  background: red;
-  border-radius: 50%;
-  background: green;
-  border: 1px solid green;
-  cursor: pointer;
-}
-
 .slick-slider.marginmid .slick-slide {
   margin-right: 8px;
   margin-left: 8px;
 }
 
-/* .slick-slider.margicomments .slick-slide {
-  margin-right: 12px;
-  margin-left: 12px;
-} */
-
 .slick-slider.paddings .slick-track {
   padding: 32px 0;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-  pointer-events: auto;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  -webkit-appearance: none;
-  @apply bg-[#ECBD00];
-  border: 2px solid #263800;
-  cursor: pointer;
 }
 
 
