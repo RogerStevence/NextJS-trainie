@@ -163,7 +163,7 @@ function Foooter() {
             {/* {'Mobile'} */}
 
             <div className='sm:hidden '>
-                <div className='flex justify-between flex-col mt-8 py-8 mx-4 '>
+                <div className='flex justify-between flex-col mt-8 py-8 mx-4'>
                     <div className='flex justify-between items-center'>
                         <h1 className='text-[#FFFBE5] text-[32px] text-center font-thin'><span className='font-semibold'>eat</span>me</h1>
                         <div className='flex space-x-6'>
@@ -182,7 +182,7 @@ function Foooter() {
                             })}
                         </div>
                     </div>
-                    <div className='flex space-x-[66px] justify-between mx-[78px] mt-12 font-thin'>
+                    <div className='flex mt-12 font-thin justify-center space-x-16'>
                         <div className='flex flex-col space-y-6'>
                             {fitsMob.map((item, index) => {
                                 return (

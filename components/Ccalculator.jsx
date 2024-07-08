@@ -291,8 +291,8 @@ const CalorieCalculator = () => {
                     <h2 className='text-seccondary text-center text-[32px] uppercase font-semibold leading-[37.57px]'>CALCULATOR</h2>
                     <p className='text-[14px] text-primary text-center pt-[17px]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget justo, neque, a vitae neque phasellus ultrices. Nunc vel amet, adipiscing erat pulvinar id vestibulum, malesuada morbi. </p>
                 </div>
-                <div className='flex flex-col space-y-8 mt-8 ml-4'>
-                    <div className="max-w-[396px] bg-[#FFFBE6] py-8 px-4 rounded-lg shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)]">
+                <div className='flex flex-col space-y-8 mt-8 mx-4'>
+                    <div className="max-w-[396px] w-[100%] bg-[#FFFBE6] py-8 px-4 rounded-lg shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)]">
                         <div className="flex justify-center space-x-6">
                             <button className={buttonClasses + (gender === 'male' ? ' bg-[#ECBD00] text-white' : '')} onClick={() => setGender('male')}>MALE <IoIosMale className='h-full w-full pl-2' /></button>
                             <button className={buttonClasses + (gender === 'female' ? ' bg-[#ECBD00] text-white' : '')} onClick={() => setGender('female')}>FEMALE <IoIosFemale className='h-full w-full pl-2' /></button>
@@ -301,11 +301,11 @@ const CalorieCalculator = () => {
                             <div className="w-full md:w-1/2">
                                 <label className="block text-black">ACTIVITY</label>
                                 <div className="mt-[24px] flex items-center">
-                                    <div className="flex space-x-[13.3px] mt-2">
+                                    <div className="flex space-x-[13.3px] mt-2 min-w-[200px]">
                                         {selectedItems.map((selected, index) => (
                                             <MdOutlineDirectionsRun
                                                 key={index}
-                                                className={`text-black h-[40px] w-[40px] font-semibold ${selected || (isSelectionFixed && index < selectedItems.indexOf(true)) ? 'text-green-600' : ''}`}
+                                                className={`text-black h-[40px] w-[40px] font-semibold duration-150 cursor-pointer ${selected || (isSelectionFixed && index < selectedItems.indexOf(true)) ? 'text-green-600' : ''}`}
                                                 onClick={() => {
                                                     if (!selected || (isSelectionFixed && index < selectedItems.indexOf(true))) {
                                                         fixSelection(index);
@@ -316,16 +316,16 @@ const CalorieCalculator = () => {
                                             />
                                         ))}
                                     </div>
-                                    <span className="text-green-600 ml-8">medium</span>
+                                    <h3 className='h-[21px] duration-500 ml-3 text-center min-w-[96px]' style={{ color: selectedItem ? selectedItem.color : 'black' }}>
+                                            {selectedItem ? selectedItem.name : ''}
+                                        </h3>
                                 </div>
                                 <div className="mt-6 w-[100%] max-w-[289px] min-w-[100px]">
-                                    <label className="block text-[#263800] mb-4">GOAL</label>
-                                    <select className={selectClasses} value={goal} onChange={(event) => setGoal(options.find((e) => { e.name === event.target.name }))}>
-                                        <option>WEIGHT BALANCE</option>
-                                        <option>WEIGHT LOSS</option>
-                                        <option>WEIGHT GAIN</option>
-                                    </select>
-                                </div>
+                                        <label className="block text-[#263800] mb-4">GOAL</label>
+                                        <div>
+                                            <CustomSelect goal={goal} setGoal={setGoal} options={options} onChange={(event) => setGoal(options.find((e) => e.name === event.target.value))} />
+                                        </div>
+                                    </div>
                             </div>
                             <div className="mt-20 w-full flex flex-col space-y-[69px]">
                                 <div className='w-[100%] max-w-[442px] flex items-center justify-between'>
@@ -351,8 +351,8 @@ const CalorieCalculator = () => {
                     </div>
                     <div className="w-full max-w-[396px] md:w-1/3 p-4 bg-yellow-50 rounded-lg shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] flex flex-col items-center py-8">
                         <h2 className="text-[#263800] leading-[18.78px]">YOUR DAILY RATE</h2>
-                        <p className="text-[36px] text-seccondary font-semibold mb-4 mt-2 leading-[43.2px]">1563 ccal</p>
-                        <button className="w-[100%] min-w-[100px] max-w-[268px] text-[#263800] text-[18px] border-2 border-[#263800] font-bold py-2 px-4 rounded-lg focus:outline-none">SEE MENU</button>
+                        <p className="text-[36px] text-seccondary font-semibold mt-[8px] w-full text-center leading-[43.2px]">{finalResult} calories</p>
+                        <button className="w-[100%] min-w-[100px] max-w-[268px] text-[#263800] text-[18px] border-2 border-[#263800] font-bold py-2 px-4 rounded-lg focus:outline-none active:bg-[#b99400] transition-[background-color] duration-300 mt-4">SEE MENU</button>
                     </div>
                 </div>
             </div>

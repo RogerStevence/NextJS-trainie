@@ -104,12 +104,21 @@ body {
 }
 
 .slick-slider.marginmid .slick-slide {
-  margin-right: 8px;
-  margin-left: 8px;
+  margin-right: 6px;
+  margin-left: 6px;
 }
 
 .slick-slider.paddings .slick-track {
   padding: 32px 0;
+}
+
+.slick-slider.midPaddings .slick-slide{
+  margin-right: 2px;
+  margin-left: 2px;
+}
+.slick-slider.commentsPaddings .slick-slide{
+  margin-right: 1px;
+  margin-left: 1px;
 }
 
 

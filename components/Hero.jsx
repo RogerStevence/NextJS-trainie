@@ -4,7 +4,7 @@ import React from 'react';
 import { BiLogoFacebook, BiLogoTwitter, BiLogoPinterestAlt, BiLogoInstagramAlt } from "react-icons/bi";
 import { ImArrowRight2 } from "react-icons/im";
 import CustomButton from './Button';
-import { LuArrowDownSquare } from "react-icons/lu";
+
 
 
 
@@ -47,7 +47,7 @@ const Hero = () => {
 
     return (
         <div className='container' id='hero'>
-            <div className='sm:flex xl:flex justify-center items-center mt-[101px] w-full'>
+            <div className='sm:flex xl:flex justify-center items-center sm:mt-[101px] w-full'>
                 <div className='hidden sm:flex bg-[#46620B] rounded-l-[15px] z-10 h-[910px] w-[561px] relative'>
                     <div className='flex flex-col mx-[40px] mt-[160px] text-[20px] relative'>
                         <h1 className='sm:text-[48px] mb-[12px] font-bold text-[#FFFBE5]'>YOUR <span className='text-[#ECBD00]'>DELIVERY</span> TO A <span className='text-[#ECBD00]'>HEALTHY</span> LIFE</h1>
@@ -82,20 +82,33 @@ const Hero = () => {
 
                 {/* {'Mobile'} */}
 
-                <div className='sm:hidden flex flex-col w-[396px]'>
-                    <div className='rounded-tr-[15px] px-4 ' style={{ backgroundImage: ' linear-gradient(86.75deg, #F1CE56 -0.19%, #EEC84B 23.47%, #DAA82B 97.86%)' }}>
-                        <h1 className='pt-8 pb-3 text-[#FFFBE6] text-center text-[36px] font-bold h-[142px]'>YOUR <span className='text-primary'>DELIVERY</span> TO A <span className='text-primary'>HEALTHY</span> LIFE</h1>
+                <div className="sm:hidden flex flex-col min-w-[320px] max-w-[396px] mt-[56px] max-h-[764px] h-[100%] mr-8">
+                    <div
+                        className="rounded-tr-[15px] px-4"
+                        style={{
+                            backgroundImage: 'linear-gradient(86.75deg, #F1CE56 -0.19%, #EEC84B 23.47%, #DAA82B 97.86%)'
+                        }}
+                    >
+                        <h1 className="pt-8 pb-3 text-[#FFFBE6] text-center text-[8vw] sm:text-[36px] font-bold h-[35vw] sm:h-[142px]">
+                            YOUR <span className="text-primary">DELIVERY</span> TO A <span className="text-primary">HEALTHY</span> LIFE
+                        </h1>
                     </div>
-                    <div className='h-[479px] w-[396px] -mt-[1px] ' style={{ backgroundImage: `url('/mobile-hero.png')`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }}>
-                        <p className='text-primary text-center px-4 font-semibold '>We save your time and money providing you with the most fresh and healthy food</p>
+                    <div
+                        className="h-[100%] w-[100%] min-w-[250px] max-w-[396px] min-h-[450px] max-h-[479px] -mt-[1px] bg-cover bg-no-repeat"
+                        style={{
+                            backgroundImage: `url('/mobile-hero.png')`,
+                        }}
+                    >
+                        <p className="text-primary text-center px-4 font-semibold">We save your time and money providing you with the most fresh and healthy food</p>
                     </div>
-                    <div className='h-[143px] rounded-br-[130px] flex flex-col items-center space-y-2 relative -mt-[9px]' style={{ backgroundImage: 'linear-gradient(92.49deg, #E7BD3E 3.73%, #D2A129 77.66%, #CF9E27 97.32%)' }}>
-                        <button className='w-[190px] h-[56px] rounded-[8px] bg-primary uppercase font-semibold'>order now</button>
-                        <button className='w-[190px] h-[56px] rounded-[8px]  border-white border-2 mx-[9px] uppercase font-semibold'>see menu</button>
-                        <Link href='/'>
-                            <LuArrowDownSquare className='text-[#46620B] w-8 h-8 absolute bottom-0 -right-4' />
-                        </Link>
-
+                    <div
+                        className="h-[35vw] sm:h-[143px] rounded-br-[130px] flex flex-col items-center space-y-2 relative -mt-[9px]"
+                        style={{
+                            backgroundImage: 'linear-gradient(92.49deg, #E7BD3E 3.73%, #D2A129 77.66%, #CF9E27 97.32%)'
+                        }}
+                    >
+                        <button className="w-[50%] h-[14vw] sm:w-[190px] sm:h-[56px] rounded-[8px] bg-primary uppercase font-semibold">order now</button>
+                        <button className="w-[50%] h-[14vw] sm:w-[190px] sm:h-[56px] rounded-[8px] border-white border-2 uppercase font-semibold">see menu</button>
                     </div>
                 </div>
             </div>

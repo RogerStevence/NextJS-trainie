@@ -13,16 +13,16 @@ function TryNow() {
 
 
             </div>
-            <div className='sm:hidden flex flex-col w-[428px] relative mt-[64px] overflow-hidden' style={{ backgroundImage: ' linear-gradient(134.46deg, rgba(70, 98, 11, 0.8) 0%, #46620B 100%)' }}>
-                <div style={{ backgroundImage: `url('/bg_mobile_trynow.png')`, backgroundRepeat: 'no-repeat' }} className='h-[380px] w-[380px] rounded-full absolute -right-[190px] bottom-[22px] z-0'>
+            <div className='sm:hidden flex flex-col min-w-[360px] relative mt-[64px] overflow-hidden' style={{ backgroundImage: ' linear-gradient(134.46deg, rgba(70, 98, 11, 0.8) 0%, #46620B 100%)' }}>
+                <div style={{ backgroundImage: `url('/bg_mobile_trynow.png')`, backgroundRepeat: 'no-repeat' }} className='h-[380px] w-[380px] rounded-full absolute -right-[190px] bottom-[22px] -z-1'>
                 </div>
-                <h3 className='text-[24px] mx-4 mt-8 leading-[32px] '>Have some doubts? </h3>
+                <h3 className='text-[24px] mx-4 mt-8 leading-[32px] z-10'>Have some doubts? </h3>
                 <div className='flex flex-col items-start justify-around h-full w-[214px] mt-8 ml-4'>
-                    <p className='text-[36px] font-bold leading-[48px]'>ORDER <br />
+                    <p className='text-[36px] font-bold leading-[48px] z-10'>ORDER <br />
                         A TEST DAY
                         JUST FOR </p>
                     <p className='text-[48px] leading-[48px] text-seccondary font-bold mt-4'>$4.99</p>
-                    <div className='my-8 mb'>
+                    <div className='my-8 mb z-10'>
                         <button className='min-w-[268px] h-[56px] rounded-[8px] bg-[#ECBD00] shadow-md cursor-pointer uppercase'> Try Now </button>
                     </div>
                 </div>

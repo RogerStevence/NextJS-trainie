@@ -13,6 +13,7 @@ import { LuArrowDownSquare } from "react-icons/lu";
 import { usePathname, useRouter } from 'next/navigation';
 import { id } from 'date-fns/locale';
 import _ from 'lodash';
+import menu from '../public/menu-opened.svg';
 
 
 
@@ -284,10 +285,10 @@ const Header = () => {
 
             {/* {'Mobile'} */}
 
-            <div className='w-[428px] fixed top-0 left-0 z-50 bg-[#FFFBE6]'>
+            <div className='min-w-[375px] max-w-[430px] w-[100%] fixed top-0 left-0 z-50 bg-[#FFFBE6]'>
                 <div className='flex max-w-[428px] sm:hidden items-center justify-between flex-wrap px-4'>
                     <div onClick={handleNav} className='text-primary sm:hidden z-50'>
-                        {nav ? <AiOutlineMenu size={24} /> : <AiOutlineMenu size={24} />}
+                        {nav ? <Image src={menu} alt='' width='24' height='24' /> : <AiOutlineMenu size={24} />}
                     </div>
                     <Link href='/'>
                         <h2 className='text-primary text-[32px] text-center flex-1 sm:hidden'><span className='font-medium'>eat</span>me</h2>
@@ -298,19 +299,20 @@ const Header = () => {
                 </div>
                 <div className={nav ? 'sm:hidden absolute top-0 bottom-0 left-0 right-0 flex pt-[32px] pl-8 w-full h-screen text-primary ease-in duration-300 bg-[#FFFBE6] z-40' : 'sm:hidden absolute top-0 bottom-0 left-[-100%] right-0 flex pt-[32px] w-full h-screen text-primary ease-in duration-300'}>
                     <div className='flex flex-col justify-between'>
-                        <ul>
-                            {linksListM.map((link, index) => (
-                                <React.Fragment key={index}>
-                                    <li className='py-3 text-[16px] font-semibold hover:text-[#1e250c]'>
-                                        <ScrollLink href='/'>{link.title}</ScrollLink>
-                                    </li>
-                                </React.Fragment>
-                            ))}
-                        </ul>
+                    <ul className='text-[16px] uppercase flex flex-col space-y-6 mt-4'>
+                                {linksList.filter(link => link.id !== 5).map((link, index) => (
+                                    <React.Fragment key={index}>
+                                        <ScrollLink id={link.href}>
+                                            <li style={link.href === activeMenuItem ? { color: '#ECBD00', borderBottom: '2px solid #ECBD00' } : {}} className={'duration-200 active:text-[#b99400] active:border-[#b99400]'} onClick={() => { if (link.href) { setActiveMenuItem(link.href) } else { console.log('error') } }}>{link.title}</li>
+                                        </ScrollLink>
+                                    </React.Fragment>
+                                )
+                                )}
+                            </ul>
                         <div className='flex flex-col space-y-6'>
                             {menuContacts.map((item) => {
                                 return (
-                                    <div key={item.id * 10} href='/' className='flex space-x-3 text-primary text-[18px] w-full'>
+                                    <div key={item.id} href='/' className='flex space-x-3 text-primary text-[18px] w-full'>
                                         <Image
                                             src={item.src}
                                             alt=""
@@ -330,13 +332,16 @@ const Header = () => {
                                     }[item.title];
                                     return (
                                         <Link key={item.id * 10} href='/'>
-                                            <IconComponent size={32} />
+                                            <IconComponent size={32} className='duration-500 active:text-[#b99400]'/>
                                         </Link>
                                     );
                                 })}
                             </div>
                         </div>
                     </div>
+                </div>
+                <div className='block sm:hidden' onClick={handleClick}>
+                    <LuArrowDownSquare className='text-[#46620B] w-8 h-8 absolute top-[90vh] custom:top-[95vh] right-[1.5vh]' />
                 </div>
             </div>
         </div >

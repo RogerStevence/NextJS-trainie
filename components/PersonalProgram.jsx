@@ -133,7 +133,7 @@ function Calculatortest() {
                     </label>
                 ));
             case "text":
-                return <input type="text" maxLength="64" className="drop-shadow-md focus:shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] focus:outline-none duration-100 focus:bg-[#fff1a2] bg-[#FFFCEC] pl-4 pr-2 py-[11px] w-[547px] min-w-[277px] h-[41px] text-[16px] leading-[18.78px]" value={inputValue} onChange={(e) => setInputValue(e.target.value)}
+                return <input type="text" maxLength="64" className="drop-shadow-md focus:shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] focus:outline-none duration-100 focus:bg-[#fff1a2] bg-[#FFFCEC] pl-4 pr-2 py-[11px] max-w-[547px] min-w-[200px] h-[41px] text-[16px] leading-[18.78px]" value={inputValue} onChange={(e) => setInputValue(e.target.value)}
                     onKeyPress={handleKeyPress} placeholder='Add a comment...' />;
             default:
         }
@@ -145,7 +145,7 @@ function Calculatortest() {
 
     return (
         <div className='relative z-10' id="delivery">
-            <div className='container z-30 relative sm:block hidden mt-[224px]'>
+            <div className='container z-30 relative sm:block hidden sm:mt-[224px]'>
                 <div className='flex flex-col z-30 relative'>
                     <div className="mb-16">
                         <h1 className='text-primary text-center text-[32px] uppercase leading-[38px] font-[500]'>Make</h1>
@@ -211,7 +211,7 @@ function Calculatortest() {
                     </div>
                 </div>
             </div>
-            <div className='absolute z-10 -top-[113px] left-[25%] bg-[#E9EDBA80]  rounded-bl-[350px] h-[655px] w-3/4 backdrop-blur-[15px]'></div>
+            <div className='absolute sm:block z-10 -top-[113px] left-[25%] bg-[#E9EDBA80]  rounded-bl-[350px] h-[655px] w-3/4 backdrop-blur-[15px] hidden'></div>
 
 
 
@@ -219,8 +219,8 @@ function Calculatortest() {
 
             {/* {'Mobile'} */}
 
-            <div className="sm:hidden">
-                <div className="mb-16">
+            <div className="sm:hidden mt-[96px]">
+                <div className="mb-4">
                     <h1 className='text-primary text-center text-[20px] uppercase leading-[23.5px]'>Make</h1>
                     <h2 className='text-seccondary text-center text-[32px] uppercase font-semibold leading-[37.5px]'>a personal program</h2>
                 </div>
@@ -259,9 +259,12 @@ function Calculatortest() {
                                     items.find(item => item.state === "days").values.find(({ value }) => value === days)?.title
                                 }</h3>
                             </div>
+                            <div className='flex text-[#263800]'>
+                                    <h2 className="pr-[20px] text-[#263800] text-[16px] max-w-[170px] min-w-[170px] h-[21px]">SPECIAL NEEDS:</h2>
+                                    <p className="text-[16px] overflow-auto break-word h-[80px] w-full text-right font-semibold leading-none">{h3Value ? h3Value : '—'}</p>
+                                </div>
                         </div>
                         <div className="flex flex-col h-[271px] border-t-[2px] border-[#46620B] mt-8 pt-8">
-                            {/* <div className='pt-[74px] border-b-[2px] border-[#46620B] w-full ' /> */}
                             <div className="text-[#263800] flex justify-between">
                                 <h2>Program Price:</h2>
                                 <h3>${calculateResult()}</h3></div>

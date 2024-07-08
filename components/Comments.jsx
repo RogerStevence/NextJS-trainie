@@ -107,7 +107,7 @@ function Comments() {
                         <h2 className='text-seccondary text-center text-[48px] uppercase font-semibold leading-[56,3px]'>Feedback</h2>
                     </div>
                 </div>
-                <Slider className='w-full z-30' infinite speed={300} dots={false} slidesToShow={1.1} centerPadding={1} ref={sliderRefM} arrows={false}>
+                <Slider className='w-full z-30 commentsPaddings' infinite speed={300} dots={false} slidesToShow={1.1} centerPadding={1} ref={sliderRefM} arrows={false}>
                     {CommentsItems.map((item, index) => (
                         <div key={index} className='text-[#263800] bg-[#FFFCEC] max-w-[364px] shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] ml-[57px] p-6 rounded-[15px] mb-12'>
                             <BiSolidQuoteRight className='w-[40px] h-[40px] text-seccondary' />
