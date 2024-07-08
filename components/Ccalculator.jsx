@@ -284,7 +284,7 @@ const CalorieCalculator = () => {
                                     <div className='w-[100%] max-w-[442px] flex items-center justify-between'>
                                         <label className="block text-zinc-700 w-[100px] uppercase">HEIGHT</label>
                                         <div className="relative w-full">
-                                            <span className="absolute top-[-30px] text-[#263800] bg-[#FFFBE6] w-[44px] pointer-down shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] text-center rounded-[5px]" ref={outputRefs.current[2]}></span>
+                                            {/* <span className="absolute top-[-30px] text-[#263800] bg-[#FFFBE6] w-[44px] pointer-down shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] text-center rounded-[5px]" ref={outputRefs.current[2]}></span>
                                             <input
                                                 type="range"
                                                 min="0"
@@ -292,12 +292,13 @@ const CalorieCalculator = () => {
                                                 value={height}
                                                 ref={inputRefs.current[2]}
                                                 className={inputRangeClasses}
-                                                onInput={(e) => setHeight(e.target.value)}
-                                            />
+                                                
+                                            /> */}
+                                            <Range value={height} setValue={(e) => setHeight(e)}/>
                                         </div>
                                     </div>
 
-                                        <Range></Range>
+                                        
                                 </div>
                             </div>
                         </div>

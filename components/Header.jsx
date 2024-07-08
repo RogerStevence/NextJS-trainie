@@ -201,7 +201,6 @@ const Header = () => {
 
 
     const handleClick = () => {
-        console.log(activeMenuItem)
         if (activeMenuItem === 'hero') {
             scrollWithOffset('about');
             setActiveMenuItem('about');

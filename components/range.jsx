@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
-import css from './Range.module.css'
+import css from './Range.module.css';
 
-const RangeComponent = () => {
+const RangeComponent = ({ value, setValue }) => {
+
     const rangeRef = useRef(null);
     const bubbleRef = useRef(null);
-    const [value, setValue] = useState(0);
+    
 
     useEffect(() => {
         const range = rangeRef.current;
