@@ -1,4 +1,5 @@
-import React from 'react';
+"use client";
+import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
 
 const customStyles = {
@@ -39,14 +40,25 @@ const customStyles = {
 };
 
 const CustomSelect = ({ goal, setGoal, options }) => {
+    const [id, setId] = useState(null);
+
+    useEffect(() => {
+        setId(`react-select-${Math.random().toString(36).substr(2, 9)}`);
+    }, []);
+
     const handleChange = (selectedOption) => {
         setGoal(selectedOption);
     };
 
     const formattedOptions = options.map((option) => ({ value: option.value, label: option.name }));
 
+    if (!id) {
+        return null;
+    }
+
     return (
         <Select
+            inputId={id}
             value={formattedOptions.find(option => option.value === goal.value)}
             onChange={handleChange}
             options={formattedOptions}
