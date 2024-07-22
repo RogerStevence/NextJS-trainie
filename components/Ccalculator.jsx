@@ -144,9 +144,14 @@ const CalorieCalculator = () => {
             output.style.transform = `translateX(-${value}%)`;
         };
 
+        console.log("Setting up event listeners");
+
         inputRefs.current.forEach((inputRef, index) => {
-            const input = inputRef.current;
-            const output = outputRefs.current[index].current;
+            const input = inputRef?.current;
+            const output = outputRefs.current[index]?.current;
+
+            console.log("input:", input);
+            console.log("output:", output);
 
             if (input && output) {
                 input.addEventListener('input', () => handleInput(index));
@@ -155,14 +160,33 @@ const CalorieCalculator = () => {
         });
 
         inputRefsM.current.forEach((inputRefM, index) => {
-            const input = inputRefM.current;
-            const output = outputRefsM.current[index].current;
+            const input = inputRefM?.current;
+            const output = outputRefsM.current[index]?.current;
+
+            console.log("inputM:", input);
+            console.log("outputM:", output);
 
             if (input && output) {
                 input.addEventListener('input', () => handleInputM(index));
                 handleInputM(index);
             }
         });
+
+        return () => {
+            inputRefs.current.forEach((inputRef, index) => {
+                const input = inputRef?.current;
+                if (input) {
+                    input.removeEventListener('input', () => handleInput(index));
+                }
+            });
+
+            inputRefsM.current.forEach((inputRefM, index) => {
+                const input = inputRefM?.current;
+                if (input) {
+                    input.removeEventListener('input', () => handleInputM(index));
+                }
+            });
+        };
     }, []);
 
 
@@ -317,15 +341,15 @@ const CalorieCalculator = () => {
                                         ))}
                                     </div>
                                     <h3 className='h-[21px] duration-500 ml-3 text-center min-w-[96px]' style={{ color: selectedItem ? selectedItem.color : 'black' }}>
-                                            {selectedItem ? selectedItem.name : ''}
-                                        </h3>
+                                        {selectedItem ? selectedItem.name : ''}
+                                    </h3>
                                 </div>
                                 <div className="mt-6 w-[100%] max-w-[289px] min-w-[100px]">
-                                        <label className="block text-[#263800] mb-4">GOAL</label>
-                                        <div>
-                                            <CustomSelect goal={goal} setGoal={setGoal} options={options} onChange={(event) => setGoal(options.find((e) => e.name === event.target.value))} />
-                                        </div>
+                                    <label className="block text-[#263800] mb-4">GOAL</label>
+                                    <div>
+                                        <CustomSelect goal={goal} setGoal={setGoal} options={options} onChange={(event) => setGoal(options.find((e) => e.name === event.target.value))} />
                                     </div>
+                                </div>
                             </div>
                             <div className="mt-20 w-full flex flex-col space-y-[69px]">
                                 <div className='w-[100%] max-w-[442px] flex items-center justify-between'>

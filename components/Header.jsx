@@ -184,7 +184,7 @@ const Header = () => {
                     const sectionHeight = section.offsetHeight;
 
                     if (scrollPosition >= sectionTop - 110 && scrollPosition < sectionTop + sectionHeight - 110) {
-                        if (link.href != '') currentSection = link.href; //судя по всему ошибка здесь!!
+                        if (link.href !== '') currentSection = link.href;
                     }
                 }
             });
@@ -192,7 +192,8 @@ const Header = () => {
             if (windowHeight + scrollPosition >= documentHeight - 5) {
                 currentSection = linksList[linksList.length - 1].href;
             }
-            console.log(1, currentSection)
+
+            console.log('Current section:', currentSection);
             setActiveMenuItem(currentSection);
         }, 100),
         [isScrolling, linksList]
@@ -228,10 +229,15 @@ const Header = () => {
         } else if (activeMenuItem === 'feedback') {
             scrollWithOffset('questions');
             setActiveMenuItem('questions');
-        } else if (activeMenuItem === '') {
+        }else if (activeMenuItem === 'contacts') {
             scrollWithOffset('hero');
             setActiveMenuItem('hero');
-        }
+        } 
+        else if (activeMenuItem === '') {
+            scrollWithOffset('hero');
+            setActiveMenuItem('hero');
+        }  
+        
     };
 
     return (
@@ -274,7 +280,7 @@ const Header = () => {
                         </Link>
                     </div>
                     <div className='hidden absolute top-[509px] -right-[279px] sm:flex h-[50px] mr-[5px] text-[#46620B] z-0 w-[400px] rotate-90 bg-[#FFFBE6] pl-8 rounded-full'>
-                        <div className='group uppercase font-bold w-[400px] flex items-center space-x-[40px] ' onClick={handleClick}>
+                        <div className='group uppercase font-bold w-[400px] flex items-center space-x-[40px] cursor-pointer' onClick={handleClick}>
                             <div className=' border-b-2 border-[#46620B] w-[224px] group-hover:border-seccondary duration-200'></div>
                             <p className='flex items-center group-hover:text-seccondary duration-500'>Next <ImArrowRight2 size={16} /></p>
                         </div>
@@ -299,16 +305,16 @@ const Header = () => {
                 </div>
                 <div className={nav ? 'sm:hidden absolute top-0 bottom-0 left-0 right-0 flex pt-[32px] pl-8 w-full h-screen text-primary ease-in duration-300 bg-[#FFFBE6] z-40' : 'sm:hidden absolute top-0 bottom-0 left-[-100%] right-0 flex pt-[32px] w-full h-screen text-primary ease-in duration-300'}>
                     <div className='flex flex-col justify-between'>
-                    <ul className='text-[16px] uppercase flex flex-col space-y-6 mt-4'>
-                                {linksList.filter(link => link.id !== 5).map((link, index) => (
-                                    <React.Fragment key={index}>
-                                        <ScrollLink id={link.href}>
-                                            <li style={link.href === activeMenuItem ? { color: '#ECBD00', borderBottom: '2px solid #ECBD00' } : {}} className={'duration-200 active:text-[#b99400] active:border-[#b99400]'} onClick={() => { if (link.href) { setActiveMenuItem(link.href) } else { console.log('error') } }}>{link.title}</li>
-                                        </ScrollLink>
-                                    </React.Fragment>
-                                )
-                                )}
-                            </ul>
+                        <ul className='text-[16px] uppercase flex flex-col space-y-6 mt-4'>
+                            {linksList.filter(link => link.id !== 5).map((link, index) => (
+                                <React.Fragment key={index}>
+                                    <ScrollLink id={link.href}>
+                                        <li style={link.href === activeMenuItem ? { color: '#ECBD00', borderBottom: '2px solid #ECBD00' } : {}} className={'duration-200 active:text-[#b99400] active:border-[#b99400]'} onClick={() => { if (link.href) { setActiveMenuItem(link.href) } else { console.log('error') } }}>{link.title}</li>
+                                    </ScrollLink>
+                                </React.Fragment>
+                            )
+                            )}
+                        </ul>
                         <div className='flex flex-col space-y-6'>
                             {menuContacts.map((item) => {
                                 return (
@@ -332,7 +338,7 @@ const Header = () => {
                                     }[item.title];
                                     return (
                                         <Link key={item.id * 10} href='/'>
-                                            <IconComponent size={32} className='duration-500 active:text-[#b99400]'/>
+                                            <IconComponent size={32} className='duration-500 active:text-[#b99400]' />
                                         </Link>
                                     );
                                 })}

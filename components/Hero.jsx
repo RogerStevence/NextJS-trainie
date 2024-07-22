@@ -84,12 +84,12 @@ const Hero = () => {
 
                 <div className="sm:hidden flex flex-col min-w-[320px] max-w-[396px] mt-[56px] max-h-[764px] h-[100%] mr-8">
                     <div
-                        className="rounded-tr-[15px] px-4"
+                        className="rounded-tr-[15px] px-4 max-h-[164px]"
                         style={{
                             backgroundImage: 'linear-gradient(86.75deg, #F1CE56 -0.19%, #EEC84B 23.47%, #DAA82B 97.86%)'
                         }}
                     >
-                        <h1 className="pt-8 pb-3 text-[#FFFBE6] text-center text-[8vw] sm:text-[36px] font-bold h-[35vw] sm:h-[142px]">
+                        <h1 className="pt-8 pb-3 text-[#FFFBE6] text-center text-[8vw] sm:text-[36px] font-bold h-[35vw] sm:h-[142px] ">
                             YOUR <span className="text-primary">DELIVERY</span> TO A <span className="text-primary">HEALTHY</span> LIFE
                         </h1>
                     </div>

@@ -5,24 +5,28 @@ const RangeComponent = ({ value, setValue }) => {
 
     const rangeRef = useRef(null);
     const bubbleRef = useRef(null);
-    
+
 
     useEffect(() => {
         const range = rangeRef.current;
         const bubble = bubbleRef.current;
 
-        const handleInput = () => {
+        if (range && bubble) {
+            const handleInput = () => {
+                setBubble(range, bubble);
+                setValue(range.value);
+            };
+
+            range.addEventListener('input', handleInput);
             setBubble(range, bubble);
-            setValue(range.value);
-        };
 
-        range.addEventListener('input', handleInput);
-        setBubble(range, bubble);
-
-        return () => {
-            range.removeEventListener('input', handleInput);
-        };
-    }, []);
+            return () => {
+                range.removeEventListener('input', handleInput);
+            };
+        } else {
+            console.error('rangeRef or bubbleRef is null');
+        }
+    }, [setValue]);
 
     const setBubble = (range, bubble) => {
         const val = range.value;
