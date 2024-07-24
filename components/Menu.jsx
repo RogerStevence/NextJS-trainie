@@ -264,7 +264,7 @@ function Menu() {
                                         height={231}
                                         className='rounded-full absolute -top-[24px] drop-shadow-md'
                                         style={{
-                                            left: '50%',
+
                                             top: '25%',
                                             transform: 'translate(8%, -40%)',
                                             height: "auto",
