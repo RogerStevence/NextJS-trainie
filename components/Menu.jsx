@@ -262,7 +262,7 @@ function Menu() {
                                         alt=''
                                         width={231}
                                         height={231}
-                                        className='rounded-full absolute left-[7%] -top-[24px] drop-shadow-md'
+                                        className='rounded-full absolute left-[5vw] -top-[24px] drop-shadow-md'
                                         style={{
                                             height: "auto",
                                             objectFit: "contain"
