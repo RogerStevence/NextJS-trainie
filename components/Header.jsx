@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useId, useCallback } from 'react';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import ScrollLink from './ScrollLink';
 import Link from 'next/link';
 import React from 'react';

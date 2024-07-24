@@ -1,7 +1,7 @@
 import React from 'react'
 import { BiLogoFacebook, BiLogoTwitter, BiLogoPinterestAlt, BiLogoInstagramAlt } from "react-icons/bi";
 import Link from 'next/link';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import Phone from '../public/phone-icon.png'
 import ScrollLink from './ScrollLink';
 

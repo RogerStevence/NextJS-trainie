@@ -2,7 +2,7 @@
 import React from 'react';
 import { format, addDays, startOfWeek } from 'date-fns';
 import { useState } from 'react';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
