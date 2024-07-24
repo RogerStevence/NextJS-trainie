@@ -256,7 +256,7 @@ function Menu() {
                     <Slider className='w-[100%] relative paddings midPaddings' infinite speed={300} dots={false} arrows={false} slidesToShow={1.5}>
                         {menuItem.map((item, index) => (
                             <div key={index} className='bg-[#FFFCEC] max-w-[268px] min-w-[235px] h-[315px] flex flex-col items-center text-center drop-shadow-xl rounded-[15px] ml-4'>
-                                <div className='h-[231px]'> 
+                                <div className='h-[231px]'>
                                     <Image
                                         src={item.src}
                                         alt=''
@@ -264,6 +264,9 @@ function Menu() {
                                         height={231}
                                         className='rounded-full absolute left-[5vw] -top-[24px] drop-shadow-md'
                                         style={{
+                                            left: '50%',
+                                            top: '25%',
+                                            transform: 'translate(-50%, -50%)',
                                             height: "auto",
                                             objectFit: "contain"
                                         }} />
