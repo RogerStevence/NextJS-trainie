@@ -4,9 +4,32 @@ import React from 'react';
 import { BiLogoFacebook, BiLogoTwitter, BiLogoPinterestAlt, BiLogoInstagramAlt } from "react-icons/bi";
 import { ImArrowRight2 } from "react-icons/im";
 import CustomButton from './Button';
+import CustomButtonMenu from './CustomButtonMenu';
 
+const scrollToPersonalProgramDelivery = () => {
+    const personalProgramElement = document.getElementById('delivery');
+    if (personalProgramElement) {
+        const elementPosition = personalProgramElement.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = elementPosition - 50; 
 
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
+    }
+};
+const scrollToPersonalProgramMenu = () => {
+    const personalProgramElement = document.getElementById('menu');
+    if (personalProgramElement) {
+        const elementPosition = personalProgramElement.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = elementPosition - 50; 
 
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
+    }
+};
 
 const Hero = () => {
 
@@ -54,7 +77,7 @@ const Hero = () => {
                         <p className='text-[#FFFBE5] mb-[32px]'>We save your time and money providing you with the most fresh and healthy food</p>
                         <div className='flex justify-center items-center mb-[317px] space-x-[18px] mr-6 font-[700] text-[18px] leading-[21px]'>
                             <CustomButton> ORDER NOW </CustomButton>
-                            <CustomButton>SEE MENU</CustomButton>
+                            <CustomButtonMenu>SEE MENU</CustomButtonMenu>
                         </div>
                         <div className='flex justify-around items-center'>
                             {
@@ -111,8 +134,8 @@ const Hero = () => {
                             backgroundImage: 'linear-gradient(92.49deg, #E7BD3E 3.73%, #D2A129 77.66%, #CF9E27 97.32%)'
                         }}
                     >
-                        <button className="w-[50%] h-[14vw] sm:w-[190px] sm:h-[56px] rounded-[8px] bg-primary uppercase font-semibold">order now</button>
-                        <button className="w-[50%] h-[14vw] sm:w-[190px] sm:h-[56px] rounded-[8px] border-white border-2 uppercase font-semibold">see menu</button>
+                        <button className="w-[50%] h-[14vw] sm:w-[190px] sm:h-[56px] rounded-[8px] bg-primary uppercase font-semibold" onClick={scrollToPersonalProgramDelivery}>order now</button>
+                        <button className="w-[50%] h-[14vw] sm:w-[190px] sm:h-[56px] rounded-[8px] border-white border-2 uppercase font-semibold" onClick={scrollToPersonalProgramMenu}>see menu</button>
                     </div>
                 </div>
             </div>

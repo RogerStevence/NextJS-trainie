@@ -1,9 +1,9 @@
 import React, { Children } from 'react'
 
-const Button = ({children}) => {
+const Button = ({ children }) => {
 
     const scrollToPersonalProgram = () => {
-        const personalProgramElement = document.getElementById('delivery');
+        const personalProgramElement = document.getElementById('menu');
         if (personalProgramElement) {
             const elementPosition = personalProgramElement.getBoundingClientRect().top + window.scrollY;
             const offsetPosition = elementPosition - 100; 

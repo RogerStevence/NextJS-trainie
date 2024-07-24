@@ -252,7 +252,7 @@ function Menu() {
                         {renderWeekDays()}
                     </Slider>
                 </div>
-                <div className='flex space-x-[24px] z-40 mt-[40px]'>
+                <div className='flex space-x-[24px] z-40 '>
                     <Slider className='w-[100%] relative paddings midPaddings' infinite speed={300} dots={false} arrows={false} slidesToShow={1.5}>
                         {menuItem.map((item, index) => (
                             <div key={index} className='bg-[#FFFCEC] max-w-[268px] min-w-[235px] h-[315px] flex flex-col items-center text-center drop-shadow-xl rounded-[15px] ml-4'>
@@ -264,7 +264,6 @@ function Menu() {
                                         height={231}
                                         className='rounded-full absolute -top-[24px] drop-shadow-md'
                                         style={{
-
                                             top: '25%',
                                             transform: 'translate(8%, -40%)',
                                             height: "auto",

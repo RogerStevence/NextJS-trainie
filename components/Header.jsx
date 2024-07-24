@@ -160,7 +160,17 @@ const Header = () => {
     const scrollWithOffset = (id) => {
         const element = document.getElementById(id);
         if (element) {
-            const offsetTop = element.getBoundingClientRect().top + window.pageYOffset - 110;
+            const offsetTop = element.getBoundingClientRect().top + window.pageYOffset - (id === 'about' ? 50 : 110);
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    };
+    const scrollWithOffsetMobile = (id) => {
+        const element = document.getElementById(id);
+        if (element) {
+            const offsetTop = element.getBoundingClientRect().top + window.pageYOffset - (id === 'about' ? -30 : 50);
             window.scrollTo({
                 top: offsetTop,
                 behavior: 'smooth'
@@ -240,6 +250,39 @@ const Header = () => {
         
     };
 
+    const handleClickMobile = () => {
+        if (activeMenuItem === 'hero') {
+            scrollWithOffsetMobile('about');
+            setActiveMenuItem('about');
+        } else if (activeMenuItem === 'about') {
+            scrollWithOffsetMobile('programs');
+            setActiveMenuItem('programs');
+        } else if (activeMenuItem === 'programs') {
+            scrollWithOffsetMobile('delivery');
+            setActiveMenuItem('delivery');
+        } else if (activeMenuItem === 'delivery') {
+            scrollWithOffsetMobile('menu');
+            setActiveMenuItem('menu');
+        } else if (activeMenuItem === 'menu') {
+            scrollWithOffsetMobile('calculator');
+            setActiveMenuItem('calculator');
+        } else if (activeMenuItem === 'calculator') {
+            scrollWithOffsetMobile('feedback');
+            setActiveMenuItem('feedback');
+        } else if (activeMenuItem === 'feedback') {
+            scrollWithOffsetMobile('questions');
+            setActiveMenuItem('questions');
+        }else if (activeMenuItem === 'contacts') {
+            scrollWithOffsetMobile('hero');
+            setActiveMenuItem('hero');
+        } 
+        else if (activeMenuItem === '') {
+            scrollWithOffsetMobile('hero');
+            setActiveMenuItem('hero');
+        }  
+        
+    };
+
     return (
         <div id='header'>
             <div className='fixed left-0 top-0 w-full z-50 bg-[#FFFBE6] pt-[31px]'>
@@ -291,8 +334,8 @@ const Header = () => {
 
             {/* {'Mobile'} */}
 
-            <div className='min-w-[375px] max-w-[430px] w-[100%] fixed top-0 left-0 z-50 bg-[#FFFBE6]'>
-                <div className='flex max-w-[428px] sm:hidden items-center justify-between flex-wrap px-4'>
+            <div className='min-w-[360px] max-w-[430px] w-[100%] fixed top-0 left-0 z-50 bg-[#FFFBE6]'>
+                <div className='flex max-w-[428px] min-w-[360px] sm:hidden items-center justify-between  px-4'>
                     <div onClick={handleNav} className='text-primary sm:hidden z-50'>
                         {nav ? <Image
                             src={menu}
@@ -307,7 +350,7 @@ const Header = () => {
                     <Link href='/'>
                         <h2 className='text-primary text-[32px] text-center flex-1 sm:hidden'><span className='font-medium'>eat</span>me</h2>
                     </Link>
-                    <div className='text-primary sm:hidden z-10'>
+                    <div className='text-primary sm:hidden z-10 '>
                         <MdPhoneInTalk size={24}></MdPhoneInTalk>
                     </div>
                 </div>
@@ -358,7 +401,7 @@ const Header = () => {
                         </div>
                     </div>
                 </div>
-                <div className='block sm:hidden' onClick={handleClick}>
+                <div className='block sm:hidden' onClick={handleClickMobile}>
                     <LuArrowDownSquare className='text-[#46620B] w-8 h-8 absolute top-[90vh] custom:top-[95vh] right-[1.5vh]' />
                 </div>
             </div>

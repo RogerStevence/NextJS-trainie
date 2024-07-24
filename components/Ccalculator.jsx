@@ -15,7 +15,31 @@ const buttonClasses = 'text-[#263800] py-2 px-4 rounded-[8px] shadow-xl focus:ou
 const inputRangeClasses = 'sm:max-w-[328px] max-w-[267px] appearance-none w-full h-[2px] bg-[#263800] rounded-lg outline-none relative';
 const selectClasses = 'w-full bg-[#FFFCEC]  text-zinc-700 py-2 px-3 rounded-lg focus:outline-none shadow-[0px_4px_15px_0_rgba(0,0,0,0.25)]';
 
+const scrollToPersonalProgram = () => {
+    const personalProgramElement = document.getElementById('menu');
+    if (personalProgramElement) {
+        const elementPosition = personalProgramElement.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = elementPosition - 100; 
 
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
+    }
+};
+
+const scrollToPersonalProgramMobile = () => {
+    const personalProgramElement = document.getElementById('menu');
+    if (personalProgramElement) {
+        const elementPosition = personalProgramElement.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = elementPosition - 50; 
+
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
+    }
+};
 
 const CalorieCalculator = () => {
 
@@ -301,7 +325,7 @@ const CalorieCalculator = () => {
                         <div className="w-[414px] md:w-1/3 p-4 bg-yellow-50 rounded-lg shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] flex flex-col items-center pt-[119px] mx-auto">
                             <h2 className="text-[18px] text-[#263800]">YOUR DAILY RATE</h2>
                             <p className="text-[48px] text-seccondary font-semibold mt-[12px] w-full text-center leading-[57.6px]">{finalResult} calories</p>
-                            <button className="mt-6 w-[100%] min-w-[100px] max-w-[268px] h-[56px] text-[#263800] text-[18px] border-2 border-[#263800] font-bold py-2 px-4 rounded-lg focus:outline-none hover:bg-seccondary duration-300 hover:border-none hover:text-white active:bg-[#b99400] transition-[background-color]">SEE MENU</button>
+                            <button className="mt-6 w-[100%] min-w-[100px] max-w-[268px] h-[56px] text-[#263800] text-[18px] border-2 border-[#263800] font-bold py-2 px-4 rounded-lg focus:outline-none hover:bg-seccondary duration-300 hover:border-none hover:text-white active:bg-[#b99400] transition-[background-color]" onClick={scrollToPersonalProgram}>SEE MENU</button>
                         </div>
                     </div>
                 </div>
@@ -376,7 +400,7 @@ const CalorieCalculator = () => {
                     <div className="w-full max-w-[396px] md:w-1/3 p-4 bg-yellow-50 rounded-lg shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] flex flex-col items-center py-8">
                         <h2 className="text-[#263800] leading-[18.78px]">YOUR DAILY RATE</h2>
                         <p className="text-[36px] text-seccondary font-semibold mt-[8px] w-full text-center leading-[43.2px]">{finalResult} calories</p>
-                        <button className="w-[100%] min-w-[100px] max-w-[268px] text-[#263800] text-[18px] border-2 border-[#263800] font-bold py-2 px-4 rounded-lg focus:outline-none active:bg-[#b99400] transition-[background-color] duration-300 mt-4">SEE MENU</button>
+                        <button className="w-[100%] min-w-[100px] max-w-[268px] text-[#263800] text-[18px] border-2 border-[#263800] font-bold py-2 px-4 rounded-lg focus:outline-none active:bg-[#b99400] transition-[background-color] duration-300 mt-4" onClick={scrollToPersonalProgramMobile}>SEE MENU</button>
                     </div>
                 </div>
             </div>
