@@ -199,7 +199,7 @@ function Menu() {
                     <div className='flex space-x-[24px] relative mt-[70px]'>
                         {menuItem.map((item, index) => (
                             <div key={index} className='bg-[#FFFCEC] w-[100%] max-w-[1436px] flex flex-col items-center text-center drop-shadow-xl rounded-[15px]'>
-                                <Image src={item.src} alt='' width='244' height='244' object-fit='containe' className='rounded-full absolute -top-[24px] drop-shadow-md' />
+                                <Image src={item.src} alt='' width='244' height='244' objectFit='contain' className='rounded-full absolute -top-[24px] drop-shadow-md' />
                                 <h3 className='mt-[224px] text-[#263800]'>{item.title}</h3>
                                 <div className='flex w-full justify-between pl-[21px] pr-[16px] text-seccondary text-[18px]'>
                                     {item.values.map((value, idx) => (
@@ -245,7 +245,7 @@ function Menu() {
                     <Slider className='w-[100%] relative paddings midPaddings' infinite speed={300} dots={false} arrows={false} slidesToShow={1.5} >
                         {menuItem.map((item, index) => (
                             <div key={index} className='bg-[#FFFCEC] max-w-[268px] min-w-[235px] flex flex-col items-center text-center drop-shadow-xl rounded-[15px] ml-40'>
-                                <Image src={item.src} alt='' width='231' height='231' object-fit='containe' className='rounded-full absolute left-1/2 transform -translate-x-1/2 -top-[24px] drop-shadow-md' />
+                                <Image src={item.src} alt='' width='231' height='231' objectFit='contain' className='rounded-full absolute left-1/2 transform -translate-x-1/2 -top-[24px] drop-shadow-md' />
                                 <h3 className='mt-[224px] text-[#263800]'>{item.title}</h3>
                                 <div className='flex max-w-[250px] w-full justify-between pl-[21px] pr-[16px] text-seccondary text-[18px]'>
                                     {item.values.map((value, idx) => (
