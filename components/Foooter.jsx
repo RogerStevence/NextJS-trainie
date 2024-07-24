@@ -1,7 +1,7 @@
 import React from 'react'
 import { BiLogoFacebook, BiLogoTwitter, BiLogoPinterestAlt, BiLogoInstagramAlt } from "react-icons/bi";
 import Link from 'next/link';
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Phone from '../public/phone-icon.png'
 import ScrollLink from './ScrollLink';
 
@@ -138,7 +138,11 @@ function Foooter() {
                                         src={item.src}
                                         alt=""
                                         width={24}
-                                        height={18} />
+                                        height={18}
+                                        style={{
+                                            maxWidth: "100%",
+                                            height: "auto"
+                                        }} />
                                     <p>{item.title}</p>
                                 </div>
                             );
@@ -218,7 +222,11 @@ function Foooter() {
                                             src={item.src}
                                             alt=""
                                             width={24}
-                                            height={18} />
+                                            height={18}
+                                            style={{
+                                                maxWidth: "100%",
+                                                height: "auto"
+                                            }} />
                                         <p>{item.title}</p>
                                     </div>
                                 );
@@ -238,7 +246,7 @@ function Foooter() {
 
             </div>
         </div>
-    )
+    );
 }
 
 export default Foooter

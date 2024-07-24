@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from "next/legacy/image";
+import Image from "next/image";
 import css from '../components/AboutUS.module.css';
 
 
@@ -41,7 +41,15 @@ function AboutUS() {
                             {
                                 ItemsList.map((item, index) => (
                                     <div key={index} className='text-[#263800] text-center flex flex-col py-[32px] items-center bg-[#FFFCEC] rounded-[15px] shadow-md w-[238px] h-[288px]'>
-                                        <Image src={item.src} alt='' width='64' height='64' />
+                                        <Image
+                                            src={item.src}
+                                            alt=''
+                                            width='64'
+                                            height='64'
+                                            style={{
+                                                maxWidth: "100%",
+                                                height: "auto"
+                                            }} />
                                         <h2 className='text-lg font-bold pt-6 w-[190px] leading-[24px]'>{item.title}</h2>
                                         <p className='mt-4 px-2 text-[18px] h-[72px] leading-[24px]'>{item.desc}</p>
                                     </div>))}
@@ -68,7 +76,15 @@ function AboutUS() {
                     {
                         ItemsList.map((item, index) => (
                             <div key={index} className='text-[#263800] text-center flex flex-col py-[32px] items-center bg-[#FFFCEC] rounded-[15px] shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] max-w-[190px] min-w-[150px] max-h-[244px] text-[14px]'>
-                                <Image src={item.src} alt='' width='48' height='48' />
+                                <Image
+                                    src={item.src}
+                                    alt=''
+                                    width='48'
+                                    height='48'
+                                    style={{
+                                        maxWidth: "100%",
+                                        height: "auto"
+                                    }} />
                                 <h2 className='font-bold my-4 w-[190px] leading-[20px] text-center px-[21px]'>{item.title}</h2>
                                 <p className='pb-8 max-w-[158px] mx-4 min-w-[100px] text-[14px]'>{item.desc}</p>
                             </div>))}
@@ -77,8 +93,7 @@ function AboutUS() {
             </div>
 
         </div>
-
-    )
+    );
 }
 
 export default AboutUS

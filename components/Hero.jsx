@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from "next/legacy/image";
+import Image from "next/image";
 import React from 'react';
 import { BiLogoFacebook, BiLogoTwitter, BiLogoPinterestAlt, BiLogoInstagramAlt } from "react-icons/bi";
 import { ImArrowRight2 } from "react-icons/im";
@@ -65,7 +65,11 @@ const Hero = () => {
                                                 src={item.src}
                                                 alt=""
                                                 width={24}
-                                                height={24} />
+                                                height={24}
+                                                style={{
+                                                    maxWidth: "100%",
+                                                    height: "auto"
+                                                }} />
                                         </div>
                                         <p className='text-[14px] text-center mt-[12px] w-[70px]'>{item.title}</p>
                                     </div>
@@ -113,7 +117,7 @@ const Hero = () => {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 export default Hero

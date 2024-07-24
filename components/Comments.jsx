@@ -1,6 +1,6 @@
 "use client"
 import React from 'react';
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -70,7 +70,15 @@ function Comments() {
                             <BiSolidQuoteRight className='w-[40px] h-[40px] text-seccondary' />
                             <p className='mt-6'>{item.desc}</p>
                             <div className='flex mt-6'>
-                                <Image src={item.src} alt='' width='46' height='46' />
+                                <Image
+                                    src={item.src}
+                                    alt=''
+                                    width='46'
+                                    height='46'
+                                    style={{
+                                        maxWidth: "100%",
+                                        height: "auto"
+                                    }} />
                                 <div className='flex flex-col ml-[15px]'>
                                     <h3>{item.name}</h3>
                                     <div className='flex'>
@@ -113,7 +121,15 @@ function Comments() {
                             <BiSolidQuoteRight className='w-[40px] h-[40px] text-seccondary' />
                             <p className='mt-6'>{item.desc}</p>
                             <div className='flex mt-6'>
-                                <Image src={item.src} alt='' width='46' height='46' />
+                                <Image
+                                    src={item.src}
+                                    alt=''
+                                    width='46'
+                                    height='46'
+                                    style={{
+                                        maxWidth: "100%",
+                                        height: "auto"
+                                    }} />
                                 <div className='flex flex-col ml-[15px]'>
                                     <h3>{item.name}</h3>
                                     <div className='flex'>
@@ -139,7 +155,7 @@ function Comments() {
                 <div className=' absolute h-[845px] w-[549px] overflow-hidden -left-[201px] -top-[145px] z-0' style={{ backgroundImage: `url('/comment-mb.png')`, background: 'contain', backgroundRepeat: 'no-repeat'}}></div>
             </div>
         </div>
-    )
+    );
 }
 
 export default Comments

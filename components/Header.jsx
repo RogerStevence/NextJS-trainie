@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useId, useCallback } from 'react';
-import Image from "next/legacy/image";
+import Image from "next/image";
 import ScrollLink from './ScrollLink';
 import Link from 'next/link';
 import React from 'react';
@@ -294,7 +294,15 @@ const Header = () => {
             <div className='min-w-[375px] max-w-[430px] w-[100%] fixed top-0 left-0 z-50 bg-[#FFFBE6]'>
                 <div className='flex max-w-[428px] sm:hidden items-center justify-between flex-wrap px-4'>
                     <div onClick={handleNav} className='text-primary sm:hidden z-50'>
-                        {nav ? <Image src={menu} alt='' width='24' height='24' /> : <AiOutlineMenu size={24} />}
+                        {nav ? <Image
+                            src={menu}
+                            alt=''
+                            width='24'
+                            height='24'
+                            style={{
+                                maxWidth: "100%",
+                                height: "auto"
+                            }} /> : <AiOutlineMenu size={24} />}
                     </div>
                     <Link href='/'>
                         <h2 className='text-primary text-[32px] text-center flex-1 sm:hidden'><span className='font-medium'>eat</span>me</h2>
@@ -323,7 +331,11 @@ const Header = () => {
                                             src={item.src}
                                             alt=""
                                             width={24}
-                                            height={18} />
+                                            height={18}
+                                            style={{
+                                                maxWidth: "100%",
+                                                height: "auto"
+                                            }} />
                                         <p>{item.title}</p>
                                     </div>
                                 );
@@ -351,7 +363,7 @@ const Header = () => {
                 </div>
             </div>
         </div >
-    )
+    );
 }
 
 export default Header

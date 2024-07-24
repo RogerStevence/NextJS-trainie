@@ -2,7 +2,7 @@
 import React from 'react';
 import { format, addDays, startOfWeek } from 'date-fns';
 import { useState } from 'react';
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -200,7 +200,17 @@ function Menu() {
                     <div className='flex space-x-[24px] relative mt-[70px]'>
                         {menuItem.map((item, index) => (
                             <div key={index} className='bg-[#FFFCEC] w-[100%] max-w-[1436px] flex flex-col items-center text-center drop-shadow-xl rounded-[15px]'>
-                                <Image src={item.src} alt='' width={244} height={244} objectFit='contain' className='rounded-full absolute -top-[24px] drop-shadow-md' />
+                                <Image
+                                    src={item.src}
+                                    alt=''
+                                    width={244}
+                                    height={244}
+                                    className='rounded-full absolute -top-[24px] drop-shadow-md'
+                                    style={{
+                                        maxWidth: "100%",
+                                        height: "auto",
+                                        objectFit: "contain"
+                                    }} />
                                 <h3 className='mt-[224px] text-[#263800]'>{item.title}</h3>
                                 <div className='flex w-full justify-between pl-[21px] pr-[16px] text-seccondary text-[18px]'>
                                     {item.values.map((value, idx) => (
@@ -245,9 +255,21 @@ function Menu() {
                 <div className='flex space-x-[24px] z-40 mt-[40px]'>
                     <Slider className='w-[100%] relative paddings midPaddings' infinite speed={300} dots={false} arrows={false} slidesToShow={1.5}>
                         {menuItem.map((item, index) => (
-                            <div key={index} className='bg-[#FFFCEC] max-w-[268px] min-w-[235px] flex flex-col items-center text-center drop-shadow-xl rounded-[15px] ml-4'>
-                                <Image src={item.src} alt='' width={231} height={231} objectFit='contain' className='rounded-full absolute left-1/2 transform -translate-x-1/2 -top-[24px] drop-shadow-md' />
-                                <h3 className='mt-[224px] text-[#263800]'>{item.title}</h3>
+                            <div key={index} className='bg-[#FFFCEC] max-w-[268px] min-w-[235px] h-[315px] flex flex-col items-center text-center drop-shadow-xl rounded-[15px] ml-4'>
+                                <div className='h-[231px]'> 
+                                    <Image
+                                        src={item.src}
+                                        alt=''
+                                        width={231}
+                                        height={231}
+                                        className='rounded-full absolute left-[7%] -top-[24px] drop-shadow-md'
+                                        style={{
+                                            maxWidth: "100%",
+                                            height: "auto",
+                                            objectFit: "contain"
+                                        }} />
+                                </div>
+                                <h3 className=' text-[#263800]'>{item.title}</h3>
                                 <div className='flex max-w-[250px] w-full justify-between pl-[21px] pr-[16px] text-seccondary text-[18px]'>
                                     {item.values.map((value, idx) => (
                                         <div key={idx} className='mb-[16px]'>
@@ -263,7 +285,7 @@ function Menu() {
             </div>
             <div className='absolute z-0 top-[0] left-0 bg-[#F4F4D0] w-[90%] h-[1252px] max-w-[1436px] rounded-tr-[350px] sm:hidden'></div>
         </div>
-    )
+    );
 }
 
 export default Menu

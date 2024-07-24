@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { useState } from 'react';
 import ProgramResp from './ProgramResp';
 import ProgramMob from './ProgramMob';
@@ -65,11 +65,15 @@ function Program() {
                 </div>
                 <div className='absolute top-[50%] left-[25%] bg-[#E9EDBA80]  h-[542px] w-3/4 backdrop-blur-[15px]'></div>
                 <div className='absolute top-[120%] -right-[0] z-[-1] sm:block hidden overflow-hidden pointer-events-none'>
-                    <Image className='rounded-l-full overflow-hidden z-[-1] relative'
+                    <Image
+                        className='rounded-l-full overflow-hidden z-[-1] relative'
                         src={BgImage}
                         alt=''
                         width='full'
-                    />
+                        style={{
+                            maxWidth: "100%",
+                            height: "auto"
+                        }} />
                 </div>
             </div>
 
@@ -91,7 +95,7 @@ function Program() {
 
             </div>
         </div>
-    )
+    );
 }
 
 export default Program
