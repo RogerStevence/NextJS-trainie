@@ -262,11 +262,11 @@ function Menu() {
                                         alt=''
                                         width={231}
                                         height={231}
-                                        className='rounded-full absolute left-[5vw] -top-[24px] drop-shadow-md'
+                                        className='rounded-full absolute -top-[24px] drop-shadow-md'
                                         style={{
                                             left: '50%',
                                             top: '25%',
-                                            transform: 'translate(-50%, -50%)',
+                                            transform: 'translate(8%, -40%)',
                                             height: "auto",
                                             objectFit: "contain"
                                         }} />
