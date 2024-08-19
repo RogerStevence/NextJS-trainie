@@ -14,6 +14,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { id } from 'date-fns/locale';
 import _ from 'lodash';
 import menu from '../public/menu-opened.svg';
+import { FaHome } from "react-icons/fa";
 
 
 
@@ -69,9 +70,14 @@ const Header = () => {
             id: 7
         },
         {
+            title: 'Questions',
+            href: 'questions',
+            id: 8
+        },
+        {
             title: 'Contacts',
             href: 'contacts',
-            id: 8
+            id: 9
         }
     ];
 
@@ -239,15 +245,15 @@ const Header = () => {
         } else if (activeMenuItem === 'feedback') {
             scrollWithOffset('questions');
             setActiveMenuItem('questions');
-        }else if (activeMenuItem === 'contacts') {
+        } else if (activeMenuItem === 'contacts') {
             scrollWithOffset('hero');
             setActiveMenuItem('hero');
-        } 
-        else if (activeMenuItem === '') {
+        }
+        else if (activeMenuItem === 'questions') {
             scrollWithOffset('hero');
             setActiveMenuItem('hero');
-        }  
-        
+        }
+
     };
 
     const handleClickMobile = () => {
@@ -272,15 +278,15 @@ const Header = () => {
         } else if (activeMenuItem === 'feedback') {
             scrollWithOffsetMobile('questions');
             setActiveMenuItem('questions');
-        }else if (activeMenuItem === 'contacts') {
+        } else if (activeMenuItem === 'contacts') {
             scrollWithOffsetMobile('hero');
             setActiveMenuItem('hero');
-        } 
+        }
         else if (activeMenuItem === '') {
             scrollWithOffsetMobile('hero');
             setActiveMenuItem('hero');
-        }  
-        
+        }
+
     };
 
     return (
@@ -293,7 +299,7 @@ const Header = () => {
                         </ScrollLink>
                         <div >
                             <ul className='text-[18px] leading-[21.13px] flex uppercase items-center text-primary space-x-8 font-semibold'>
-                                {linksList.filter(link => link.id !== 5).map((link, index) => (
+                                {linksList.filter(link => link.id !== 5 && link.id !== 8).map((link, index) => (
                                     <React.Fragment key={index}>
                                         <ScrollLink id={link.href}>
                                             <li style={link.href === activeMenuItem ? { color: '#ECBD00', borderBottom: '2px solid #ECBD00' } : {}} className={'hover:text-[#ECBD00] hover:border-b-[2px] hover:border-[#ECBD00] duration-200 active:text-[#b99400] active:border-[#b99400]'} onClick={() => { if (link.href) { setActiveMenuItem(link.href) } else { console.log('error') } }}>{link.title}</li>
@@ -322,12 +328,29 @@ const Header = () => {
                             <p>follow us</p>
                         </Link>
                     </div>
-                    <div className='hidden absolute top-[509px] -right-[279px] sm:flex h-[50px] mr-[5px] text-[#46620B] z-0 w-[400px] rotate-90 bg-[#FFFBE6] pl-8 rounded-full'>
-                        <div className='group uppercase font-bold w-[400px] flex items-center space-x-[40px] cursor-pointer' onClick={handleClick}>
-                            <div className=' border-b-2 border-[#46620B] w-[224px] group-hover:border-seccondary duration-200'></div>
-                            <p className='flex items-center group-hover:text-seccondary duration-500'>Next <ImArrowRight2 size={16} /></p>
-                        </div>
+
+                    <div className='group uppercase font-bold w-[400px] flex items-center space-x-[40px] cursor-pointer' onClick={handleClick}>
+                        {activeMenuItem === 'contacts' || activeMenuItem === 'questions' ? (
+                            <div className='hidden absolute top-[509px] -right-[129px] sm:flex h-[50px] mr-[5px] text-[#46620B] z-0 w-[100px] rotate-90 bg-[#FFFBE6] rounded-full justify-between'>
+                                <div className='group uppercase font-bold flex items-center cursor-pointer w-[100%] justify-center' onClick={handleClick}>
+                                    <FaHome size={16} className='group-hover:text-seccondary duration-500'/>
+                                    <p className='flex items-center group-hover:text-seccondary duration-500 pl-2'>
+                                        HOME
+                                    </p>
+                                </div>
+                            </div>
+                        ) : (
+                            <div className='hidden absolute top-[509px] -right-[279px] sm:flex h-[50px] mr-[5px] text-[#46620B] z-0 w-[400px] rotate-90 bg-[#FFFBE6] pl-8 rounded-full'>
+                                <div className='group uppercase font-bold w-[400px] flex items-center space-x-[40px] cursor-pointer' onClick={handleClick}>
+                                    <div className=' border-b-2 border-[#46620B] w-[224px] group-hover:border-seccondary duration-200'></div>
+                                    <p className='flex items-center group-hover:text-seccondary duration-500'>
+                                        Next <ImArrowRight2 size={16} />
+                                    </p>
+                                </div>
+                            </div>
+                        )}
                     </div>
+
                 </div>
 
             </div>

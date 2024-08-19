@@ -70,7 +70,7 @@ const Hero = () => {
 
     return (
         <div className='container' id='hero'>
-            <div className='sm:flex xl:flex justify-center items-center sm:mt-[101px] w-full'>
+            <div className='sm:flex xl:flex justify-center items-center sm:mt-[101px] w-full cursor-default'>
                 <div className='hidden sm:flex bg-[#46620B] rounded-l-[15px] z-10 h-[910px] w-[561px] relative'>
                     <div className='flex flex-col mx-[40px] mt-[160px] text-[20px] relative'>
                         <h1 className='sm:text-[48px] mb-[12px] font-bold text-[#FFFBE5]'>YOUR <span className='text-[#ECBD00]'>DELIVERY</span> TO A <span className='text-[#ECBD00]'>HEALTHY</span> LIFE</h1>
@@ -82,7 +82,7 @@ const Hero = () => {
                         <div className='flex justify-around items-center'>
                             {
                                 IconsList.map((item, index) => (
-                                    <div key={index} className='flex flex-col justify-center items-center'>
+                                    <div key={index} className='flex flex-col justify-center items-center hover:scale-110 duration-200 cursor-pointer'>
                                         <div className='rounded-[30px] bg-[#FFFCEC1A] shadow-md w-[48px] h-[48px] flex justify-center items-center'>
                                             <Image
                                                 src={item.src}

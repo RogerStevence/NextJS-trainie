@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { format, addDays, startOfWeek } from 'date-fns';
+import { format, addDays, startOfWeek, differenceInCalendarDays} from 'date-fns';
 import { useState } from 'react';
 import Image from "next/image";
 import Slider from "react-slick";
@@ -14,9 +14,9 @@ function Menu() {
 
     function renderWeekDays() {
         const today = new Date();
-        const startOfCurrentWeek = startOfWeek(today);
-
-        const [activeIndex, setActiveIndex] = useState(null);
+        const startOfCurrentWeek = startOfWeek(today, { weekStartsOn: 1 });
+        const currentDayIndex = differenceInCalendarDays(today, startOfCurrentWeek);
+        const [activeIndex, setActiveIndex] = useState(currentDayIndex);
 
         const weekDays = [];
 
@@ -28,7 +28,7 @@ function Menu() {
             weekDays.push(
                 <button
                     key={i}
-                    className={` py-[12px] w-[145px] rounded-md shadow-md duration-300 hover:shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] ${activeIndex === i ? 'bg-[#ECBD00] text-white' : 'bg-[#FFFCEC] text-[#263800]'}`}
+                    className={`py-[12px] w-[145px] rounded-md shadow-md duration-300 hover:shadow-[2px_6px_15px_0_rgba(0,0,0,0.25)] ${activeIndex === i ? 'bg-[#ECBD00] text-white' : 'bg-[#FFFCEC] text-[#263800]'}`}
                     style={{
                         backgroundColor: activeIndex === i ? '#ECBD00' : '#FFFCEC',
                     }}
@@ -41,6 +41,7 @@ function Menu() {
 
         return weekDays;
     }
+
 
     const menuItems = [
         {
@@ -199,7 +200,7 @@ function Menu() {
                     </div>
                     <div className='flex space-x-[24px] relative mt-[70px]'>
                         {menuItem.map((item, index) => (
-                            <div key={index} className='bg-[#FFFCEC] w-[100%] max-w-[1436px] flex flex-col items-center text-center drop-shadow-xl rounded-[15px]'>
+                            <div key={index} className='bg-[#FFFCEC] w-[100%] max-w-[1436px] flex flex-col items-center text-center drop-shadow-xl rounded-[15px] cursor-pointer hover:scale-105 duration-300 hover:shadow-xl'>
                                 <Image
                                     src={item.src}
                                     alt=''
